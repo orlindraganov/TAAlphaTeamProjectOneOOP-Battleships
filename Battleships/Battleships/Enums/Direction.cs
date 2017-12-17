@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Battleships.Enums
 {
-    enum Direction
+   public enum Direction
     {
         Vertical,
         Horizontal
