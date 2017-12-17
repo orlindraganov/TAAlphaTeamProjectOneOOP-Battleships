@@ -1,4 +1,6 @@
-﻿namespace Battleships.Models.Contracts
+﻿using Battleships.Utilities.Contracts;
+
+namespace Battleships.Models.Contracts
 {
     /// <summary>
     /// Player will hold the ships
@@ -10,5 +12,7 @@
         int Health { get; }
 
         string Name { get; }
+
+        IPosition Fire();
     }
 }

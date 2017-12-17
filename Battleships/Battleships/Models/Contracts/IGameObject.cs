@@ -11,6 +11,6 @@ namespace Battleships.Models.Contracts
         /// <summary>
         /// Delegate should be sent in the Elements to know when element is hit
         /// </summary>
-        void GetHit();
+        void GetElementHit(IGameObjectElement hitGameObjectElement);
     }
 }
