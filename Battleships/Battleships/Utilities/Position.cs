@@ -2,10 +2,10 @@
 
 namespace Battleships.Utilities
 {
-    public struct Position : IPosition
+    public class Position : IPosition
     {
 
-        public Position(int x, int y) : this()
+        public Position(int x, int y) 
         {
             this.X = x;
             this.Y = y;

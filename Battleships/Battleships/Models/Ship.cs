@@ -11,30 +11,27 @@ namespace Battleships.Models
     {
         private bool isAlive;
         private int health;
+        char symbolOfShip;
         private ShipType shipType;
-        private Direction direction;
-        private IEnumerable<IGameObjectElement> element;
+        private IList<IGameObjectElement> element=new List<IGameObjectElement>();
         
-        public Ship(Direction direction,ShipType type)
+        public Ship(ShipType shiptype)
         {
-            this.direction = direction;
             this.isAlive = true;
-            
+            this.shipType = shiptype;
+            this.health = 0;
+            this.symbolOfShip = 'Z';
            
         }
+        public virtual bool IsAlive { get { return this.isAlive; } set {this.isAlive=value; } }
+        public virtual int Health { get { return this.health; } set {this.health=value; } }
+        public virtual char SymbolOfShip { get { return this.symbolOfShip; } set {this.symbolOfShip=value; } }
+        public IList<IGameObjectElement> Elements { get { return this.element; } set { this.element=value ; } }
+        
 
-
-        public Direction Direction { get { return this.direction; } private set { this.direction = value; } }
-
-
-
-        public bool IsAlive { get { return this.isAlive; } set {this.isAlive=value; } }
-        public int Health { get { return this.health; } set {this.health=value; } }
-        public IGameObjectElement this[int index] { get ; set; }
-        public IEnumerable<IGameObjectElement> Elements { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public void GetHit()
+        public void GetElementHit(IGameObjectElement hitGameObjectElement)
         {
-          
+            throw new NotImplementedException();
         }
     }
 }

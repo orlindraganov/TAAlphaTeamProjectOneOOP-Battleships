@@ -4,5 +4,6 @@
     {
         bool IsAlive { get; set; }
         int Health { get; set; }
+        char SymbolOfShip { get; set; }
     }
 }

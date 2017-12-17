@@ -1,4 +1,5 @@
 ﻿using Battleships.Enums;
+using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 
 namespace Battleships.Models.Contracts
@@ -6,7 +7,7 @@ namespace Battleships.Models.Contracts
     public interface IGameObjectElement
     {
         bool IsHit { get; set; }
-        IPosition Position { get; }
+        Position ElementPosition { get; }
         GameObjectElementType Type { get; }
 
         /// <summary>
