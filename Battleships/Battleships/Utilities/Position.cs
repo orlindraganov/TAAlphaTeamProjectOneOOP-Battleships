@@ -13,12 +13,14 @@ namespace Battleships.Utilities
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Position GetFromMatrix(char row, int col)
-        {
-            X = row - 65;
-            Y = col - 1;
-            var position = new Position(X, Y);
-            return position;
-        }
+        //No methods in structs. We'll calculate this in the input parser
+        //
+        //public Position GetFromMatrix(char row, int col)
+        //{
+        //    X = row - 65;
+        //    Y = col - 1;
+        //    var position = new Position(X, Y);
+        //    return position;
+        //}
     }
 }
