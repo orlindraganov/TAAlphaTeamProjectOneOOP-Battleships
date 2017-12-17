@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Battleships.Enums;
-using Battleships.Utilities.Contracts;
+using Battleships.Models.Contracts;
 using Battleships.Utilities;
+using Battleships.Utilities.Contracts;
 
-namespace Battleships.Models.Contracts
+namespace Battleships.Models
 {
     public abstract class Ship : IShip, IShipElement
     {

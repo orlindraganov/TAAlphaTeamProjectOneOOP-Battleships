@@ -1,6 +1,4 @@
-﻿using Core.Contracts;
-
-namespace Battleships.Models.Contracts
+﻿namespace Battleships.Models.Contracts
 {
     /// <summary>
     /// Player will hold the ships
@@ -13,6 +11,6 @@ namespace Battleships.Models.Contracts
 
         string Name { get; }
 
-        void Fire(IBattleshipsEngine engine);
+        void Fire();
     }
 }
