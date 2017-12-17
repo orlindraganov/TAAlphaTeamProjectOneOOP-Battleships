@@ -13,7 +13,8 @@ namespace Battleships.Utilities
         public int X { get; set; }
         public int Y { get; set; }
 
-        //No methods in structs. We'll calculate this in the input parser
+        //No methods in structs. We'll calculate this in the input parser 
+        //or we can tweek the matrix to be [A1] iteratable
         //
         //public Position GetFromMatrix(char row, int col)
         //{
