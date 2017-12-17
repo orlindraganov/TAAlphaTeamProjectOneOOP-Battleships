@@ -1,4 +1,4 @@
-﻿using Battleships.Utilities.Contracts;
+﻿using Core.Contracts;
 
 namespace Battleships.Models.Contracts
 {
@@ -13,6 +13,6 @@ namespace Battleships.Models.Contracts
 
         string Name { get; }
 
-        IPosition Fire();
+        void Fire(IBattleshipsEngine engine);
     }
 }
