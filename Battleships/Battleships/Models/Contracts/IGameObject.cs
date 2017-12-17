@@ -7,5 +7,10 @@ namespace Battleships.Models.Contracts
         IEnumerable<IGameObjectElement> Elements { get; set; }
 
         IGameObjectElement this[int index] { get; set; }
+
+        /// <summary>
+        /// Delegate should be sent in the Elements to know when element is hit
+        /// </summary>
+        void GetHit();
     }
 }
