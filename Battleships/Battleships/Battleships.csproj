@@ -46,6 +46,8 @@
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\GameObjectElementType.cs" />
     <Compile Include="Enums\ShipType.cs" />
+    <Compile Include="Models\Battlefield.cs" />
+    <Compile Include="Models\Contracts\IBattlefield.cs" />
     <Compile Include="Models\Contracts\IEnviroment.cs" />
     <Compile Include="Models\Contracts\IGameObject.cs" />
     <Compile Include="Models\Contracts\IGameObjectElement.cs" />
