@@ -7,7 +7,7 @@ namespace Battleships.Models.Contracts
     public interface IGameObjectElement
     {
         bool IsHit { get; set; }
-        Position ElementPosition { get; }
+        IPosition ElementPosition { get; }
         GameObjectElementType Type { get; }
 
         /// <summary>

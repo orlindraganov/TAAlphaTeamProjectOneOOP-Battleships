@@ -8,12 +8,11 @@ using Battleships.Enums;
 
 namespace Battleships.Models
 {
-    class Destroyer : Ship,IShip,IGameObject
+    class AircraftCarrier : Ship, IShip, IGameObject
     {
-        public Destroyer(ShipType shiptype, IList<IGameObjectElement> elements) : base(shiptype, elements)
+        public AircraftCarrier(ShipType shiptype, IList<IGameObjectElement> elements) : base(shiptype, elements)
         {
-            this.ShipType = ShipType.Destroyer;
-
+            this.ShipType = ShipType.Carrier;
         }
     }
 }
