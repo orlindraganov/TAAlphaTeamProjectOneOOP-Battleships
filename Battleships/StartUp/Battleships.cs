@@ -1,9 +1,10 @@
 ﻿namespace StartUp
 {
-    internal class Program
+    internal class StartUp
     {
         private static void Main()
         {
+
         }
     }
 }

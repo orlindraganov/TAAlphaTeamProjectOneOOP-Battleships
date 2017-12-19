@@ -43,9 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleshipsEngine\BattleshipsEngine.cs" />
+    <Compile Include="BattleshipsEngine\Command.cs" />
+    <Compile Include="BattleshipsEngine\Contracts\IEngine.cs" />
+    <Compile Include="BattleshipsEngine\ICommand.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\GameObjectElementType.cs" />
     <Compile Include="Enums\ShipType.cs" />
+    <Compile Include="Factory\BattleshipsFactory.cs" />
     <Compile Include="Models\AircraftCarrier.cs" />
     <Compile Include="Models\Battlecruiser.cs" />
     <Compile Include="Models\Battlefield.cs" />
