@@ -7,7 +7,7 @@ using Battleships.Enums;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 
-namespace Battleships.Models.Contracts
+namespace Battleships.Models
 {
     class Water : IGameObject, IGameObjectElement
     {
