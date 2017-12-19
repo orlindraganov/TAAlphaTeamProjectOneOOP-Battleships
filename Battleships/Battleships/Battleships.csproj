@@ -51,6 +51,7 @@
     <Compile Include="Enums\GameObjectElementType.cs" />
     <Compile Include="Enums\ShipType.cs" />
     <Compile Include="Factory\BattleshipsFactory.cs" />
+    <Compile Include="Factory\View.cs" />
     <Compile Include="Models\AircraftCarrier.cs" />
     <Compile Include="Models\Battlecruiser.cs" />
     <Compile Include="Models\Battlefield.cs" />

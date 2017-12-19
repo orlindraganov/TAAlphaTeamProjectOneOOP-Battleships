@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Battleships.BattleShipsEngine
 {
-    class Command
+    class Command : ICommand
     {
     }
 }
