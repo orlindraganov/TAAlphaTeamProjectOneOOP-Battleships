@@ -26,7 +26,7 @@ namespace Battleships.Models.Contracts
         public IList<IGameObjectElement> Elements { get { return this.elements; }set { this.elements = value; } }
         public bool IsHit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public IPosition ElementPosition => throw new NotImplementedException();
+        public IPosition ElementPosition { get; set; }
 
         public GameObjectElementType Type => throw new NotImplementedException();
 
