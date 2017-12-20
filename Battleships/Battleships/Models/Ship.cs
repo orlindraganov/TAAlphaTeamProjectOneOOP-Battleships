@@ -14,21 +14,20 @@ namespace Battleships.Models
         private ShipType shipType;
         private IList<IGameObjectElement> elements;
         private GameObjectElementType type;
-        
-        public Ship(ShipType shiptype,IList<IGameObjectElement>elements)
+
+        public Ship(ShipType shiptype, IList<IGameObjectElement> elements)
         {
             this.IsAlive = true;
             this.ShipType = shiptype;
             this.Health = elements.Count;
             this.type = GameObjectElementType.Ship;
-            
-           
         }
-        public virtual bool IsAlive { get { return this.isAlive; } set {this.isAlive=value; } }
-        public virtual int Health { get { return this.health; } set {this.health=value; } }
-        public IList<IGameObjectElement> Elements { get { return this.elements; } set { this.elements=value ; } }
-        public ShipType ShipType { get { return this.shipType; }set { this.shipType = value; } }
-        
+
+        public virtual bool IsAlive { get { return this.isAlive; } set { this.isAlive = value; } }
+        public virtual int Health { get { return this.health; } set { this.health = value; } }
+        public IList<IGameObjectElement> Elements { get { return this.elements; } set { this.elements = value; } }
+        public ShipType ShipType { get { return this.shipType; } set { this.shipType = value; } }
+
 
     }
 }
