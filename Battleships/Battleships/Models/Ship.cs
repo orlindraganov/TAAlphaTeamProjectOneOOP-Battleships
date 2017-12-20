@@ -15,10 +15,10 @@ namespace Battleships.Models
         private IList<IGameObjectElement> elements;
         private GameObjectElementType type;
 
-        public Ship(ShipType shiptype, IList<IGameObjectElement> elements)
+        public Ship(IList<IGameObjectElement> elements)
         {
             this.IsAlive = true;
-            this.ShipType = shiptype;
+            
             this.Health = elements.Count;
             this.type = GameObjectElementType.Ship;
         }

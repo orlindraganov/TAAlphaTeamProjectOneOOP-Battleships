@@ -10,7 +10,7 @@ namespace Battleships.Models
 {
     class Destroyer : Ship,IShip,IGameObject
     {
-        public Destroyer(ShipType shiptype, IList<IGameObjectElement> elements) : base(shiptype, elements)
+        public Destroyer(IList<IGameObjectElement> elements) : base( elements)
         {
             this.ShipType = ShipType.Destroyer;
 

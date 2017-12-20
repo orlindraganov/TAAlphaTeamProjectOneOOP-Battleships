@@ -10,7 +10,7 @@ namespace Battleships.Models
 {
     class Frigate : Ship, IShip, IGameObject
     {
-        public Frigate(ShipType shiptype, IList<IGameObjectElement> elements) : base(shiptype, elements)
+        public Frigate(IList<IGameObjectElement> elements) : base( elements)
         {
             this.ShipType = ShipType.Carrier;
 

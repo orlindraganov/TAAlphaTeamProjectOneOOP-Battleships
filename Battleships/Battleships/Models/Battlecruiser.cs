@@ -11,7 +11,7 @@ namespace Battleships.Models
 {
     class Battlecruiser : Ship, IShip, IGameObject
     {
-        public Battlecruiser(ShipType shiptype, IList<IGameObjectElement> elements) : base(shiptype, elements)
+        public Battlecruiser(IList<IGameObjectElement> elements) : base( elements)
         {
             this.ShipType = ShipType.Cruiser;
 
