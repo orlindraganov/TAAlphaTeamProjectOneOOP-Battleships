@@ -13,7 +13,7 @@ namespace Battleships.Models
     class Element:IGameObjectElement
     {
         private bool isHit;
-        private Position elementPosition;
+        private IPosition elementPosition;
         private GameObjectElementType type;
         public Element(bool isHit,GameObjectElementType type,IPosition position)
         {
