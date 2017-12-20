@@ -6,8 +6,6 @@ namespace Battleships.Models.Contracts
     {
         IEnumerable<IGameObject> GameObjects { get; set; }
 
-        IGameObject this[int index] { get; set; }
-
         void GetObjectHit(IGameObject hitGameObject);
     }
 }
