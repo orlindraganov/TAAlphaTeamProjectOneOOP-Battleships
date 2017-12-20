@@ -1,6 +1,7 @@
 ﻿using Battleships.Enums;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
+using Battleships.Utilities.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,14 @@ namespace Battleships.Models
         private bool isHit;
         private Position elementPosition;
         private GameObjectElementType type;
-        public Element(bool isHit,GameObjectElementType type,Position position)
+        public Element(bool isHit,GameObjectElementType type,IPosition position)
         {
-            this.isHit = isHit;
+            this.IsHit = isHit;
             this.type = type;
-            this.elementPosition = position;
+            this.ElementPosition = position;
         }
         public bool IsHit { get {return this.isHit; } set { this.isHit = value; } }
-        public Position ElementPosition { get {return this.elementPosition; }set {this.elementPosition=value; } }
+        public IPosition ElementPosition { get {return this.elementPosition; }set {this.elementPosition=value; } }
         public GameObjectElementType Type { get { return this.type; } set { this.type = value; } }
         public void GetHit()
         {

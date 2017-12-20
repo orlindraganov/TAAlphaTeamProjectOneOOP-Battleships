@@ -17,9 +17,9 @@ namespace Battleships.Models
         
         public Ship(ShipType shiptype,IList<IGameObjectElement>elements)
         {
-            this.isAlive = true;
-            this.shipType = shiptype;
-            this.health = elements.Count;
+            this.IsAlive = true;
+            this.ShipType = shiptype;
+            this.Health = elements.Count;
             this.type = GameObjectElementType.Ship;
             
            
