@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Battleships.BattleShipsEngine
+namespace Battleships.Factory
 {
-    interface ICommand
+    interface IBattleShipFactory
     {
     }
 }
