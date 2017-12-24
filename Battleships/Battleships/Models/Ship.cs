@@ -14,11 +14,12 @@ namespace Battleships.Models
         private ShipType shipType;
         private IList<IGameObjectElement> elements;
         private GameObjectElementType type;
+        private Direction direction;
 
-        public Ship(IList<IGameObjectElement> elements)
+        public Ship(IList<IGameObjectElement> elements,Direction direction)
         {
             this.IsAlive = true;
-            
+            this.Direction = direction;
             this.Health = elements.Count;
             this.type = GameObjectElementType.Ship;
         }
@@ -27,6 +28,7 @@ namespace Battleships.Models
         public virtual int Health { get { return this.health; } set { this.health = value; } }
         public IList<IGameObjectElement> Elements { get { return this.elements; } set { this.elements = value; } }
         public ShipType ShipType { get { return this.shipType; } set { this.shipType = value; } }
+        public Direction Direction { get { return this.direction; }set {this.direction=value; } }
 
 
     }

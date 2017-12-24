@@ -11,10 +11,10 @@ namespace Battleships.Models
 {
     class Battlecruiser : Ship, IShip, IGameObject
     {
-        public Battlecruiser(IList<IGameObjectElement> elements) : base( elements)
+        public Battlecruiser(IList<IGameObjectElement> elements,Direction direction) : base( elements,direction)
         {
             this.ShipType = ShipType.Cruiser;
-
+           
         }
     }
 }

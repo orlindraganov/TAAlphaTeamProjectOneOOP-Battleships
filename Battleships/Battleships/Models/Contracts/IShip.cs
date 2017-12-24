@@ -7,5 +7,6 @@ namespace Battleships.Models.Contracts
         bool IsAlive { get; set; }
         int Health { get; set; }
         ShipType ShipType { get; set; }
+        Direction Direction { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace Battleships.Models
         private int health;
         private string name;
         private IEnumerable<IGameObject> gameObjects;
+        private Battlefield field;
         public Player(string name, IEnumerable<IGameObject> gameObjects)
         {
             this.Name = name;

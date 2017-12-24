@@ -10,7 +10,7 @@ namespace Battleships.Models
 {
     class Submarine : Ship, IShip, IGameObject
     {
-        public Submarine( IList<IGameObjectElement> elements) : base( elements)
+        public Submarine( IList<IGameObjectElement> elements,Direction direction) : base( elements,direction)
         {
             this.ShipType = ShipType.Submarine;
 
