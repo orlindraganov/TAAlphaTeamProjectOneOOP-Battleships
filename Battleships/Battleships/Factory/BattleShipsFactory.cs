@@ -11,6 +11,19 @@ namespace Battleships.Factory
 {
     class BattleshipsFactory : IBattleShipFactory
     {
+        private static IBattleShipFactory instanceHolder = new BattleshipsFactory();
+        public BattleshipsFactory()
+        {
+
+        }
+        public static IBattleShipFactory Instance
+        {
+            get
+            {
+                return instanceHolder;
+            }
+        }
+
         public IBattlefield CreateBattleField(IGameObjectElement[,] map)
         {
             return new Battlefield(map);
@@ -22,25 +35,25 @@ namespace Battleships.Factory
         }
 
 
-        public IShip CreateAircraftCarrier(IList<IGameObjectElement> elements)
+        public IShip CreateAircraftCarrier(IList<IGameObjectElement> elements,Direction direction)
         {
-            return new AircraftCarrier(elements);
+            return new AircraftCarrier(elements,direction);
         }
-        public IShip CreateBattleCruiser (IList<IGameObjectElement> elements)
+        public IShip CreateBattleCruiser (IList<IGameObjectElement> elements,Direction direction)
         {
-            return new Battlecruiser(elements);
+            return new Battlecruiser(elements,direction);
         }
-        public IShip CreateDestroyer(IList<IGameObjectElement> elements)
+        public IShip CreateDestroyer(IList<IGameObjectElement> elements,Direction direction)
         {
-            return new Destroyer(elements);
+            return new Destroyer(elements,direction);
         }
-        public IShip CreateFregate(IList<IGameObjectElement> elements)
+        public IShip CreateFrigate(IList<IGameObjectElement> elements,Direction direction)
         {
-            return new Frigate(elements);
+            return new Frigate(elements,direction);
         }
-        public IShip CreateSubMarine(IList<IGameObjectElement> elements)
+        public IShip CreateSubmarine(IList<IGameObjectElement> elements,Direction direction)
         {
-            return new Submarine(elements);
+            return new Submarine(elements,direction);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Battleships.Factory
 {
-    interface IBattleShipFactory
+   public interface IBattleShipFactory
     {
 
         IPlayer CreatePlayer(string name, IEnumerable<IGameObject> gameObjects);
