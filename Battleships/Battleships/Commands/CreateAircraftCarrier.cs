@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Battleships.BattleShipsEngine
+namespace Battleships.Commands
 {
-    class Command : ICommand
+    class Class1
     {
     }
 }
