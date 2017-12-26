@@ -1,4 +1,5 @@
-﻿using Battleships.BattleShipsEngine;
+﻿using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
+using Battleships.BattleShipsEngine;
 using Battleships.Factory;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,11 @@ using System.Threading.Tasks;
 
 namespace Battleships.BattleshipsEngine
 {
-    class CommandParser
+   //S Reflection tursi klas s dadeno ime koito nasledqva ICommand
+   //i imeto mu zavurshva na Command
+   //sled koeto mu pravi instanciq i mu podava factory i engine 
+   //i vrushta komanda kum engine-na kudeto se izvikva execute s podadenite ot konzolata parametri
+    public class CommandParser:IParser
     {
         // Magic, do not touch!
         public ICommand ParseCommand(string fullCommand)

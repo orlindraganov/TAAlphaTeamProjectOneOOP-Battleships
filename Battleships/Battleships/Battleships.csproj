@@ -43,16 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleshipsEngine\BattleshipsEngine.cs" />
-    <Compile Include="BattleshipsEngine\Command.cs" />
+    <Compile Include="BattleshipsEngine\Engine.cs" />
+    <Compile Include="BattleshipsEngine\Providers\CommandParser.cs" />
+    <Compile Include="BattleshipsEngine\Contracts\IComputerPlayer.cs" />
     <Compile Include="BattleshipsEngine\Contracts\IEngine.cs" />
-    <Compile Include="BattleshipsEngine\ICommand.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ConsoleReader.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ConsoleWriter.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IParser.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IReader.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IWriter.cs" />
+    <Compile Include="Commands\CreateAircraftCarrier.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\GameObjectElementType.cs" />
     <Compile Include="Enums\ShipType.cs" />
     <Compile Include="Factory\BattleshipsFactory.cs" />
     <Compile Include="Factory\IBattleShipFactory.cs" />
-    <Compile Include="Factory\View.cs" />
+    <Compile Include="Utilities\View.cs" />
     <Compile Include="Models\AircraftCarrier.cs" />
     <Compile Include="Models\Battlecruiser.cs" />
     <Compile Include="Models\Battlefield.cs" />

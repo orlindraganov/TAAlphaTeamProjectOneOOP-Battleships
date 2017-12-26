@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
+using Battleships.Models.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,14 @@ namespace Battleships.BattleShipsEngine.Contracts
     {
         void Start();
 
-        void Reset();
+        IReader Reader { get; set; }
+
+        IWriter Writer { get; set; }
+
+        IParser Parser { get; set; }
+
+        IList<IShip> Ships { get; }
+
     }
 }
 

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Battleships.BattleshipsEngine.Contracts
+namespace Battleships.BattleshipsEngine.Providers.ContractsOfProviders
 {
-    interface ComputerPlayer
+    public interface IReader
     {
+        string ReadLine();
     }
 }

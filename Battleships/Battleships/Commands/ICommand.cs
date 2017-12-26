@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Battleships.BattleShipsEngine
 {
-    interface ICommand
+   public interface ICommand
     {
+        string Execute(IList<string> parameters);
     }
 }

@@ -10,7 +10,7 @@ namespace Battleships.Models
 {
     class AircraftCarrier : Ship, IShip, IGameObject
     {
-        public AircraftCarrier(IList<IGameObjectElement> elements) : base(elements)
+        public AircraftCarrier(IList<IGameObjectElement> elements,Direction direction) : base(elements,direction)
         {
             this.ShipType = ShipType.Carrier;
         }
