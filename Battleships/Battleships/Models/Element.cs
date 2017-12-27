@@ -10,24 +10,28 @@ using System.Threading.Tasks;
 
 namespace Battleships.Models
 {
-    class Element:IGameObjectElement
+    public class Element : IGameObjectElement
     {
         private bool isHit;
         private IPosition elementPosition;
         private GameObjectElementType type;
-        public Element(bool isHit,GameObjectElementType type,IPosition position)
+
+        public Element(bool isHit, GameObjectElementType type, IPosition position)
         {
             this.IsHit = isHit;
             this.type = type;
             this.ElementPosition = position;
         }
-        public bool IsHit { get {return this.isHit; } set { this.isHit = value; } }
-        public IPosition ElementPosition { get {return this.elementPosition; }set {this.elementPosition=value; } }
+
+        public bool IsHit { get { return this.isHit; } set { this.isHit = value; } }
+
+        public IPosition ElementPosition { get { return this.elementPosition; } set { this.elementPosition = value; } }
+
         public GameObjectElementType Type { get { return this.type; } set { this.type = value; } }
+
         public void GetHit()
         {
             this.IsHit = true;
-           
         }
 
     }

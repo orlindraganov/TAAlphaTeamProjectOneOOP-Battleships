@@ -12,8 +12,6 @@ namespace Battleships.View.Contracts
 
         int Width { get; }
 
-        ViewType Type { get; }
-
         void Update();
     }
 }

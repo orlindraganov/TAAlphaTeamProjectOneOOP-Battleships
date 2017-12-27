@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Battleships.BattleShipsEngine.Contracts;
-using Battleships.Factory;
 using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.BattleshipsEngine.Providers;
 using Battleships.BattleshipsEngine;
 using Battleships.Models.Contracts;
-using Battleships.Models;
 
 namespace Battleships.BattleShipsEngine
 {
@@ -25,8 +20,8 @@ namespace Battleships.BattleShipsEngine
             this.Writer = new ConsoleWriter();
             this.Parser = new CommandParser();
             this.Ships = new List<IShip>();
-
         }
+
         public IReader Reader { get; set; }
 
         public IWriter Writer { get; set; }

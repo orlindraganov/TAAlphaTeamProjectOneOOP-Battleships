@@ -1,4 +1,5 @@
 ﻿using System;
+using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Battleships.View.Enums;
 using Bytes2you.Validation;
@@ -11,15 +12,13 @@ namespace Battleships.View
         private int height;
         private int startingCol;
         private int width;
-        private ViewType type;
 
-        public ViewSegment(int startingRow, int height, int startingCol, int width, ViewType type)
+        public ViewSegment(int startingRow, int height, int startingCol, int width)
         {
-
-
-
-
-            this.type = type;
+            this.StartingRow = startingRow;
+            this.Height = height;
+            this.StartingCol = startingCol;
+            this.Width = width;
         }
 
         public int StartingRow
@@ -28,7 +27,7 @@ namespace Battleships.View
             {
                 return this.startingRow;
             }
-           protected set
+            protected set
             {
                 Guard.WhenArgument(value, "Starting row").IsLessThan(0).IsGreaterThanOrEqual(Console.WindowHeight).Throw();
                 this.startingRow = value;
@@ -83,16 +82,39 @@ namespace Battleships.View
             }
         }
 
-        public ViewType Type
+        protected void SetConsole(ConsoleSettings settings)
         {
-            get
+            switch (settings)
             {
-                return this.type;
-            }
-            protected set
-            {
-                Guard.WhenArgument((int)value,"Type").IsLessThan(0).Throw();
-                this.type = value;
+                case ConsoleSettings.Text:
+                    Console.BackgroundColor = Constants.ConsoleDefaultBackgroundColor;
+                    Console.ForegroundColor = Constants.ConsoleDefaultForegroundColor;
+                    return;
+
+                case ConsoleSettings.WaterNotHit:
+                    Console.BackgroundColor = Constants.NotHitBackgroundColor;
+                    Console.ForegroundColor = Constants.WaterNotHitForegroundColor;
+                    return;
+
+                case ConsoleSettings.WaterHit:
+                    Console.BackgroundColor = Constants.HitBackgroundColor;
+                    Console.ForegroundColor = Constants.WaterHitForegroundColor;
+                    return;
+
+                case ConsoleSettings.ShipNotHit:
+                    Console.BackgroundColor = Constants.NotHitBackgroundColor;
+                    Console.ForegroundColor = Constants.ShipNotHitForegroundColor;
+                    return;
+
+                case ConsoleSettings.ShipHit:
+                    Console.BackgroundColor = Constants.HitBackgroundColor;
+                    Console.ForegroundColor = Constants.ShipHitForegroundColor;
+                    return;
+
+                case ConsoleSettings.EmptyMatrix:
+                    Console.BackgroundColor = Constants.ConsoleDefaultBackgroundColor;
+                    Console.ForegroundColor = Constants.ConsoleDefaultBorderColor;
+                    return;
             }
         }
 

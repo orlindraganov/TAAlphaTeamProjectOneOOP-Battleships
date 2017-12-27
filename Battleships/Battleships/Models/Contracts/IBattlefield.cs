@@ -7,5 +7,8 @@ namespace Battleships.Models.Contracts
         IGameObjectElement this[IPosition position] { get; set; }
 
         IGameObjectElement[,] Map { get; }
+
+        int RowsCount { get; }
+        int ColsCount { get; }
     }
 }

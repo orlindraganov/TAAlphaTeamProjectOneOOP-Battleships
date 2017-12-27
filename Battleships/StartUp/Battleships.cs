@@ -6,7 +6,7 @@ namespace StartUp
     {
         private static void Main()
         {
-            BattleShipsEngine.Instance.Start();
+            //BattleShipsEngine.Instance.Start();
         }
     }
 }

@@ -11,17 +11,18 @@ namespace Battleships.Models
         public Battlefield(IGameObjectElement[,] map)
         {
             Guard.WhenArgument(map, "Battlefield map").IsNull().Throw();
+            this.map = map;
         }
 
         public IGameObjectElement this[IPosition position]
         {
             get
             {
-                return this.Map[position.X, position.Y];
+                return this.Map[position.Row, position.Col];
             }
             set
             {
-                this.Map[position.X, position.Y] = value;
+                this.Map[position.Row, position.Col] = value;
             }
         }
 
@@ -32,10 +33,27 @@ namespace Battleships.Models
                 return this.map;
             }
         }
+
+        public int RowsCount
+        {
+            get
+            {
+                return this.Map.GetLength(0);
+            }
+        }
+
+        public int ColsCount
+        {
+            get
+            {
+                return this.Map.GetLength(1);
+            }
+        }
+
         public void PlaceShip(IShip ship, IPosition position)
         {
-            ship.Elements[0].ElementPosition.X = position.X;
-            ship.Elements[0].ElementPosition.Y = position.Y;
+            ship.Elements[0].ElementPosition.Row = position.Row;
+            ship.Elements[0].ElementPosition.Col = position.Col;
             ///Trqbva da se dovurshi za celta trqbva da se napravi View class koito da ima informaciq za simvola na koraba
             ///BattleField trqbva da ima opcii za placevane na ship i proverqvane na cell-a kakvo ima v nego...
 
