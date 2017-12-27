@@ -1,9 +1,5 @@
 ﻿using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Battleships.BattleshipsEngine.Providers
 {
@@ -12,7 +8,6 @@ namespace Battleships.BattleshipsEngine.Providers
         public string ReadLine()
         {
             return Console.ReadLine();
-           
         }
     }
 }

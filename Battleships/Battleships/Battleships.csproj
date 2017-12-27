@@ -59,7 +59,6 @@
     <Compile Include="Enums\ShipType.cs" />
     <Compile Include="Factory\BattleshipsFactory.cs" />
     <Compile Include="Factory\IBattleShipFactory.cs" />
-    <Compile Include="Utilities\View.cs" />
     <Compile Include="Models\AircraftCarrier.cs" />
     <Compile Include="Models\Battlecruiser.cs" />
     <Compile Include="Models\Battlefield.cs" />
@@ -80,6 +79,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Contracts\IPosition.cs" />
     <Compile Include="Utilities\Position.cs" />
+    <Compile Include="View\Contracts\IGameInfo.cs" />
+    <Compile Include="View\Contracts\IView.cs" />
+    <Compile Include="View\Enums\ViewType.cs" />
+    <Compile Include="View\Contracts\IViewSegment.cs" />
+    <Compile Include="View\GameInfo.cs" />
+    <Compile Include="View\ViewSegment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

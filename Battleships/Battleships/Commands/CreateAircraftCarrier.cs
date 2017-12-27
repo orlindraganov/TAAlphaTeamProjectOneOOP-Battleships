@@ -15,6 +15,7 @@ namespace Battleships.Commands
     {
         private readonly IBattleShipFactory factory;
         private readonly IEngine engine;
+
         public CreateAircraftCarrier(IBattleShipFactory factory, IEngine engine)
         {
             this.factory = factory;
