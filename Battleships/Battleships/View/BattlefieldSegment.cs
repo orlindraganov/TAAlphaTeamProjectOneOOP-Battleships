@@ -1,6 +1,7 @@
 ﻿using System;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
+using Battleships.Utilities.Contracts;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Battleships.View.Enums;
@@ -39,13 +40,19 @@ namespace Battleships.View
 
         private Position BattlefieldStartingPosition { get; set; }
 
+        private int BattlefieldHeight { get; set; }
+
+        private int BattlefieldWidth { get; set; }
+
         private void CalculateStartingPosition(IBattlefield battlefield)
         {
             var mediumRow = this.StartingRow + this.Height / 2;
+            //-1 to allow for apparent col char indexing
             var battlefieldRow = mediumRow - battlefield.RowsCount;
 
             var mediumCol = this.StartingCol + this.Width / 2;
-            var battlefieldCol = mediumCol - battlefield.ColsCount;
+            //+2 to allow for apparent two digit row numbering
+            var battlefieldCol = mediumCol - battlefield.ColsCount + 2;
 
             BattlefieldStartingPosition = new Position(battlefieldRow, battlefieldCol);
         }
@@ -70,43 +77,21 @@ namespace Battleships.View
             CalculateStartingPosition(battlefield);
             SetConsole(ConsoleSettings.EmptyMatrix);
 
-            var drawingRows = battlefield.RowsCount * 2 + 2;
-            var drawingCols = battlefield.ColsCount * 2 + 2;
+            var drawingRows = battlefield.RowsCount * 2 + 1;
+            var drawingCols = battlefield.ColsCount * 2 + 1;
 
             for (int i = 0; i < drawingRows; i++)
             {
                 for (int j = 0; j < drawingCols; j++)
                 {
-                    //Last row - mark letters
-                    if (i == drawingRows - 1)
-                    {
-                        while (j < 2)
-                        {
-                            j++;
-                        }
+                    Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
 
-                        if (j % 2 == 0)
-                        {
-                            SetConsole(ConsoleSettings.Text);
-                            Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
-                            Console.Write((char)(64 + j / 2));
-                            continue;
-                        }
-                    }
-
-                    //Grid row - just draw border
-                    SetConsole(ConsoleSettings.EmptyMatrix);
+                    //Grid row - just draw borders and empty spaces
 
                     if (i % 2 == 0)
                     {
-                        if (j == 0)
-                        {
-                            continue;
-                        }
 
-                        Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
-
-                        if (j % 2 != 0)
+                        if (j % 2 == 0)
                         {
                             Console.Write(this.BattlefieldCrossSymbol);
                             continue;
@@ -118,15 +103,7 @@ namespace Battleships.View
                     //Data row - draw vertical borders and empty spaces
                     else
                     {
-                        Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
-
-                        if (j == 0)
-                        {
-                            Console.Write(i / 2 + 1);
-                            continue;
-                        }
-
-                        if (j % 2 != 0)
+                        if (j % 2 == 0)
                         {
                             Console.Write(this.BattlefieldVerticalSymbol);
                         }
@@ -175,7 +152,9 @@ namespace Battleships.View
 
             for (int i = 0; i < ship.Elements.Count; i++)
             {
-                Console.SetCursorPosition(ship.Elements[i].ElementPosition.Col, ship.Elements[i].ElementPosition.Row);
+                var elementPosition = CalculateDrawingPosition(ship.Elements[i].ElementPosition);
+
+                Console.SetCursorPosition(elementPosition.Col, elementPosition.Row);
 
                 SetConsole(ConsoleSettings.ShipNotHit);
                 if (ship.Elements[i].IsHit)
@@ -199,6 +178,20 @@ namespace Battleships.View
 
                 Console.Write(hull);
             }
+        }
+
+        private IPosition CalculateDrawingPosition(IPosition position)
+        {
+            var row = position.Row;
+            var col = position.Col;
+
+            row *= 2;
+            row += BattlefieldStartingPosition.Row + 1;
+
+            col *= 2;
+            col += BattlefieldStartingPosition.Col + 1;
+
+            return new Position(row,col);
         }
 
         private Direction GetShipDirection(IShip ship)
@@ -229,9 +222,5 @@ namespace Battleships.View
             return direction;
         }
 
-        //private Position GetDrawingPosition(Position position)
-        //{
-            
-        //}
     }
 }

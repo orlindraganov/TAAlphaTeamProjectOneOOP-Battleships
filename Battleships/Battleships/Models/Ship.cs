@@ -23,7 +23,7 @@ namespace Battleships.Models
             this.Health = elements.Count;
             this.type = GameObjectElementType.Ship;
             //TODO
-            this.Elements = elements;
+            this.Elements = new List<IGameObjectElement>(elements);
         }
 
         public virtual bool IsAlive { get { return this.isAlive; } set { this.isAlive = value; } }
