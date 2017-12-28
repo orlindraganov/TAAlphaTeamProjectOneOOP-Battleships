@@ -18,6 +18,10 @@ namespace StartUp
             Console.SetBufferSize(120, 45);
 
             var h = new GameInfoSegment(5, 5, 10, 60);
+
+            h.GameInfo = "Slava aleluq it works!";
+            h.Update();
+
             var v = new BattlefieldSegment(10, 30, 10, 30);
 
             var m = new IGameObjectElement[10, 10];

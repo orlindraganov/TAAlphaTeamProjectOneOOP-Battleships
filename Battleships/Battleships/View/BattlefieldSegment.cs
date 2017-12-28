@@ -73,7 +73,7 @@ namespace Battleships.View
         public void DrawBattleField(IBattlefield battlefield)
         {
             CalculateBattlefieldStartingPosition(battlefield);
-            SetConsole(ConsoleSettings.EmptyMatrix);
+            this.SetConsole(ConsoleSettings.EmptyMatrix);
 
             this.BattlefieldWidth = battlefield.RowsCount * 2 + 1;
             this.BattlefieldHeight = battlefield.ColsCount * 2 + 1;
@@ -153,10 +153,10 @@ namespace Battleships.View
 
                 Console.SetCursorPosition(elementPosition.Col, elementPosition.Row);
 
-                SetConsole(ConsoleSettings.ShipNotHit);
+                this.SetConsole(ConsoleSettings.ShipNotHit);
                 if (ship.Elements[i].IsHit)
                 {
-                    SetConsole(ConsoleSettings.ShipHit);
+                    this.SetConsole(ConsoleSettings.ShipHit);
                     Console.Write(hit);
                     continue;
                 }
@@ -179,7 +179,7 @@ namespace Battleships.View
 
         public void WriteIndexesOnBattlefield()
         {
-            SetConsole(ConsoleSettings.Text);
+            this.SetConsole(ConsoleSettings.Text);
             //Letters
             var symbol = 'A';
             for (int i = 0; i < this.BattlefieldWidth; i++)

@@ -25,7 +25,7 @@ namespace Battleships.View
             {
                 Guard.WhenArgument(value, "Game Info").IsNull().Throw();
                 Guard.WhenArgument(value.Length, "Game Info Length").IsGreaterThanOrEqual(this.Width - 2).Throw();
-                this.GameInfo = value;
+                this.gameInfo = value;
             }
         }
 
@@ -50,12 +50,11 @@ namespace Battleships.View
 
         public int CalculateGameInfoCol()
         {
-            return (this.StartingCol + this.Width - this.GameInfo.Length) / 2;
+            return this.StartingCol + (this.Width - this.GameInfo.Length) / 2;
         }
 
         public override void Update()
         {
-            this.SetConsole(ConsoleSettings.Text);
             this.ClearInfo();
             this.WriteInfo();
         }
@@ -64,6 +63,8 @@ namespace Battleships.View
         {
             var row = this.CalculateGameInfoRow();
             var col = this.CalculateGameInfoCol();
+
+            this.SetConsole(ConsoleSettings.Text);
 
             Console.SetCursorPosition(col, row);
             Console.Write(this.GameInfo);
@@ -75,7 +76,6 @@ namespace Battleships.View
 
         private void ClearInfo()
         {
-
             for (int i = 0; i < this.PrintedInfoLength; i++)
             {
                 Console.SetCursorPosition(this.PrintedInfoCol + i, this.PrintedInfoRow);
