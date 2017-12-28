@@ -22,6 +22,8 @@ namespace Battleships.Models
             this.Direction = direction;
             this.Health = elements.Count;
             this.type = GameObjectElementType.Ship;
+            //TODO
+            this.Elements = elements;
         }
 
         public virtual bool IsAlive { get { return this.isAlive; } set { this.isAlive = value; } }

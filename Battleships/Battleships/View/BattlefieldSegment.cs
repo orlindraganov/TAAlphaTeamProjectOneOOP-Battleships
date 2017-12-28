@@ -65,10 +65,8 @@ namespace Battleships.View
             throw new System.NotImplementedException();
         }
 
-        private void DrawBattleField(IBattlefield battlefield)
+        public void DrawBattleField(IBattlefield battlefield)
         {
-            //TODO
-
             CalculateStartingPosition(battlefield);
             SetConsole(ConsoleSettings.EmptyMatrix);
 
@@ -91,12 +89,14 @@ namespace Battleships.View
                         {
                             SetConsole(ConsoleSettings.Text);
                             Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
-                            Console.Write((char)(62 + j / 2));
+                            Console.Write((char)(64 + j / 2));
                             continue;
                         }
                     }
 
                     //Grid row - just draw border
+                    SetConsole(ConsoleSettings.EmptyMatrix);
+
                     if (i % 2 == 0)
                     {
                         if (j == 0)
@@ -104,7 +104,6 @@ namespace Battleships.View
                             continue;
                         }
 
-                        SetConsole(ConsoleSettings.EmptyMatrix);
                         Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
 
                         if (j % 2 != 0)
@@ -119,7 +118,6 @@ namespace Battleships.View
                     //Data row - draw vertical borders and empty spaces
                     else
                     {
-                        SetConsole(ConsoleSettings.EmptyMatrix);
                         Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
 
                         if (j == 0)
@@ -137,44 +135,103 @@ namespace Battleships.View
             }
         }
 
-        private void DrawShip(IShip ship)
+        public void DrawShip(IShip ship)
         {
-            bool isHorizontal;
+            Direction direction = GetShipDirection(ship);
             char bow;
             char hull;
             char stern;
             char hit = Constants.HitSymbol;
 
-            if (ship.Elements[0].ElementPosition.Row == ship.Elements[1].ElementPosition.Row)
+            switch (direction)
             {
-                isHorizontal = true;
-                bow = Constants.HorizontalShipLeftEnd;
-                hull = Constants.HorizontalShipMiddle;
-                stern = Constants.HorizontalShipRightEnd;
+                case Direction.Left:
+                    bow = Constants.HorizontalShipRightEnd;
+                    hull = Constants.HorizontalShipMiddle;
+                    stern = Constants.HorizontalShipLeftEnd;
+                    break;
 
-                for (int i = 0; i < ship.Elements.Count; i++)
-                {
-                    if (ship.Elements[i].IsHit)
-                    {
-                        SetConsole(ConsoleSettings.ShipHit);
-                        //TODO
-                    }
-                }
+                case Direction.Right:
+                    bow = Constants.HorizontalShipLeftEnd;
+                    hull = Constants.HorizontalShipMiddle;
+                    stern = Constants.HorizontalShipRightEnd;
+                    break;
+
+                case Direction.Up:
+                    bow = Constants.VerticalShipLowerEnd;
+                    hull = Constants.VerticalShipMiddle;
+                    stern = Constants.VerticalShipUpperEnd;
+                    break;
+
+                case Direction.Down:
+                    bow = Constants.VerticalShipUpperEnd;
+                    hull = Constants.VerticalShipMiddle;
+                    stern = Constants.VerticalShipLowerEnd;
+                    break;
+
+                default:
+                    throw new ArgumentException("Direction");
             }
-            else if (ship.Elements[0].ElementPosition.Col == ship.Elements[1].ElementPosition.Col)
+
+            for (int i = 0; i < ship.Elements.Count; i++)
             {
-                isHorizontal = false;
-                bow = Constants.VerticalShipUpperEnd;
-                hull = Constants.VerticalShipMiddle;
-                stern = Constants.VerticalShipLowerEnd;
-                //TODO
+                Console.SetCursorPosition(ship.Elements[i].ElementPosition.Col, ship.Elements[i].ElementPosition.Row);
+
+                SetConsole(ConsoleSettings.ShipNotHit);
+                if (ship.Elements[i].IsHit)
+                {
+                    SetConsole(ConsoleSettings.ShipHit);
+                    Console.Write(hit);
+                    continue;
+                }
+
+                if (i == 0)
+                {
+                    Console.Write(bow);
+                    continue;
+                }
+
+                if (i == ship.Elements.Count - 1)
+                {
+                    Console.Write(stern);
+                    continue;
+                }
+
+                Console.Write(hull);
+            }
+        }
+
+        private Direction GetShipDirection(IShip ship)
+        {
+            Direction direction;
+
+            if (ship.Elements[0].ElementPosition.Row == ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col < ship.Elements[1].ElementPosition.Col)
+            {
+                direction = Direction.Right;
+            }
+            else if (ship.Elements[0].ElementPosition.Row == ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col > ship.Elements[1].ElementPosition.Col)
+            {
+                direction = Direction.Left;
+            }
+            else if (ship.Elements[0].ElementPosition.Row < ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col == ship.Elements[1].ElementPosition.Col)
+            {
+                direction = Direction.Down;
+            }
+            else if (ship.Elements[0].ElementPosition.Row > ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col == ship.Elements[1].ElementPosition.Col)
+            {
+                direction = Direction.Up;
             }
             else
             {
                 throw new ArgumentException("Invalid ship");
             }
+
+            return direction;
         }
 
-        private void DrawElement();
+        //private Position GetDrawingPosition(Position position)
+        //{
+            
+        //}
     }
 }

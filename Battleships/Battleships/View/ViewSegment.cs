@@ -43,7 +43,7 @@ namespace Battleships.View
 
             set
             {
-                Guard.WhenArgument(value, "Height").IsLessThan(0).IsGreaterThan(GetMinimumHeight()).Throw();
+                Guard.WhenArgument(value, "Height").IsLessThan(0).IsLessThan(GetMinimumHeight()).Throw();
 
                 var lastRow = startingRow + value - 1;
                 Guard.WhenArgument(lastRow, "Last row").IsGreaterThan(Console.WindowHeight).Throw();
@@ -74,6 +74,7 @@ namespace Battleships.View
             set
             {
                 Guard.WhenArgument(value, "Width").IsLessThan(0).Throw();
+                Guard.WhenArgument(value, "Width").IsLessThan(this.GetMinimumWidth());
 
                 var lastCol = startingCol + value - 1;
                 Guard.WhenArgument(lastCol, "Last col").IsGreaterThan(Console.WindowWidth).Throw();
