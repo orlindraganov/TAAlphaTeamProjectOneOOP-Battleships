@@ -87,7 +87,6 @@
     <Compile Include="View\Contracts\IGameInfoSegment.cs" />
     <Compile Include="View\Contracts\IView.cs" />
     <Compile Include="View\Enums\ConsoleSettings.cs" />
-    <Compile Include="View\Enums\Direction.cs" />
     <Compile Include="View\Enums\ViewType.cs" />
     <Compile Include="View\Contracts\IViewSegment.cs" />
     <Compile Include="View\GameInfoSegment.cs" />

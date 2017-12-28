@@ -1,4 +1,5 @@
 ﻿using System;
+using Battleships.Enums;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
