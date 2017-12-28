@@ -17,6 +17,7 @@ namespace StartUp
             Console.SetWindowSize(120, 45);
             Console.SetBufferSize(120, 45);
 
+            var h = new GameInfoSegment(5, 5, 10, 60);
             var v = new BattlefieldSegment(10, 30, 10, 30);
 
             var m = new IGameObjectElement[10, 10];
@@ -43,9 +44,12 @@ namespace StartUp
             var s1 = new Frigate(el, Direction.Right);
 
             v.DrawBattleField(b);
+            v.WriteIndexesOnBattlefield();
             v.DrawShip(s);
             v.DrawShip(s1);
             Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.SetCursorPosition(0, Console.BufferHeight -1);
             //Console.WriteLine($"W: {Console.BufferWidth} {Console.WindowWidth} H: {Console.BufferHeight} {Console.WindowHeight}");
             //Console.WriteLine();
         }

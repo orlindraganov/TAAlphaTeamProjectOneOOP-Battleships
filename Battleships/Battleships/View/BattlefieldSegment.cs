@@ -44,17 +44,15 @@ namespace Battleships.View
 
         private int BattlefieldWidth { get; set; }
 
-        private void CalculateStartingPosition(IBattlefield battlefield)
+        private void CalculateBattlefieldStartingPosition(IBattlefield battlefield)
         {
             var mediumRow = this.StartingRow + this.Height / 2;
-            //-1 to allow for apparent col char indexing
             var battlefieldRow = mediumRow - battlefield.RowsCount;
 
             var mediumCol = this.StartingCol + this.Width / 2;
-            //+2 to allow for apparent two digit row numbering
-            var battlefieldCol = mediumCol - battlefield.ColsCount + 2;
+            var battlefieldCol = mediumCol - battlefield.ColsCount;
 
-            BattlefieldStartingPosition = new Position(battlefieldRow, battlefieldCol);
+            this.BattlefieldStartingPosition = new Position(battlefieldRow, battlefieldCol);
         }
 
         protected override int GetMinimumHeight()
@@ -74,20 +72,19 @@ namespace Battleships.View
 
         public void DrawBattleField(IBattlefield battlefield)
         {
-            CalculateStartingPosition(battlefield);
+            CalculateBattlefieldStartingPosition(battlefield);
             SetConsole(ConsoleSettings.EmptyMatrix);
 
-            var drawingRows = battlefield.RowsCount * 2 + 1;
-            var drawingCols = battlefield.ColsCount * 2 + 1;
+            this.BattlefieldWidth = battlefield.RowsCount * 2 + 1;
+            this.BattlefieldHeight = battlefield.ColsCount * 2 + 1;
 
-            for (int i = 0; i < drawingRows; i++)
+            for (int i = 0; i < this.BattlefieldWidth; i++)
             {
-                for (int j = 0; j < drawingCols; j++)
+                for (int j = 0; j < this.BattlefieldHeight; j++)
                 {
                     Console.SetCursorPosition(BattlefieldStartingPosition.Col + j, BattlefieldStartingPosition.Row + i);
 
                     //Grid row - just draw borders and empty spaces
-
                     if (i % 2 == 0)
                     {
 
@@ -100,7 +97,7 @@ namespace Battleships.View
                         Console.Write(this.BattlefieldHorizontalSymbol);
                         continue;
                     }
-                    //Data row - draw vertical borders and empty spaces
+                    //Data row - draw vertical borders and misses empty spaces
                     else
                     {
                         if (j % 2 == 0)
@@ -180,18 +177,51 @@ namespace Battleships.View
             }
         }
 
+        public void WriteIndexesOnBattlefield()
+        {
+            SetConsole(ConsoleSettings.Text);
+            //Letters
+            var symbol = 'A';
+            for (int i = 0; i < this.BattlefieldWidth; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    continue;
+                }
+
+                Console.SetCursorPosition(this.BattlefieldStartingPosition.Col + i, this.BattlefieldStartingPosition.Row + this.BattlefieldHeight);
+                Console.Write(symbol);
+                symbol++;
+            }
+
+            //Numbers
+            var count = 1;
+            for (int i = 0; i < this.BattlefieldHeight; i++)
+            {
+                if (i %2 ==0)
+                {
+                    continue;
+                }
+
+                var numberOffset = count < 10 ? 1 : 2;
+                Console.SetCursorPosition(this.BattlefieldStartingPosition.Col - numberOffset, this.BattlefieldStartingPosition.Row + i );
+                Console.Write(count);
+                count++;
+            }
+        }
+
         private IPosition CalculateDrawingPosition(IPosition position)
         {
             var row = position.Row;
             var col = position.Col;
 
             row *= 2;
-            row += BattlefieldStartingPosition.Row + 1;
+            row += this.BattlefieldStartingPosition.Row + 1;
 
             col *= 2;
-            col += BattlefieldStartingPosition.Col + 1;
+            col += this.BattlefieldStartingPosition.Col + 1;
 
-            return new Position(row,col);
+            return new Position(row, col);
         }
 
         private Direction GetShipDirection(IShip ship)

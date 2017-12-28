@@ -19,6 +19,11 @@ namespace Battleships.View
             this.Height = height;
             this.StartingCol = startingCol;
             this.Width = width;
+
+            this.DrawHorizontalLine(startingRow, startingCol, width, Constants.SegmentBorder);
+            this.DrawVerticalLine(startingCol, startingRow, height, Constants.SegmentBorder);
+            this.DrawVerticalLine(startingCol + width - 1, startingRow, height, Constants.SegmentBorder);
+            this.DrawHorizontalLine(startingRow + height - 1, startingCol, width, Constants.SegmentBorder);
         }
 
         public int StartingRow
@@ -116,6 +121,26 @@ namespace Battleships.View
                     Console.BackgroundColor = Constants.ConsoleDefaultBackgroundColor;
                     Console.ForegroundColor = Constants.ConsoleDefaultBorderColor;
                     return;
+            }
+        }
+
+        protected void DrawHorizontalLine(int row, int startingCol, int length, char symbol)
+        {
+            for (int i = 0; i < length; i++)
+            {
+                var currentCol = startingCol + i;
+                Console.SetCursorPosition(currentCol, row);
+                Console.Write(symbol);
+            }
+        }
+
+        protected void DrawVerticalLine(int col, int startingRow, int length, char symbol)
+        {
+            for (int i = 0; i < length; i++)
+            {
+                var currentRow = startingRow + i;
+                Console.SetCursorPosition(col, currentRow);
+                Console.Write(symbol);
             }
         }
 
