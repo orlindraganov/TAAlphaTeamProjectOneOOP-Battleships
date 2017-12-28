@@ -1,27 +1,20 @@
-﻿using Battleships.Enums;
+﻿using System.Collections.Generic;
+using Battleships.Enums;
 using Battleships.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Battleships.Utilities.Contracts;
 
 namespace Battleships.Factory
 {
-   public interface IBattleShipFactory
-    {
+	public interface IBattleShipFactory
+	{
 
-        IPlayer CreatePlayer(string name, IEnumerable<IGameObject> gameObjects);
-        IShip CreateAircraftCarrier(IList<IGameObjectElement> elements, Direction direction);
-        IShip CreateBattleCruiser(IList<IGameObjectElement> elements, Direction direction);
-        IShip CreateDestroyer(IList<IGameObjectElement> elements, Direction direction);
-        IShip CreateFrigate(IList<IGameObjectElement> elements, Direction direction);
-        IShip CreateSubmarine(IList<IGameObjectElement> elements, Direction direction);
-        IBattlefield CreateBattleField(IGameObjectElement[,] map);
-        //IView CreateView();
-
-
-
-
-    }
+		IPlayer CreatePlayer(string name, IEnumerable<IGameObject> gameObjects);
+		IShip CreateAircraftCarrier(IPosition origin, Direction direction);
+		IShip CreateBattleCruiser(IPosition origin, Direction direction);
+		IShip CreateDestroyer(IPosition origin, Direction direction);
+		IShip CreateFrigate(IPosition origin, Direction direction);
+		IShip CreateSubmarine(IPosition origin, Direction direction);
+		IBattlefield CreateBattleField(IGameObjectElement[,] map);
+		//IView CreateView();
+	}
 }

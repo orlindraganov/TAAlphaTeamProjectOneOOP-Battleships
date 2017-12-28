@@ -74,6 +74,7 @@
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\Enviroment.cs" />
     <Compile Include="Models\Frigate.cs" />
+    <Compile Include="Models\GameObjectElement.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Ship.cs" />
     <Compile Include="Models\Submarine.cs" />

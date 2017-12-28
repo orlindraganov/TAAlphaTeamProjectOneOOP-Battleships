@@ -7,31 +7,53 @@ using Battleships.Utilities.Contracts;
 
 namespace Battleships.Models
 {
-    public abstract class Ship : IShip
-    {
-        private bool isAlive;
-        private int health;
-        private ShipType shipType;
-        private IList<IGameObjectElement> elements;
-        private GameObjectElementType type;
-        private Direction direction;
+	public abstract class Ship : IShip
+	{
+		protected Ship(IPosition origin, Direction direction, int count)
+		{
+			if (count <= 0)
+			{
+				throw new ArgumentException("Must be positive", nameof(count));
+			}
 
-        public Ship(IList<IGameObjectElement> elements,Direction direction)
-        {
-            this.IsAlive = true;
-            this.Direction = direction;
-            this.Health = elements.Count;
-            this.type = GameObjectElementType.Ship;
-            //TODO
-            this.Elements = new List<IGameObjectElement>(elements);
-        }
+			this.Elements = new List<IGameObjectElement>();
+			for (int i = 0; i < count; i++)
+			{
+				int x = origin.Row;
+				int y = origin.Col;
+				switch (direction)
+				{
+					case Direction.Up:
+						x += i;
+						break;
+					case Direction.Right:
+						y += i;
+						break;
+					case Direction.Down:
+						x -= i;
+						break;
+					case Direction.Left:
+						y -= i;
+						break;
+				}
 
-        public virtual bool IsAlive { get { return this.isAlive; } set { this.isAlive = value; } }
-        public virtual int Health { get { return this.health; } set { this.health = value; } }
-        public IList<IGameObjectElement> Elements { get { return this.elements; } set { this.elements = value; } }
-        public ShipType ShipType { get { return this.shipType; } set { this.shipType = value; } }
-        public Direction Direction { get { return this.direction; }set {this.direction=value; } }
+				var gameObjectElement = new GameObjectElement()
+				{
+					IsHit = false,
+					ElementPosition = new Position()
+					{
+						Row = x,
+						Col = y
+					}
+				};
+				this.Elements.Add(gameObjectElement);
+			}
 
+			this.Health = count;
+		}
 
-    }
+		public bool IsAlive => this.Health > 0;
+		public int Health { get; set; }
+		public IList<IGameObjectElement> Elements { get; set; }
+	}
 }

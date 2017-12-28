@@ -12,5 +12,7 @@
         string Name { get; }
 
         void Fire();
+
+	    void AddShip(IShip ship);
     }
 }
