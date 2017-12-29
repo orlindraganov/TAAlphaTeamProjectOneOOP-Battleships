@@ -14,8 +14,8 @@ namespace StartUp
         private static void Main()
         {
             //BattleShipsEngine.Instance.Start();
-            Console.SetWindowSize(120, 45);
-            Console.SetBufferSize(120, 45);
+            Console.SetWindowSize(120, 40);
+            Console.SetBufferSize(120, 40);
 
             var h = new GameInfoSegment(5, 5, 10, 60);
 

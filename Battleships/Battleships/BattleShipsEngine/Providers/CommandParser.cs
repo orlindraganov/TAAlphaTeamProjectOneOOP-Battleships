@@ -21,7 +21,7 @@ namespace Battleships.BattleshipsEngine
         {
             var commandName = fullCommand.Split(' ')[0];
             var commandTypeInfo = this.FindCommand(commandName);
-            var command = Activator.CreateInstance(commandTypeInfo, BattleshipsFactory.Instance,Engine.Instance) as ICommand;
+            var command = Activator.CreateInstance(commandTypeInfo, BattleShipFactory.Instance,Engine.Instance) as ICommand;
 
             return command;
         }
