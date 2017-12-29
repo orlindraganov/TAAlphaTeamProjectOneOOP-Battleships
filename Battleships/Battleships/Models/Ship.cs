@@ -24,13 +24,13 @@ namespace Battleships.Models
 				switch (direction)
 				{
 					case Direction.Up:
-						x += i;
+						x -= i;
 						break;
 					case Direction.Right:
 						y += i;
 						break;
 					case Direction.Down:
-						x -= i;
+						x += i;
 						break;
 					case Direction.Left:
 						y -= i;

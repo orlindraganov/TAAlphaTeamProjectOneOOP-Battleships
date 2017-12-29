@@ -28,24 +28,11 @@ namespace StartUp
 
             var b = new Battlefield(m);
 
-            var el = new List<IGameObjectElement>();
+            var s = new Frigate(new Position(2,2), Direction.Down);
 
-            for (int i = 0; i < 3; i++)
-            {
-                el.Add(new Element(false, GameObjectElementType.Ship, new Position(3 + i, 3)));
-            }
-            var s = new Frigate(el, Direction.Down);
+            var s1 = new Frigate(new Position(4,4), Direction.Right);
 
-            el.Clear();
-
-            for (int i = 0; i < 5; i++)
-            {
-                el.Add(new Element(false, GameObjectElementType.Ship, new Position(5, 5+i)));
-            }
-
-            el[3].IsHit = true;
-
-            var s1 = new Frigate(el, Direction.Right);
+            s1.Elements[1].IsHit = true;
 
             v.DrawBattleField(b);
             v.WriteIndexesOnBattlefield();
