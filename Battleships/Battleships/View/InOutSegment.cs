@@ -57,8 +57,29 @@ namespace Battleships.View
 
         public string ReadLine()
         {
-            var message = Console.ReadLine();
-            Guard.WhenArgument(message, "Message").IsNull().Throw();
+            var message = string.Empty;
+            var limit = this.Width - this.ReadStartingPosition.Col + this.StartingCol - 2;
+            while (true)
+            {
+                var c = Console.ReadKey(true).KeyChar;
+
+                if (c == '\r')
+                    break;
+                if (c == '\b')
+                {
+                    if (message != "")
+                    {
+                        message = message.Substring(0, message.Length - 1);
+                        Console.Write("\b \b");
+                    }
+                }
+                else if (message.Length < limit)
+                {
+                    Console.Write(c);
+                    message += c;
+                }
+            }
+
             this.LastReadMessageLength = message.Length;
             Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
             this.ClearLastReadMessage();

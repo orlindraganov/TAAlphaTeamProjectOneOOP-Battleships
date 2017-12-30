@@ -103,6 +103,7 @@
     <Compile Include="View\GameInfoSegment.cs" />
     <Compile Include="View\InOutSegment.cs" />
     <Compile Include="View\PlayerBattlefieldSegment.cs" />
+    <Compile Include="View\View.cs" />
     <Compile Include="View\ViewSegment.cs" />
   </ItemGroup>
   <ItemGroup>
