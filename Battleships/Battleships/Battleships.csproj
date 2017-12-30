@@ -56,6 +56,7 @@
     <Compile Include="Commands\CreateBattleCruiserCommand.cs" />
     <Compile Include="Commands\CreateDestroyerCommand.cs" />
     <Compile Include="Commands\CreateFrigateCommand.cs" />
+    <Compile Include="Commands\CreatePlayerCommand.cs" />
     <Compile Include="Commands\CreateSubmarineCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Enums\Direction.cs" />

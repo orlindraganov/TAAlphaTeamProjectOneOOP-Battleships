@@ -15,9 +15,9 @@ namespace Battleships.BattleShipsEngine
 		private const string TerminationCommand = "exit";
 		private const string NullProvidersExceptionMessage = "cannot be null.";
 
-		private IPlayer humanPlayer;
-		private IPlayer computerPlayer;
-		private IPlayer currentPlayer;
+		//private IPlayer humanPlayer;
+		//private IPlayer computerPlayer;
+		//private IPlayer currentPlayer;
 
 		private Engine()
 		{
@@ -63,18 +63,18 @@ namespace Battleships.BattleShipsEngine
 
 		public void Start()
 		{
-			this.humanPlayer = this.BattleShipFactory.CreatePlayer("Human", null);
-			// Human player enters the fleet.
-			var humanShips = this.QueryHumanPlayerShips();
-			foreach (var humanShip in humanShips)
-			{
-				this.humanPlayer.AddShip(humanShip);
-			}
+			//this.humanPlayer = this.BattleShipFactory.CreatePlayer("Human", null);
+			//// Human player enters the fleet.
+			//var humanShips = this.QueryHumanPlayerShips();
+			//foreach (var humanShip in humanShips)
+			//{
+			//	this.humanPlayer.AddShip(humanShip);
+			//}
 
-			this.computerPlayer = this.BattleShipFactory.CreatePlayer("Computer", null);
-			// Generate computer fleet
+			//this.computerPlayer = this.BattleShipFactory.CreatePlayer("Computer", null);
+			//// Generate computer fleet
 
-			this.currentPlayer = this.humanPlayer;
+			//this.currentPlayer = this.humanPlayer;
 			while (true)
 			{
 				try
@@ -87,7 +87,7 @@ namespace Battleships.BattleShipsEngine
 					}
 
 					this.ProcessCommand(commandAsString);
-					this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
+					//this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
 				}
 				catch (Exception ex)
 				{

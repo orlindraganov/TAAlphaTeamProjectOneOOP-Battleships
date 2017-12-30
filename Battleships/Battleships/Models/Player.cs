@@ -12,9 +12,9 @@ namespace Battleships.Models
 		private bool isAlive;
 		private int health;
 		private string name;
-		private IEnumerable<IGameObject> gameObjects;
+		private IList<Element> gameObjects;
 		private Battlefield field;
-		public Player(string name, IEnumerable<IGameObject> gameObjects)
+		public Player(string name, IList<Element> gameObjects)
 		{
 			this.Name = name;
 			this.GameObjects = gameObjects;
@@ -29,7 +29,7 @@ namespace Battleships.Models
 
 		public string Name { get { return this.name; }set { this.name = value; } }
 
-		public IEnumerable<IGameObject> GameObjects { get { return this.gameObjects; }set {this.gameObjects=value; } }
+		public IList<Element> GameObjects { get { return this.gameObjects; }set {this.gameObjects=value; } }
 
 		public void Fire()
 		{
