@@ -87,16 +87,20 @@
     <Compile Include="Utilities\Contracts\IPosition.cs" />
     <Compile Include="Utilities\Position.cs" />
     <Compile Include="View\BattlefieldSegment.cs" />
+    <Compile Include="View\Common\ConsoleFontTooLargeException.cs" />
     <Compile Include="View\Common\Constants.cs" />
     <Compile Include="View\Common\StringExtensions.cs" />
     <Compile Include="View\ConsoleView.cs" />
+    <Compile Include="View\Contracts\IEnemyBattlefieldSegment.cs" />
     <Compile Include="View\Contracts\IGameInfoSegment.cs" />
+    <Compile Include="View\Contracts\IPlayerBattlefieldSegment.cs" />
     <Compile Include="View\Contracts\IView.cs" />
+    <Compile Include="View\EnemyBattlefieldSegment.cs" />
     <Compile Include="View\Enums\ConsoleSettings.cs" />
     <Compile Include="View\Enums\ViewType.cs" />
     <Compile Include="View\Contracts\IViewSegment.cs" />
     <Compile Include="View\GameInfoSegment.cs" />
-    <Compile Include="View\IGameInfoSegment.cs" />
+    <Compile Include="View\PlayerBattlefieldSegment.cs" />
     <Compile Include="View\ViewSegment.cs" />
   </ItemGroup>
   <ItemGroup>

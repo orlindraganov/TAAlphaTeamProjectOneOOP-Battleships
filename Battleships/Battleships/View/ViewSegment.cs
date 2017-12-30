@@ -118,7 +118,7 @@ namespace Battleships.View
                     return;
 
                 case ConsoleSettings.EmptyMatrix:
-                    Console.BackgroundColor = Constants.ConsoleDefaultBackgroundColor;
+                    Console.BackgroundColor = Constants.ConsoleDefaultBorderBackgroundColor;
                     Console.ForegroundColor = Constants.ConsoleDefaultBorderColor;
                     return;
             }

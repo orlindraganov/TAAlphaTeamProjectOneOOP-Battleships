@@ -1,8 +1,6 @@
-﻿using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
-
-namespace Battleships.View.Contracts
+﻿namespace Battleships.View.Contracts
 {
-    public interface IGameInfoSegment
+    public interface IGameInfoSegment : IViewSegment
     {
         string GameInfo { get; set; }
     }

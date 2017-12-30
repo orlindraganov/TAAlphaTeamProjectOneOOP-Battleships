@@ -7,9 +7,10 @@ namespace Battleships.View.Common
         public const int ConsoleDefaultHeight = 45;
         public const int ConsoleDefaultWidth = 60;
 
-        public const ConsoleColor ConsoleDefaultBackgroundColor = ConsoleColor.DarkBlue;
+        public const ConsoleColor ConsoleDefaultBackgroundColor = ConsoleColor.Black;
         public const ConsoleColor ConsoleDefaultForegroundColor = ConsoleColor.White;
         public const ConsoleColor ConsoleDefaultBorderColor = ConsoleColor.DarkGray;
+        public const ConsoleColor ConsoleDefaultBorderBackgroundColor = ConsoleColor.DarkBlue;
 
         public const ConsoleColor NotHitBackgroundColor = ConsoleColor.DarkBlue;
         public const ConsoleColor HitBackgroundColor = ConsoleColor.White;
@@ -26,7 +27,7 @@ namespace Battleships.View.Common
         public const char BattlefieldHorizontalBorder = '-';
         public const char BattlefieldCrossBorder = '+';
 
-        public const char NotHitSymbol = 'O';
+        public const char WaterNotHitSymbol = 'O';
         public const char HitSymbol = 'X';
 
         public const char HorizontalShipLeftEnd = '<';
