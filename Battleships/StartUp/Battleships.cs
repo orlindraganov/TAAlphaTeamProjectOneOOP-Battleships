@@ -18,6 +18,7 @@ namespace StartUp
             var width = 120;
             var height = 45;
 
+
             if (width > Console.LargestWindowWidth || height > Console.LargestWindowHeight)
             {
                 throw new ConsoleFontTooLargeException("Your console font size is too large, please decrease it from Properties");
@@ -41,7 +42,7 @@ namespace StartUp
 
             var s1 = new Frigate(new Position(4, 4), Direction.Right);
 
-            var v2 = new EnemyBattlefieldSegment(10,30,40,30);
+            var v2 = new EnemyBattlefieldSegment(10, 30, 40, 30);
 
             var io = new InOutSegment(40, 6, 10, 60);
 
@@ -70,6 +71,13 @@ namespace StartUp
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.SetCursorPosition(0, Console.BufferHeight - 1);
+
+           // var engine = Engine.Instance;
+           //
+           // engine.OnStart += () => Console.WriteLine("Engine strted");
+           // 
+           //
+           // engine.Start();
         }
     }
 }

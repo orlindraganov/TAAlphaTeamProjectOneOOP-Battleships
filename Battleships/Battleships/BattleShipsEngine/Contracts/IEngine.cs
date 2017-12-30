@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.Models.Contracts;
 
@@ -19,5 +20,11 @@ namespace Battleships.BattleShipsEngine.Contracts
 		void AddShip(IShip ship);
 
 		void FireAt(int row, int column);
+
+        event Action OnStart;
+
+        event Action OnStop;
+
+        
 	}
 }
