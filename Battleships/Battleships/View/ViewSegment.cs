@@ -20,6 +20,7 @@ namespace Battleships.View
             this.StartingCol = startingCol;
             this.Width = width;
 
+            this.SetConsole(ConsoleSettings.Text);
             this.DrawHorizontalLine(startingRow, startingCol, width, Constants.SegmentBorder);
             this.DrawVerticalLine(startingCol, startingRow, height, Constants.SegmentBorder);
             this.DrawVerticalLine(startingCol + width - 1, startingRow, height, Constants.SegmentBorder);
