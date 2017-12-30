@@ -6,10 +6,10 @@ using Battleships.Utilities.Contracts;
 
 namespace Battleships.Factory
 {
-	class BattleshipsFactory : IBattleShipFactory
+	public class BattleShipFactory : IBattleShipFactory
 	{
-		private static IBattleShipFactory instanceHolder = new BattleshipsFactory();
-		public BattleshipsFactory()
+		private static IBattleShipFactory instanceHolder = new BattleShipFactory();
+		public BattleShipFactory()
 		{
 
 		}

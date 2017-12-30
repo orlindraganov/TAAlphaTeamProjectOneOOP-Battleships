@@ -1,18 +1,18 @@
 ﻿namespace Battleships.Models.Contracts
 {
-    /// <summary>
-    /// Player will hold the ships
-    /// </summary>
-    public interface IPlayer : IParticipant
-    {
-        bool IsAlive { get; set; }
+	/// <summary>
+	/// Player will hold the ships
+	/// </summary>
+	public interface IPlayer : IParticipant
+	{
+		bool IsAlive { get; set; }
 
-        int Health { get; }
+		int Health { get; }
 
-        string Name { get; }
+		string Name { get; }
 
-        void Fire();
+		void Fire();
 
-	    void AddShip(IShip ship);
-    }
+		void AddShip(IShip ship);
+	}
 }
