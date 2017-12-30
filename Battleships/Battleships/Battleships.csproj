@@ -70,6 +70,7 @@
     <Compile Include="Models\Contracts\IPlayer.cs" />
     <Compile Include="Models\Contracts\IShip.cs" />
     <Compile Include="Models\Contracts\IShipElement.cs" />
+    <Compile Include="Models\Contracts\IWater.cs" />
     <Compile Include="Models\Destroyer.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\Enviroment.cs" />

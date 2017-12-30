@@ -110,6 +110,39 @@ namespace Battleships.View
             }
         }
 
+        public void WriteIndexesOnBattlefield()
+        {
+            this.SetConsole(ConsoleSettings.Text);
+            //Letters
+            var symbol = 'A';
+            for (int i = 0; i < this.BattlefieldWidth; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    continue;
+                }
+
+                Console.SetCursorPosition(this.BattlefieldStartingPosition.Col + i, this.BattlefieldStartingPosition.Row + this.BattlefieldHeight);
+                Console.Write(symbol);
+                symbol++;
+            }
+
+            //Numbers
+            var count = 1;
+            for (int i = 0; i < this.BattlefieldHeight; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    continue;
+                }
+
+                var numberOffset = count < 10 ? 1 : 2;
+                Console.SetCursorPosition(this.BattlefieldStartingPosition.Col - numberOffset, this.BattlefieldStartingPosition.Row + i);
+                Console.Write(count);
+                count++;
+            }
+        }
+
         public void DrawShip(IShip ship)
         {
             Direction direction = GetShipDirection(ship);
@@ -178,38 +211,34 @@ namespace Battleships.View
             }
         }
 
-        public void WriteIndexesOnBattlefield()
+        public void DrawWater(IWater water)
         {
-            this.SetConsole(ConsoleSettings.Text);
-            //Letters
-            var symbol = 'A';
-            for (int i = 0; i < this.BattlefieldWidth; i++)
+            var notHit = Constants.NotHitSymbol;
+            var hit = Constants.HitSymbol;
+
+            foreach (var element in water.Elements)
             {
-                if (i % 2 == 0)
+                var elementPosition = CalculateDrawingPosition(element.ElementPosition);
+
+                Console.SetCursorPosition(elementPosition.Col, elementPosition.Row);
+
+                char symbol;
+
+                if (element.IsHit)
                 {
-                    continue;
+                    this.SetConsole(ConsoleSettings.WaterHit);
+                    symbol = hit;
+                }
+                else
+                {
+                    this.SetConsole(ConsoleSettings.ShipNotHit);
+                    symbol = notHit;
                 }
 
-                Console.SetCursorPosition(this.BattlefieldStartingPosition.Col + i, this.BattlefieldStartingPosition.Row + this.BattlefieldHeight);
                 Console.Write(symbol);
-                symbol++;
-            }
-
-            //Numbers
-            var count = 1;
-            for (int i = 0; i < this.BattlefieldHeight; i++)
-            {
-                if (i %2 ==0)
-                {
-                    continue;
-                }
-
-                var numberOffset = count < 10 ? 1 : 2;
-                Console.SetCursorPosition(this.BattlefieldStartingPosition.Col - numberOffset, this.BattlefieldStartingPosition.Row + i );
-                Console.Write(count);
-                count++;
             }
         }
+
 
         private IPosition CalculateDrawingPosition(IPosition position)
         {

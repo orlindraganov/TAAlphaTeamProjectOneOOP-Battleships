@@ -32,6 +32,8 @@ namespace StartUp
 
             var s1 = new Frigate(new Position(4,4), Direction.Right);
 
+            
+
             s1.Elements[1].IsHit = true;
 
             v.DrawBattleField(b);

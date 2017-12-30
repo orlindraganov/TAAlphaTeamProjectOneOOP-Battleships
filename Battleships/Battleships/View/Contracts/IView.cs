@@ -9,7 +9,7 @@ namespace Battleships.View.Contracts
         IPlayer HumanPlayer { get; }
         IPlayer ComputerPlayer { get; }
         IParticipant Enviroment { get; }
-
+        
         void Update();
     }
 }
