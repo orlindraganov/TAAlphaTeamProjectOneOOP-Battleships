@@ -36,7 +36,7 @@ namespace Battleships.View
         {
             get
             {
-                return new Player(this.humanPlayer.Name, new List<IGameObject>(this.humanPlayer.GameObjects));
+                return new Player(this.humanPlayer.Name, new List<Element>(this.humanPlayer.GameObjects));
             }
         }
 
@@ -44,7 +44,7 @@ namespace Battleships.View
         {
             get
             {
-                return new Player(this.computerPlayer.Name, new List<IGameObject>(this.computerPlayer.GameObjects));
+                return new Player(this.computerPlayer.Name, new List<Element>(this.computerPlayer.GameObjects));
             }
         }
 
@@ -52,7 +52,7 @@ namespace Battleships.View
         {
             get
             {
-                return new Enviroment(new List<IGameObject>(this.enviroment.GameObjects));
+                return new Enviroment(new List<Element>(this.enviroment.GameObjects));
             }
         }
 
