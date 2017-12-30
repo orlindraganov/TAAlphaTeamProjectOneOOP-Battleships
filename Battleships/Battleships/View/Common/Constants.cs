@@ -50,7 +50,10 @@ namespace Battleships.View.Common
 
         public const int InOutSegmentMinHeight = 4;
         public const int InOutSegmentMinWidth = 30;
-        public const int InOutSegmentDefaultHeight = 10;
+        public const int InOutSegmentDefaultHeight = 6;
         public const int InOutSegmentDefaultWidth = 60;
+
+        public const string InOutSegmentInputPrompt = "Input:";
+        public const string InOutSegmentOutputPrompt = "Output:";
     }
 }
