@@ -46,8 +46,10 @@ namespace Battleships.Commands
 
                 throw new ArgumentException("Invalid parameters");
                 }
-                var AircraftCarrier = this.factory.CreateAircraftCarrier(pos, direction);
-                return $"BattleCruiser with position {pos} and direction {direction} was created ";
+                var BattleCruiser = this.factory.CreateAircraftCarrier(pos, direction);
+            this.engine.Ships.Add(BattleCruiser);
+
+            return $"BattleCruiser with position {pos} and direction {direction} was created ";
             }
 
         

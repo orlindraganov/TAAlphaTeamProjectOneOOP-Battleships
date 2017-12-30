@@ -4,7 +4,7 @@ namespace Battleships.Models.Contracts
 {
     public interface IParticipant
     {
-        IEnumerable<IGameObject> GameObjects { get; }
+        IList<Element> GameObjects { get; }
 
         void GetObjectHit(IGameObject hitGameObject);
     }
