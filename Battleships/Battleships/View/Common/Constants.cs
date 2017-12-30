@@ -1,11 +1,18 @@
 ﻿using System;
+using Battleships.Utilities;
 
 namespace Battleships.View.Common
 {
     public static class Constants
     {
-        public const int ConsoleDefaultHeight = 45;
-        public const int ConsoleDefaultWidth = 60;
+        public const int ConsoleDefaultHeight = 54;
+        public const int ConsoleDefaultWidth = 62;
+
+        public const int ViewDefaultHeight = 52;
+        public const int ViewDefaultWidth = 60;
+
+        public const int ViewDefaultStartingRow = 1;
+        public const int ViewDefaultStartingCol = 1;
 
         public const ConsoleColor ConsoleDefaultBackgroundColor = ConsoleColor.Black;
         public const ConsoleColor ConsoleDefaultForegroundColor = ConsoleColor.White;
