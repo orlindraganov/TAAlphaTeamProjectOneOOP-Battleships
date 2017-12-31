@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Battleships.Enums;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
@@ -19,12 +17,12 @@ namespace Battleships.Models
         private IList<IShip> ships;
         private IWater water;
         private IBattlefield battlefield;
-        
+
         public Player(string name)
         {
             this.Name = name;
             this.Ships = new List<IShip>();
-            this.Health = 17;
+            SetHealth();
             this.IsAlive = true;
 
             var map = new IGameObjectElement[10, 10];
@@ -146,6 +144,7 @@ namespace Battleships.Models
             }
 
             this.Ships.Add(ship);
+            this.SetHealth();
         }
 
         private void AddWaterElement(IGameObjectElement element)
@@ -171,9 +170,27 @@ namespace Battleships.Models
             this.Battlefield[posistion] = null;
         }
 
-        public void GetObjectHit(IGameObject hitGameObject)
+        private void SetHealth()
         {
-            throw new NotImplementedException();
+            this.Health = this.Ships.Sum(s => s.Health);
+            CheckIfDead();
+        }
+
+        private void CheckIfDead()
+        {
+            if (this.Health <= 0)
+            {
+                this.IsAlive = false;
+            }
+            else
+            {
+                this.IsAlive = true;
+            }
+        }
+
+        public void GetShipHit(IShip hitShip)
+        {
+            this.SetHealth();
         }
     }
 }
