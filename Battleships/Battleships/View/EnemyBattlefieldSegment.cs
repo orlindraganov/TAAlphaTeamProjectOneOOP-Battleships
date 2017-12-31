@@ -12,7 +12,7 @@ namespace Battleships.View
         {
         }
 
-        public override void DrawShip(IShip ship)
+        protected override void DrawShip(IShip ship)
         {
 
             char hit = Constants.HitSymbol;

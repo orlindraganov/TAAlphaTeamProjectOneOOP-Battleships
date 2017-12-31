@@ -13,7 +13,7 @@ namespace Battleships.View
         {
         }
 
-        public override void DrawShip(IShip ship)
+        protected override void DrawShip(IShip ship)
         {
             Direction direction = this.GetShipDirection(ship);
             char bow;
@@ -80,8 +80,6 @@ namespace Battleships.View
                 Console.Write(hull);
             }
         }
-
-
 
         private Direction GetShipDirection(IShip ship)
         {

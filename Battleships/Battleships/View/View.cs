@@ -127,5 +127,13 @@ namespace Battleships.View
             this.EnemyBattlefieldSegment.Update();
             this.InOutSegment.Update();
         }
+
+        public void Update(IPosition position)
+        {
+            this.GameInfoSegment.Update();
+            this.PlayerBattlefieldSegment.Update(position);
+            this.EnemyBattlefieldSegment.Update(position);
+            this.InOutSegment.Update();
+        }
     }
 }

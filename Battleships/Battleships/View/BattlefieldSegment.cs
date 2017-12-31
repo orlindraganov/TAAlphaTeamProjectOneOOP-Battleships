@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using Battleships.Enums;
+using Battleships.Models;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
@@ -91,12 +96,56 @@ namespace Battleships.View
             {
                 this.DrawBattleField();
                 this.WriteIndexesOnBattlefield();
+                this.DrawWater();
             }
-            this.DrawWater();
             this.DrawShips();
         }
 
-        public void DrawBattleField()
+        public void Update(IPosition position)
+        {
+            DrawElement(position);
+        }
+
+        private void DrawElement(IPosition position)
+        {
+            var element = this.Player.Battlefield[position];
+            char symbol;
+
+            switch (element.Type)
+            {
+                case GameObjectElementType.Ship:
+                    if (element.IsHit)
+                    {
+                        symbol = Constants.HitSymbol;
+                        this.SetConsole(ConsoleSettings.ShipHit);
+                    }
+                    else
+                    {
+                        this.DrawShips();
+                        return;
+                    }
+                    break;
+                case GameObjectElementType.Water:
+                    if (element.IsHit)
+                    {
+                        symbol = Constants.HitSymbol;
+                        this.SetConsole(ConsoleSettings.WaterHit);
+                    }
+                    else
+                    {
+                        symbol = Constants.WaterNotHitSymbol;
+                        this.SetConsole(ConsoleSettings.WaterNotHit);
+                    }
+                    break;
+                default:
+                    throw new ArgumentException("Unknown Element Type");
+            }
+            var drawingPosition = this.CalculateDrawingPosition(position);
+            Console.SetCursorPosition(drawingPosition.Col, drawingPosition.Row);
+            Console.Write(symbol);
+        }
+
+        private void DrawBattleField()
         {
             var battlefield = this.Player.Battlefield;
             CalculateBattlefieldStartingPosition(battlefield);
@@ -136,7 +185,7 @@ namespace Battleships.View
             }
         }
 
-        public void WriteIndexesOnBattlefield()
+        private void WriteIndexesOnBattlefield()
         {
             this.SetConsole(ConsoleSettings.Text);
             //Letters
@@ -169,12 +218,12 @@ namespace Battleships.View
             }
         }
 
-        public void DrawShips()
+        private void DrawShips()
         {
             this.DrawShips(this.Player.Ships);
         }
 
-        public void DrawShips(IList<IShip> ships)
+        private void DrawShips(IList<IShip> ships)
         {
             if (ships.Count == 0)
             {
@@ -190,14 +239,14 @@ namespace Battleships.View
             }
         }
 
-        public abstract void DrawShip(IShip ship);
+        protected abstract void DrawShip(IShip ship);
 
-        public void DrawWater()
+        private void DrawWater()
         {
             this.DrawWater(this.Player.Water);
         }
 
-        public void DrawWater(IWater water)
+        private void DrawWater(IWater water)
         {
             var notHit = Constants.WaterNotHitSymbol;
             var hit = Constants.HitSymbol;
