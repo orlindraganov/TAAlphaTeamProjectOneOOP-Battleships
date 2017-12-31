@@ -4,7 +4,6 @@ using Battleships.Utilities;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Battleships.View.Enums;
-using Bytes2you.Validation;
 
 namespace Battleships.View
 {
@@ -85,11 +84,6 @@ namespace Battleships.View
             Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
             this.ClearLastReadMessage();
             return message;
-        }
-
-        public void Write(string message)
-        {
-            throw new System.NotImplementedException();
         }
 
         public void WriteLine(string message)

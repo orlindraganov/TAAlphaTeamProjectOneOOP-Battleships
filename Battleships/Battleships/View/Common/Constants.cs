@@ -5,10 +5,10 @@ namespace Battleships.View.Common
 {
     public static class Constants
     {
-        public const int ConsoleDefaultHeight = 54;
+        public const int ConsoleDefaultHeight = 43;
         public const int ConsoleDefaultWidth = 62;
 
-        public const int ViewDefaultHeight = 52;
+        public const int ViewDefaultHeight = 41;
         public const int ViewDefaultWidth = 60;
 
         public const int ViewDefaultStartingRow = 1;

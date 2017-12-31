@@ -1,89 +1,133 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using Battleships.Models;
-//using Battleships.Models.Contracts;
-//using Battleships.View.Common;
-//using Battleships.View.Contracts;
-//using Bytes2you.Validation;
+﻿using System;
+using Battleships.Models.Contracts;
+using Battleships.Utilities;
+using Battleships.Utilities.Contracts;
+using Battleships.View.Common;
+using Battleships.View.Contracts;
+using Bytes2you.Validation;
 
-//namespace Battleships.View
-//{
-//    public class ConsoleView : IView
-//    {
-//        private readonly IPlayer humanPlayer;
-//        private readonly IPlayer computerPlayer;
-//        private readonly IParticipant enviroment;
+namespace Battleships.View
+{
+    public class ConsoleView : IView
+    {
+        private IPlayer humanPlayer;
 
-//        public ConsoleView(IPlayer humanPlayer, IPlayer computerPlayer, IParticipant enviroment)
-//        {
-//            Guard.WhenArgument(humanPlayer, "Human Player").IsNull().Throw();
-//            this.humanPlayer = humanPlayer;
+        private IPlayer computerPlayer;
 
-//            Guard.WhenArgument(computerPlayer, "Computer player").IsNull().Throw();
-//            this.computerPlayer = computerPlayer;
+        private readonly IGameInfoSegment gameInfoSegment;
 
-//            Guard.WhenArgument(enviroment, "Enviroment").IsNull().Throw();
-//            this.enviroment = enviroment;
+        private readonly IBattlefieldSegment playerBattlefieldSegment;
 
-//            Console.SetWindowSize(Constants.ConsoleDefaultWidth, Constants.ConsoleDefaultHeight);
-//            Console.BackgroundColor = Constants.ConsoleDefaultBackgroundColor;
-//            Console.ForegroundColor = Constants.ConsoleDefaultForegroundColor;
+        private readonly IBattlefieldSegment enemyBattlefieldSegment;
 
-//            this.Header = new GameInfoSegment(0, Constants.GameInfoSegmentDefaultHeight, 0, Constants.GameInfoSegmentMinWidth);
-//        }
+        private readonly IInOutSegment inOutSegment;
 
-//        public IPlayer HumanPlayer
-//        {
-//            get
-//            {
-//                return new Player(this.humanPlayer.Name, new List<IGameObject>(this.humanPlayer.GameObjects));
-//            }
-//        }
+        private readonly int width;
 
-//        public IPlayer ComputerPlayer
-//        {
-//            get
-//            {
-//                return new Player(this.computerPlayer.Name, new List<IGameObject>(this.computerPlayer.GameObjects));
-//            }
-//        }
+        private readonly int height;
 
-//        public IParticipant Enviroment
-//        {
-//            get
-//            {
-//                return new Enviroment(new List<IGameObject>(this.enviroment.GameObjects));
-//            }
-//        }
+        private readonly IPosition startingPosition;
 
-//        private IGameInfoSegment Header{ get; set; }
+        public ConsoleView()
+        {
+            this.width = Constants.ViewDefaultWidth;
+            this.height = Constants.ViewDefaultHeight;
+            Console.SetWindowSize(Constants.ConsoleDefaultWidth, Constants.ConsoleDefaultHeight);
+            Console.SetBufferSize(Constants.ConsoleDefaultWidth, Constants.ConsoleDefaultHeight);
+            
+            this.startingPosition = new Position(Constants.ViewDefaultStartingRow, Constants.ViewDefaultStartingCol);
 
-//        private IViewSegment PlayerMatrix { get; set; }
+            var nextSegmentStartingPosition = new Position(this.StartingPosition);
+
+            this.gameInfoSegment = new GameInfoSegment(nextSegmentStartingPosition.Row, Constants.GameInfoSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.GameInfoSegmentDefaultWidth);
+            nextSegmentStartingPosition.Row += this.GameInfoSegment.Height;
+
+            this.playerBattlefieldSegment = new PlayerBattlefieldSegment(nextSegmentStartingPosition.Row, Constants.BattlefieldSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.BattlefieldSegmentDefaultWidth);
+            nextSegmentStartingPosition.Col += this.PlayerBattlefieldSegment.Width;
+
+            this.enemyBattlefieldSegment = new EnemyBattlefieldSegment(nextSegmentStartingPosition.Row, Constants.BattlefieldSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.BattlefieldSegmentDefaultWidth);
+            nextSegmentStartingPosition.Col -= this.EnemyBattlefieldSegment.Width;
+            nextSegmentStartingPosition.Row += Math.Max(this.PlayerBattlefieldSegment.Height, this.EnemyBattlefieldSegment.Height);
+
+            this.inOutSegment = new InOutSegment(nextSegmentStartingPosition.Row, Constants.InOutSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.InOutSegmentDefaultWidth);
+        }
+
+        public ConsoleView(IPlayer humanPlayer, IPlayer computerPlayer) : this()
+        {
+            this.HumanPlayer = humanPlayer;
+            this.ComputerPlayer = computerPlayer;
+
+            this.GameInfoSegment.SelectParticipants(humanPlayer, computerPlayer);
+            this.PlayerBattlefieldSegment.SelectPlayer(humanPlayer);
+            this.EnemyBattlefieldSegment.SelectPlayer(computerPlayer);
+        }
+
+        public IPlayer HumanPlayer
+        {
+            get
+            {
+                return this.humanPlayer;
+            }
+            set
+            {
+                Guard.WhenArgument(value, "Human player").IsNull().Throw();
+                this.PlayerBattlefieldSegment.SelectPlayer(value);
+                this.humanPlayer = value;
+            }
+        }
+
+        public IPlayer ComputerPlayer
+        {
+            get
+            {
+                return this.computerPlayer;
+            }
+            set
+            {
+                Guard.WhenArgument(value, "Computer player").IsNull().Throw();
+                this.EnemyBattlefieldSegment.SelectPlayer(value);
+                this.computerPlayer = value;
+            }
+        }
+
+        private int Width => this.width;
+
+        private int Height => this.height;
+
+        private IGameInfoSegment GameInfoSegment => this.gameInfoSegment;
+
+        private IBattlefieldSegment PlayerBattlefieldSegment => this.playerBattlefieldSegment;
+
+        private IBattlefieldSegment EnemyBattlefieldSegment => this.enemyBattlefieldSegment;
+
+        private IInOutSegment InOutSegment => this.inOutSegment;
+
+        private IPosition StartingPosition => this.startingPosition;
+
+        public string ReadLine()
+        {
+            return this.InOutSegment.ReadLine();
+        }
+
+        public void WriteLine(string message)
+        {
+            this.InOutSegment.WriteLine(message);
+        }
         
-//        private IViewSegment ComputerMatrix { get; set; }
+        public void Update()
+        {
+            this.GameInfoSegment.Update();
+            this.PlayerBattlefieldSegment.Update();
+            this.EnemyBattlefieldSegment.Update();
+            this.InOutSegment.Update();
+        }
 
-//        private IViewSegment InOut { get; }      
-
-//        public void Update()
-//        {
-//            var result = $"{this.HumanPlayer.Name} {this.HumanPlayer.Health} : {this.ComputerPlayer.Health} {this.ComputerPlayer.Name}";
-//            this.Header.GameInfo = result;
-//            this.Header.Update();
-//        }
-
-//        public string ReadLine()
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public void Write(string message)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public void WriteLine(string message)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+        public void Update(IPosition position)
+        {
+            this.GameInfoSegment.Update();
+            this.PlayerBattlefieldSegment.Update(position);
+            this.EnemyBattlefieldSegment.Update(position);
+            this.InOutSegment.Update();
+        }
+    }
+}

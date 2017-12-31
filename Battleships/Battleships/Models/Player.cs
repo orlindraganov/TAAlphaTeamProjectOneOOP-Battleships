@@ -130,6 +130,11 @@ namespace Battleships.Models
             throw new NotImplementedException();
         }
 
+        private void GetHit()
+        {
+            this.SetHealth();
+        }
+
         public void AddShip(IShip ship)
         {
             if (this.Ships.Contains(ship))
@@ -141,10 +146,16 @@ namespace Battleships.Models
             {
                 this.RemoveWaterElement(element.Position);
                 this.Battlefield[element.Position] = element;
+                element.WasHitEvent += Element_WasHitEvent;
             }
 
             this.Ships.Add(ship);
             this.SetHealth();
+        }
+
+        private void Element_WasHitEvent(object sender, EventArgs e)
+        {
+            this.GetHit();
         }
 
         private void AddWaterElement(IGameObjectElement element)
@@ -178,19 +189,7 @@ namespace Battleships.Models
 
         private void CheckIfDead()
         {
-            if (this.Health <= 0)
-            {
-                this.IsAlive = false;
-            }
-            else
-            {
-                this.IsAlive = true;
-            }
-        }
-
-        public void GetShipHit(IShip hitShip)
-        {
-            this.SetHealth();
+            this.IsAlive = this.Health > 0;
         }
     }
 }

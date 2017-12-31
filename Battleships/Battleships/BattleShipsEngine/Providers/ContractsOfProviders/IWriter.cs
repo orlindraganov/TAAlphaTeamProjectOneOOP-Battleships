@@ -8,7 +8,6 @@ namespace Battleships.BattleshipsEngine.Providers.ContractsOfProviders
 {
     public interface IWriter
     {
-        void Write(string message);
         void WriteLine(string message);
     }
 }

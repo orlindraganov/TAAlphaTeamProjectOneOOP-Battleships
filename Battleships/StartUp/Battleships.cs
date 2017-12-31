@@ -21,29 +21,42 @@ namespace StartUp
             var p1 = new Player("Pesho");
             var p2 = new Player("Gosho");
 
-            var v = new View(p1,p2);
+            var v = new ConsoleView(p1,p2);
             v.Update();
             
 
-            v.WriteLine("Now to add a healthy ship to both players");
+            v.WriteLine("Now to add healthy ships to both players");
             v.ReadLine();
             var s1 = new Frigate(new Position(3, 3), Direction.Down);
+            var s2 = new Frigate(new Position(3, 3), Direction.Down);
             
             p1.AddShip(s1);
-            p2.AddShip(s1);
-            v.Update();
-
-            v.WriteLine("Also a hit ship...");
-            v.ReadLine();
-            var s2 = new AircraftCarrier(new Position(4, 4), Direction.Right);
-            s2.Elements[1].IsHit = true;
-            p1.AddShip(s2);
             p2.AddShip(s2);
             v.Update();
 
-            v.WriteLine("Ooops, let's miss!");
+            var s3 = new AircraftCarrier(new Position(4, 4), Direction.Right);
+            var s4 = new AircraftCarrier(new Position(4, 4), Direction.Right);
+
+            p1.AddShip(s3);
+            p2.AddShip(s4);
+            v.Update();
+
+            v.WriteLine("Let's hit an element!");
             v.ReadLine();
-            var pos = new Position(2,2);
+            var pos = new Position(4, 3);
+            p1.Battlefield[pos].GetHit();
+            p2.Battlefield[pos].GetHit();
+            v.Update();
+
+
+            v.WriteLine("Note that the health changed? Let's hit another");
+            pos.Row++;
+            v.ReadLine();
+            pos.Row++;
+            p2.Battlefield[pos].GetHit();
+
+            v.WriteLine("Cool huh? How about a miss");
+            pos = new Position(2,2);
             p1.Battlefield[pos].GetHit();
             p2.Battlefield[pos].GetHit();
             v.Update();

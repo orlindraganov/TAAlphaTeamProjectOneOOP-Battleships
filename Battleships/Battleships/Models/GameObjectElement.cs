@@ -11,6 +11,7 @@ namespace Battleships.Models
         public bool IsHit { get; set; }
         public IPosition Position { get; set; }
         public GameObjectElementType Type { get; }
+        public event EventHandler WasHitEvent;
 
         public GameObjectElement()
         {
@@ -30,6 +31,13 @@ namespace Battleships.Models
             }
 
             this.IsHit = true;
+            OnWasHit(EventArgs.Empty);
+        }
+
+        private void OnWasHit(EventArgs e)
+        {
+            var handler = WasHitEvent;
+            handler?.Invoke(this, e);
         }
     }
 }
