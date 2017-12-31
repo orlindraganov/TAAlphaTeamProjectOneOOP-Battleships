@@ -6,9 +6,9 @@ namespace Battleships.View.Contracts
 {
     public interface IView : IReader, IWriter
     {
-        IPlayer HumanPlayer { get; }
+        IPlayer FirstPlayer { get; }
 
-        IPlayer ComputerPlayer { get; }
+        IPlayer SecondPlayer { get; }
         
         void Update();
 

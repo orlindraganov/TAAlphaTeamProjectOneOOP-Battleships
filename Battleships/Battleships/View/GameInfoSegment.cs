@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Battleships.Models.Contracts;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
@@ -14,7 +15,7 @@ namespace Battleships.View
 
         public GameInfoSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
-            this.GameInfo = "BATTLESHIPS";
+            this.Update();
         }
 
         public string GameInfo
@@ -63,6 +64,11 @@ namespace Battleships.View
 
         public override void Update()
         {
+            if (this.FirstPlayer == null || this.SecondPlayer == null)
+            {
+                return;
+            }
+
             this.ClearInfo();
             this.CalculateResult();
             this.WriteInfo();
@@ -72,7 +78,7 @@ namespace Battleships.View
         {
             Guard.WhenArgument(firstPlayer, "First Player").IsNull().Throw();
             this.FirstPlayer = firstPlayer;
-            
+
             Guard.WhenArgument(secondPlayer, "Second Player").IsNull().Throw();
             this.SecondPlayer = secondPlayer;
         }
@@ -94,8 +100,15 @@ namespace Battleships.View
 
         private void CalculateResult()
         {
-            this.GameInfo =
+            if (this.FirstPlayer == null || this.SecondPlayer == null)
+            {
+                this.GameInfo = Constants.GameName;
+            }
+            else
+            {
+                this.GameInfo =
                 $"{this.FirstPlayer.Name} {this.FirstPlayer.Health} : {this.SecondPlayer.Health} {this.SecondPlayer.Name}";
+            }
         }
 
         private void ClearInfo()

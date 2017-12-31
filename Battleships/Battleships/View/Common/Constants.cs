@@ -5,6 +5,8 @@ namespace Battleships.View.Common
 {
     public static class Constants
     {
+        public const string GameName = "INVEST IMPEX INTL BATTLESHIPS";
+
         public const int ConsoleDefaultHeight = 43;
         public const int ConsoleDefaultWidth = 62;
 
