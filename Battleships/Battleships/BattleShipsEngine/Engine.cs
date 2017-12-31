@@ -15,11 +15,14 @@ namespace Battleships.BattleShipsEngine
 		private const string TerminationCommand = "exit";
 		private const string NullProvidersExceptionMessage = "cannot be null.";
 
-		//private IPlayer humanPlayer;
-		//private IPlayer computerPlayer;
-		//private IPlayer currentPlayer;
+        public event Action OnStart;
+        public event Action OnStop;
 
-		private Engine()
+        //private IPlayer humanPlayer;
+        //private IPlayer computerPlayer;
+        //private IPlayer currentPlayer;
+
+        private Engine()
 		{
 			this.Reader = new ConsoleReader();
 			this.Writer = new ConsoleWriter();
@@ -63,18 +66,21 @@ namespace Battleships.BattleShipsEngine
 
 		public void Start()
 		{
-			//this.humanPlayer = this.BattleShipFactory.CreatePlayer("Human", null);
-			//// Human player enters the fleet.
-			//var humanShips = this.QueryHumanPlayerShips();
-			//foreach (var humanShip in humanShips)
-			//{
-			//	this.humanPlayer.AddShip(humanShip);
-			//}
+            //this.humanPlayer = this.BattleShipFactory.CreatePlayer("Human", null);
+            //// Human player enters the fleet.
+            //var humanShips = this.QueryHumanPlayerShips();
+            //foreach (var humanShip in humanShips)
+            //{
+            //	this.humanPlayer.AddShip(humanShip);
+            //}
 
-			//this.computerPlayer = this.BattleShipFactory.CreatePlayer("Computer", null);
-			//// Generate computer fleet
+            //this.computerPlayer = this.BattleShipFactory.CreatePlayer("Computer", null);
+            //// Generate computer fleet
 
-			//this.currentPlayer = this.humanPlayer;
+            //this.currentPlayer = this.humanPlayer;
+
+            this.OnStart();
+
 			while (true)
 			{
 				try
@@ -95,6 +101,8 @@ namespace Battleships.BattleShipsEngine
 
 				}
 			}
+
+            this.OnStop();
 		}
 
 		private void ProcessCommand(string commandAsString)
@@ -111,6 +119,8 @@ namespace Battleships.BattleShipsEngine
 			this.Writer.WriteLine(executionResult);
 
 		}
+
+
 
 
 		private IShip[] QueryHumanPlayerShips()
