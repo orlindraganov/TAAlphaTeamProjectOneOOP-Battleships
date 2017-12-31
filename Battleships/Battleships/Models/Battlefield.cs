@@ -43,6 +43,7 @@ namespace Battleships.Models
             set
             {
                 Guard.WhenArgument(value,"Battlefield map").IsNull().Throw();
+                this.map = value;
             }
             get
             {

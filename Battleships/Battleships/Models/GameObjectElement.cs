@@ -1,6 +1,7 @@
 ﻿using System;
 using Battleships.Enums;
 using Battleships.Models.Contracts;
+using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 
 namespace Battleships.Models
@@ -23,7 +24,12 @@ namespace Battleships.Models
 
         public void GetHit()
         {
-            throw new NotImplementedException();
+            if (IsHit)
+            {
+                throw new AlreadyFiredThereException();
+            }
+
+            this.IsHit = true;
         }
     }
 }

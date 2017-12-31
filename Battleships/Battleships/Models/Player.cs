@@ -30,13 +30,14 @@ namespace Battleships.Models
             var map = new IGameObjectElement[10, 10];
 
             this.Battlefield = new Battlefield(map);
-
+            this.Water = new Water();
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
                     var pos = new Position(i, j);
                     var el = new GameObjectElement(pos, GameObjectElementType.Water);
+                    this.AddWaterElement(el);
                 }
             }
 

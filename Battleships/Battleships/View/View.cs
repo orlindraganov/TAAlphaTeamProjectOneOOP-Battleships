@@ -55,6 +55,10 @@ namespace Battleships.View
         {
             this.HumanPlayer = humanPlayer;
             this.ComputerPlayer = computerPlayer;
+
+            this.GameInfoSegment.SelectParticipants(humanPlayer, computerPlayer);
+            this.PlayerBattlefieldSegment.SelectPlayer(humanPlayer);
+            this.EnemyBattlefieldSegment.SelectPlayer(computerPlayer);
         }
 
         public IPlayer HumanPlayer

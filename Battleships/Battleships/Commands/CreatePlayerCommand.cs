@@ -24,12 +24,12 @@ namespace Battleships.Commands
         public string Execute(IList<string> parameters)
         {
             string name;
-            IList<IGameObject> gameObjects;
+            IList<IShip> ships;
 
             try
             {
                 name = parameters[0].ToString();
-                gameObjects = new List<IGameObject>();
+                ships = new List<IShip>();
 
 
 
@@ -39,7 +39,7 @@ namespace Battleships.Commands
 
                 throw new ArgumentException("Invalid parameters");
             }
-            var AircraftCarrier = this.factory.CreatePlayer(name, gameObjects);
+            var AircraftCarrier = this.factory.CreatePlayer(name, ships);
             return $"Welcome Player {name}";
 
 

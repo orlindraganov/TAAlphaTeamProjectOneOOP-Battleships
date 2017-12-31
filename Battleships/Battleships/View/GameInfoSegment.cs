@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Battleships.Models.Contracts;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Battleships.View.Enums;
@@ -31,8 +32,14 @@ namespace Battleships.View
         }
 
         private int PrintedInfoRow { get; set; }
+
         private int PrintedInfoCol { get; set; }
+
         private int PrintedInfoLength { get; set; }
+
+        private IPlayer SecondPlayer { get; set; }
+
+        private IPlayer FirstPlayer { get; set; }
 
         protected override int GetMinimumHeight()
         {
@@ -57,7 +64,17 @@ namespace Battleships.View
         public override void Update()
         {
             this.ClearInfo();
+            this.CalculateResult();
             this.WriteInfo();
+        }
+
+        public void SelectParticipants(IPlayer firstPlayer, IPlayer secondPlayer)
+        {
+            Guard.WhenArgument(firstPlayer, "First Player").IsNull().Throw();
+            this.FirstPlayer = firstPlayer;
+            
+            Guard.WhenArgument(secondPlayer, "Second Player").IsNull().Throw();
+            this.SecondPlayer = secondPlayer;
         }
 
         private void WriteInfo()
@@ -73,6 +90,12 @@ namespace Battleships.View
             this.PrintedInfoRow = row;
             this.PrintedInfoCol = col;
             this.PrintedInfoLength = this.GameInfo.Length;
+        }
+
+        private void CalculateResult()
+        {
+            this.GameInfo =
+                $"{this.FirstPlayer.Name} {this.FirstPlayer.Health} : {this.SecondPlayer.Health} {this.SecondPlayer.Name}";
         }
 
         private void ClearInfo()

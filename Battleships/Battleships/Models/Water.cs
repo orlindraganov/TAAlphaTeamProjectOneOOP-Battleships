@@ -4,9 +4,14 @@ using Bytes2you.Validation;
 
 namespace Battleships.Models
 {
-    public class Water : IGameObject
+    public class Water : IGameObject, IWater
     {
         private IList<IGameObjectElement> elements;
+
+        public Water()
+        {
+            this.Elements = new List<IGameObjectElement>();
+        }
 
         public Water(IList<IGameObjectElement> elements)
         {

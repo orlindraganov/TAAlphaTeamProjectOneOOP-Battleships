@@ -16,6 +16,7 @@ namespace Battleships.View
 
         protected BattlefieldSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
+            IsBattlefieldDrawn = false;
         }
 
         private IPlayer Player
@@ -61,7 +62,9 @@ namespace Battleships.View
 
         private int BattlefieldWidth { get; set; }
 
-        private void CalculateBattlefieldStartingPosition(IBattlefield battlefield)
+        private bool IsBattlefieldDrawn { get; set; }
+
+        protected void CalculateBattlefieldStartingPosition(IBattlefield battlefield)
         {
             var mediumRow = this.StartingRow + this.Height / 2;
             var battlefieldRow = mediumRow - battlefield.RowsCount;
@@ -84,12 +87,18 @@ namespace Battleships.View
 
         public override void Update()
         {
-            DrawWater(this.Player.Water);
-            DrawShips(this.Player.Ships);
+            if (!IsBattlefieldDrawn)
+            {
+                this.DrawBattleField();
+                this.WriteIndexesOnBattlefield();
+            }
+            this.DrawWater();
+            this.DrawShips();
         }
 
-        public void DrawBattleField(IBattlefield battlefield)
+        public void DrawBattleField()
         {
+            var battlefield = this.Player.Battlefield;
             CalculateBattlefieldStartingPosition(battlefield);
             this.SetConsole(ConsoleSettings.EmptyMatrix);
 
@@ -160,8 +169,18 @@ namespace Battleships.View
             }
         }
 
+        public void DrawShips()
+        {
+            this.DrawShips(this.Player.Ships);
+        }
+
         public void DrawShips(IList<IShip> ships)
         {
+            if (ships.Count == 0)
+            {
+                return;
+            }
+
             foreach (var obj in ships)
             {
                 if (obj is IShip ship)
@@ -173,15 +192,9 @@ namespace Battleships.View
 
         public abstract void DrawShip(IShip ship);
 
-        public void DrawWater(IList<IGameObject> objects)
+        public void DrawWater()
         {
-            foreach (var obj in objects)
-            {
-                if (obj is IWater water)
-                {
-                    this.DrawWater(water);
-                }
-            }
+            this.DrawWater(this.Player.Water);
         }
 
         public void DrawWater(IWater water)
