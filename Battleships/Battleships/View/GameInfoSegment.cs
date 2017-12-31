@@ -64,11 +64,6 @@ namespace Battleships.View
 
         public override void Update()
         {
-            if (this.FirstPlayer == null || this.SecondPlayer == null)
-            {
-                return;
-            }
-
             this.ClearInfo();
             this.CalculateResult();
             this.WriteInfo();
@@ -113,10 +108,12 @@ namespace Battleships.View
 
         private void ClearInfo()
         {
+            this.SetConsole(ConsoleSettings.Text);
+            Console.SetCursorPosition(this.PrintedInfoCol, this.PrintedInfoRow);
+
             for (int i = 0; i < this.PrintedInfoLength; i++)
             {
-                Console.SetCursorPosition(this.PrintedInfoCol + i, this.PrintedInfoRow);
-                Console.Write(string.Empty);
+                Console.Write(" ");
             }
         }
     }
