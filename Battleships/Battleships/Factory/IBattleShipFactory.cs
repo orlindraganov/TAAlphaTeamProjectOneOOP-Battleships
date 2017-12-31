@@ -2,7 +2,6 @@
 using Battleships.Enums;
 using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
-using Battleships.Models;
 
 namespace Battleships.Factory
 {

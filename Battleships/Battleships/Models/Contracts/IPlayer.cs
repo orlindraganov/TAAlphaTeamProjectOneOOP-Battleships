@@ -2,9 +2,6 @@
 
 namespace Battleships.Models.Contracts
 {
-	/// <summary>
-	/// Player will hold the ships
-	/// </summary>
 	public interface IPlayer
 	{
 	    IList<IShip> Ships { get; }

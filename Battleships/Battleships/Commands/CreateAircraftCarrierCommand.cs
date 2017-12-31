@@ -2,13 +2,9 @@
 using Battleships.BattleShipsEngine.Contracts;
 using Battleships.Enums;
 using Battleships.Factory;
-using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Battleships.Utilities;
 
 namespace Battleships.Commands
