@@ -5,12 +5,12 @@ namespace Battleships.Models
 {
     public class Enviroment : IParticipant, IEnviroment
     {
-        public Enviroment(IList<Element> gameObjects)
+        public Enviroment(IList<IGameObject> gameObjects)
         {
             this.GameObjects = gameObjects;
         }
 
-        public IList<Element> GameObjects { get; }
+        public IList<IGameObject> GameObjects { get; }
 
         public void GetObjectHit(IGameObject hitGameObject)
         {

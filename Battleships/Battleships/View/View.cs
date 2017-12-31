@@ -10,17 +10,15 @@ namespace Battleships.View
 {
     public class View : IView
     {
-        private readonly IPlayer humanPlayer;
+        private IPlayer humanPlayer;
 
-        private readonly IPlayer computerPlayer;
-
-        private readonly IParticipant enviroment;
+        private IPlayer computerPlayer;
 
         private readonly IGameInfoSegment gameInfoSegment;
 
-        private readonly IPlayerBattlefieldSegment playerBattlefieldSegment;
+        private readonly IBattlefieldSegment playerBattlefieldSegment;
 
-        private readonly IEnemyBattlefieldSegment enemyBattlefieldSegment;
+        private readonly IBattlefieldSegment enemyBattlefieldSegment;
 
         private readonly IInOutSegment inOutSegment;
 
@@ -30,17 +28,8 @@ namespace Battleships.View
 
         private readonly IPosition startingPosition;
 
-        public View(IPlayer humanPlayer, IPlayer computerPlayer, IParticipant enviroment)
+        public View()
         {
-            Guard.WhenArgument(humanPlayer, "Human player").IsNull().Throw();
-            this.humanPlayer = humanPlayer;
-
-            Guard.WhenArgument(computerPlayer, "Computer player").IsNull().Throw();
-            this.computerPlayer = computerPlayer;
-
-            Guard.WhenArgument(enviroment, "Enviroment").IsNull().Throw();
-            this.enviroment = enviroment;
-
             this.width = Constants.ViewDefaultWidth;
             this.height = Constants.ViewDefaultHeight;
             Console.SetWindowSize(Constants.ConsoleDefaultWidth, Constants.ConsoleDefaultHeight);
@@ -48,21 +37,54 @@ namespace Battleships.View
             this.startingPosition = new Position(Constants.ViewDefaultStartingRow, Constants.ViewDefaultStartingCol);
 
             var nextSegmentStartingPosition = new Position(this.StartingPosition);
+
             this.gameInfoSegment = new GameInfoSegment(nextSegmentStartingPosition.Row, Constants.GameInfoSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.GameInfoSegmentDefaultWidth);
             nextSegmentStartingPosition.Row += this.GameInfoSegment.Height;
+
             this.playerBattlefieldSegment = new PlayerBattlefieldSegment(nextSegmentStartingPosition.Row, Constants.BattlefieldSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.BattlefieldSegmentDefaultWidth);
             nextSegmentStartingPosition.Col += this.PlayerBattlefieldSegment.Width;
+
             this.enemyBattlefieldSegment = new EnemyBattlefieldSegment(nextSegmentStartingPosition.Row, Constants.BattlefieldSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.BattlefieldSegmentDefaultWidth);
             nextSegmentStartingPosition.Col -= this.EnemyBattlefieldSegment.Width;
-            nextSegmentStartingPosition.Row += Math.Max(this.PlayerBattlefieldSegment.Height,this.EnemyBattlefieldSegment.Height);
+            nextSegmentStartingPosition.Row += Math.Max(this.PlayerBattlefieldSegment.Height, this.EnemyBattlefieldSegment.Height);
+
             this.inOutSegment = new InOutSegment(nextSegmentStartingPosition.Row, Constants.InOutSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.InOutSegmentDefaultWidth);
         }
 
-        public IPlayer HumanPlayer => this.humanPlayer;
+        public View(IPlayer humanPlayer, IPlayer computerPlayer) : this()
+        {
+            this.HumanPlayer = humanPlayer;
+            this.ComputerPlayer = computerPlayer;
+        }
 
-        public IPlayer ComputerPlayer => this.computerPlayer;
+        public IPlayer HumanPlayer
+        {
+            get
+            {
+                return this.humanPlayer;
+            }
+            set
+            {
+                Guard.WhenArgument(value, "Human player").IsNull().Throw();
+                this.PlayerBattlefieldSegment.SelectPlayer(value);
+                this.humanPlayer = value;
+            }
+        }
 
-        public IParticipant Enviroment => this.enviroment;
+        public IPlayer ComputerPlayer
+        {
+            get
+            {
+                return this.computerPlayer;
+            }
+            set
+            {
+                Guard.WhenArgument(value, "Computer player").IsNull().Throw();
+                this.EnemyBattlefieldSegment.SelectPlayer(value);
+                this.computerPlayer = value;
+            }
+        }
+
 
         private int Width => this.width;
 
@@ -70,9 +92,9 @@ namespace Battleships.View
 
         private IGameInfoSegment GameInfoSegment => this.gameInfoSegment;
 
-        private IPlayerBattlefieldSegment PlayerBattlefieldSegment => this.playerBattlefieldSegment;
+        private IBattlefieldSegment PlayerBattlefieldSegment => this.playerBattlefieldSegment;
 
-        private IEnemyBattlefieldSegment EnemyBattlefieldSegment => this.enemyBattlefieldSegment;
+        private IBattlefieldSegment EnemyBattlefieldSegment => this.enemyBattlefieldSegment;
 
         private IInOutSegment InOutSegment => this.inOutSegment;
 

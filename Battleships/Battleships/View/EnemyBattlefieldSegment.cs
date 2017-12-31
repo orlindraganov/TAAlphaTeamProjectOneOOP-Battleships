@@ -6,7 +6,7 @@ using Battleships.View.Enums;
 
 namespace Battleships.View
 {
-    public class EnemyBattlefieldSegment : BattlefieldSegment, IViewSegment, IEnemyBattlefieldSegment
+    public class EnemyBattlefieldSegment : BattlefieldSegment, IViewSegment, IBattlefieldSegment
     {
         public EnemyBattlefieldSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
@@ -21,7 +21,7 @@ namespace Battleships.View
 
             foreach (var element in ship.Elements)
             {
-                var elementPosition = CalculateDrawingPosition(element.ElementPosition);
+                var elementPosition = CalculateDrawingPosition(element.Position);
 
                 Console.SetCursorPosition(elementPosition.Col, elementPosition.Row);
 

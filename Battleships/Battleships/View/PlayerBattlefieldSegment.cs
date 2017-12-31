@@ -7,7 +7,7 @@ using Battleships.View.Enums;
 
 namespace Battleships.View
 {
-    public class PlayerBattlefieldSegment : BattlefieldSegment, IViewSegment, IPlayerBattlefieldSegment
+    public class PlayerBattlefieldSegment : BattlefieldSegment, IViewSegment, IBattlefieldSegment
     {
         public PlayerBattlefieldSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
@@ -53,7 +53,7 @@ namespace Battleships.View
 
             for (int i = 0; i < ship.Elements.Count; i++)
             {
-                var elementPosition = CalculateDrawingPosition(ship.Elements[i].ElementPosition);
+                var elementPosition = CalculateDrawingPosition(ship.Elements[i].Position);
 
                 Console.SetCursorPosition(elementPosition.Col, elementPosition.Row);
 
@@ -87,19 +87,19 @@ namespace Battleships.View
         {
             Direction direction;
 
-            if (ship.Elements[0].ElementPosition.Row == ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col < ship.Elements[1].ElementPosition.Col)
+            if (ship.Elements[0].Position.Row == ship.Elements[1].Position.Row && ship.Elements[0].Position.Col < ship.Elements[1].Position.Col)
             {
                 direction = Direction.Right;
             }
-            else if (ship.Elements[0].ElementPosition.Row == ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col > ship.Elements[1].ElementPosition.Col)
+            else if (ship.Elements[0].Position.Row == ship.Elements[1].Position.Row && ship.Elements[0].Position.Col > ship.Elements[1].Position.Col)
             {
                 direction = Direction.Left;
             }
-            else if (ship.Elements[0].ElementPosition.Row < ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col == ship.Elements[1].ElementPosition.Col)
+            else if (ship.Elements[0].Position.Row < ship.Elements[1].Position.Row && ship.Elements[0].Position.Col == ship.Elements[1].Position.Col)
             {
                 direction = Direction.Down;
             }
-            else if (ship.Elements[0].ElementPosition.Row > ship.Elements[1].ElementPosition.Row && ship.Elements[0].ElementPosition.Col == ship.Elements[1].ElementPosition.Col)
+            else if (ship.Elements[0].Position.Row > ship.Elements[1].Position.Row && ship.Elements[0].Position.Col == ship.Elements[1].Position.Col)
             {
                 direction = Direction.Up;
             }

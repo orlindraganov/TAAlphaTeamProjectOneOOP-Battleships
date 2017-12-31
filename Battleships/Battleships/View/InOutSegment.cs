@@ -59,6 +59,7 @@ namespace Battleships.View
         {
             var message = string.Empty;
             var limit = this.Width - this.ReadStartingPosition.Col + this.StartingCol - 2;
+
             while (true)
             {
                 var c = Console.ReadKey(true).KeyChar;
@@ -91,6 +92,16 @@ namespace Battleships.View
             throw new System.NotImplementedException();
         }
 
+        public void WriteLine(string message)
+        {
+            this.ClearLastWriteMessage();
+            this.SetConsole(ConsoleSettings.Text);
+            Console.SetCursorPosition(WriteStartingPosition.Col, WriteStartingPosition.Row);
+            Console.WriteLine(message);
+            this.LastWriteMessageLength = message.Length;
+            Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
+        }
+
         private void ClearLastReadMessage()
         {
             this.SetConsole(ConsoleSettings.Text);
@@ -113,16 +124,6 @@ namespace Battleships.View
             }
 
             this.LastWriteMessageLength = 0;
-        }
-
-        public void WriteLine(string message)
-        {
-            this.ClearLastWriteMessage();
-            this.SetConsole(ConsoleSettings.Text);
-            Console.SetCursorPosition(WriteStartingPosition.Col, WriteStartingPosition.Row);
-            Console.WriteLine(message);
-            this.LastWriteMessageLength = message.Length;
-            Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
         }
     }
 }

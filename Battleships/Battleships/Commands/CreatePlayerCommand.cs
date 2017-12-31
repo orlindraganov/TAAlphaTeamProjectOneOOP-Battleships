@@ -24,12 +24,12 @@ namespace Battleships.Commands
         public string Execute(IList<string> parameters)
         {
             string name;
-            IList<Element> gameObjects;
+            IList<IGameObject> gameObjects;
 
             try
             {
                 name = parameters[0].ToString();
-                gameObjects = new List<Element>();
+                gameObjects = new List<IGameObject>();
 
 
 

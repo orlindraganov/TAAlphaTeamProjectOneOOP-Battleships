@@ -40,7 +40,7 @@ namespace Battleships.Models
 				var gameObjectElement = new GameObjectElement()
 				{
 					IsHit = false,
-					ElementPosition = new Position()
+					Position = new Position()
 					{
 						Row = x,
 						Col = y

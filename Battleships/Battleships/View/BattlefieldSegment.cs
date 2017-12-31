@@ -1,19 +1,36 @@
 ﻿using System;
-using Battleships.Enums;
+using System.Collections.Generic;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Battleships.View.Enums;
+using Bytes2you.Validation;
 
 namespace Battleships.View
 {
-    public abstract class BattlefieldSegment : ViewSegment, IViewSegment
+    public abstract class BattlefieldSegment : ViewSegment, IViewSegment, IBattlefieldSegment
     {
-        public BattlefieldSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
+        private IPlayer player;
+
+        protected BattlefieldSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
         }
+
+        private IPlayer Player
+        {
+            get
+            {
+                return this.player;
+            }
+            set
+            {
+                Guard.WhenArgument(value, "Player").IsNull().Throw();
+                this.player = value;
+            }
+        }
+
         private char BattlefieldHorizontalSymbol
         {
             get
@@ -38,7 +55,7 @@ namespace Battleships.View
             }
         }
 
-        private Position BattlefieldStartingPosition { get; set; }
+        private IPosition BattlefieldStartingPosition { get; set; }
 
         private int BattlefieldHeight { get; set; }
 
@@ -67,7 +84,8 @@ namespace Battleships.View
 
         public override void Update()
         {
-            throw new System.NotImplementedException();
+            DrawWater(this.Player.Water);
+            DrawShips(this.Player.Ships);
         }
 
         public void DrawBattleField(IBattlefield battlefield)
@@ -142,7 +160,29 @@ namespace Battleships.View
             }
         }
 
+        public void DrawShips(IList<IShip> ships)
+        {
+            foreach (var obj in ships)
+            {
+                if (obj is IShip ship)
+                {
+                    this.DrawShip(ship);
+                }
+            }
+        }
+
         public abstract void DrawShip(IShip ship);
+
+        public void DrawWater(IList<IGameObject> objects)
+        {
+            foreach (var obj in objects)
+            {
+                if (obj is IWater water)
+                {
+                    this.DrawWater(water);
+                }
+            }
+        }
 
         public void DrawWater(IWater water)
         {
@@ -151,7 +191,7 @@ namespace Battleships.View
 
             foreach (var element in water.Elements)
             {
-                var elementPosition = CalculateDrawingPosition(element.ElementPosition);
+                var elementPosition = CalculateDrawingPosition(element.Position);
 
                 Console.SetCursorPosition(elementPosition.Col, elementPosition.Row);
 
@@ -186,5 +226,10 @@ namespace Battleships.View
             return new Position(row, col);
         }
 
+        public void SelectPlayer(IPlayer player)
+        {
+            Guard.WhenArgument(player, "Player").IsNull().Throw();
+            this.Player = player;
+        }
     }
 }

@@ -5,7 +5,7 @@ using Battleships.Utilities.Contracts;
 
 namespace Battleships.Models
 {
-	class Battlecruiser : Ship, IShip, IGameObject
+	public class Battlecruiser : Ship, IShip, IGameObject
 	{
 		private const int COUNT = 3;
 

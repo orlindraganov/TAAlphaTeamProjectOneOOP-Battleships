@@ -20,12 +20,12 @@ namespace Battleships.Models
         {
             this.IsHit = isHit;
             this.type = type;
-            this.ElementPosition = position;
+            this.Position = position;
         }
 
         public bool IsHit { get { return this.isHit; } set { this.isHit = value; } }
 
-        public IPosition ElementPosition { get { return this.elementPosition; } set { this.elementPosition = value; } }
+        public IPosition Position { get { return this.elementPosition; } set { this.elementPosition = value; } }
 
         public GameObjectElementType Type { get { return this.type; } set { this.type = value; } }
 

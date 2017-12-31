@@ -26,9 +26,9 @@ namespace Battleships.Factory
 			return new Battlefield(map);
 		}
 
-		public IPlayer CreatePlayer(string name, IList<Element> gameObjects)
+		public IPlayer CreatePlayer(string name, IList<IShip> ships)
 		{
-			return new Player(name, gameObjects);
+			return new Player(name, ships);
 		}
 
 
