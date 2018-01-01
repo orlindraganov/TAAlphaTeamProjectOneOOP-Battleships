@@ -1,4 +1,5 @@
-﻿using Battleships.Utilities.Contracts;
+﻿using System.Text;
+using Battleships.Utilities.Contracts;
 
 namespace Battleships.Utilities
 {
@@ -18,5 +19,15 @@ namespace Battleships.Utilities
 
         public int Row { get; set; }
         public int Col { get; set; }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            {
+                sb.Append($"row:{this.Row} col:{(char)(this.Col + 64)}");
+            }
+            return sb.ToString().Trim();
+        }
     }
 }
