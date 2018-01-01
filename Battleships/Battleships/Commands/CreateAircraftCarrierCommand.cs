@@ -25,27 +25,23 @@ namespace Battleships.Commands
             int col;
             Direction direction;
             IPosition pos = new Position();
-           
 
             try
             {
                 row = int.Parse(parameters[0]);
-                col = int.Parse(parameters[1]);
+                col = parameters[1][0] - 'A';
                 direction = (Direction)Enum.Parse(typeof(Direction), parameters[2]);
                 pos.Row = row;
                 pos.Col = col;
-
-
             }
             catch 
             {
-
                 throw new ArgumentException("Invalid parameters");
             }
-            var AircraftCarrier = this.factory.CreateAircraftCarrier(pos,direction);
-            this.engine.Ships.Add(AircraftCarrier);
+
+            var aircraftCarrier = this.factory.CreateAircraftCarrier(pos,direction);
+            this.engine.AddShip(aircraftCarrier);
             return  $"AircraftCarrier with position {pos} and direction {direction} was created ";
         }
-
     }
 }

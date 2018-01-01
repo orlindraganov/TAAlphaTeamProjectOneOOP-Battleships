@@ -25,7 +25,7 @@ namespace Battleships.Utilities
             var sb = new StringBuilder();
 
             {
-                sb.Append($"row:{this.Row} col:{(char)(this.Col + 64)}");
+                sb.Append($"row:{this.Row} col:{(char)(this.Col + 'A')}");
             }
             return sb.ToString().Trim();
         }

@@ -41,15 +41,6 @@ namespace Battleships.Models
 
         }
 
-        public Player(string name, IList<IShip> ships) : this(name)
-        {
-            foreach (var ship in ships)
-            {
-                this.AddShip(ship);
-            }
-        }
-
-
         public IList<IShip> Ships
         {
             get

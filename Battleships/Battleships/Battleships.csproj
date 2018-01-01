@@ -52,12 +52,14 @@
     <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IParser.cs" />
     <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IReader.cs" />
     <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IWriter.cs" />
+    <Compile Include="Commands\BeginPlayCommand.cs" />
     <Compile Include="Commands\CreateAircraftCarrierCommand.cs" />
     <Compile Include="Commands\CreateBattleCruiserCommand.cs" />
     <Compile Include="Commands\CreateDestroyerCommand.cs" />
     <Compile Include="Commands\CreateFrigateCommand.cs" />
     <Compile Include="Commands\CreatePlayerCommand.cs" />
     <Compile Include="Commands\CreateSubmarineCommand.cs" />
+    <Compile Include="Commands\FireAtCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\GameObjectElementType.cs" />

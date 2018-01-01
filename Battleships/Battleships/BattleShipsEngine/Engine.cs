@@ -6,6 +6,8 @@ using Battleships.BattleshipsEngine.Providers;
 using Battleships.BattleshipsEngine;
 using Battleships.Factory;
 using Battleships.Models.Contracts;
+using Battleships.View.Contracts;
+using Battleships.View;
 
 namespace Battleships.BattleShipsEngine
 {
@@ -15,43 +17,66 @@ namespace Battleships.BattleShipsEngine
 		private const string TerminationCommand = "exit";
 		private const string NullProvidersExceptionMessage = "cannot be null.";
 
-        public event Action OnStart;
-        public event Action OnStop;
+        public event Action Started;
+        public event Action Stopped;
 
-        //private IPlayer humanPlayer;
-        //private IPlayer computerPlayer;
-        //private IPlayer currentPlayer;
+        private IPlayer humanPlayer;
+        private IPlayer computerPlayer;
+        private IPlayer currentPlayer;
 
         private Engine()
 		{
-			this.Reader = new ConsoleReader();
-			this.Writer = new ConsoleWriter();
 			this.Parser = new CommandParser();
 			this.Ships = new List<IShip>();
 			this.BattleShipFactory = Factory.BattleShipFactory.Instance;
-		}
+        }
 
-		public IReader Reader { get; set; }
 
-		public IWriter Writer { get; set; }
 
-		public IParser Parser { get; set; }
+        public IParser Parser { get; set; }
 
 		public IBattleShipFactory BattleShipFactory { get; set; }
 
 		public IList<IShip> Ships { get; private set; }
 
+        private IView view = new ConsoleView();
+
+
+
+        public void AddPlayer(IPlayer player)
+        {
+            if (this.humanPlayer == null)
+            {
+                this.humanPlayer = player;
+            }
+            else
+            {
+                this.computerPlayer = player;
+            }
+           
+            this.currentPlayer = player;
+        }
+       
+
 		public void AddShip(IShip ship)
 		{
-			throw new NotImplementedException();
+            this.currentPlayer.AddShip(ship);
 		}
 
-		public void FireAt(int row, int column)
+		public string FireAt(int row, int column)
 		{
-			throw new NotImplementedException();
+            this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
+            this.currentPlayer.Battlefield.Map[row, column].IsHit = true;
+            return $"You had a shot at position {row} {column}";
 		}
 
-		public static IEngine Instance
+        public void BeginPlay()
+        {
+            this.view.SelectParticipants(this.humanPlayer, this.computerPlayer);
+            this.currentPlayer = this.humanPlayer;
+        }
+
+        public static IEngine Instance
 		{
 			get
 			{
@@ -79,13 +104,13 @@ namespace Battleships.BattleShipsEngine
 
             //this.currentPlayer = this.humanPlayer;
 
-            this.OnStart();
+            this.OnStarted();
 
 			while (true)
 			{
 				try
 				{
-					var commandAsString = this.Reader.ReadLine();
+					var commandAsString = this.view.ReadLine();
 
 					if (commandAsString.ToLower() == TerminationCommand)
 					{
@@ -93,19 +118,36 @@ namespace Battleships.BattleShipsEngine
 					}
 
 					this.ProcessCommand(commandAsString);
-					//this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
+                    //this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
+                    this.view.Update();
 				}
 				catch (Exception ex)
 				{
-					this.Writer.WriteLine(ex.Message);
+					this.view.WriteLine(ex.Message);
 
 				}
 			}
 
-            this.OnStop();
+            this.OnStopped();
 		}
 
-		private void ProcessCommand(string commandAsString)
+        private void OnStarted()
+        {
+            if (this.Started != null)
+            {
+                this.Started();
+            }
+        }
+
+        private void OnStopped()
+        {
+            if (this.Stopped != null)
+            {
+                this.Stopped();
+            }
+        }
+
+        private void ProcessCommand(string commandAsString)
 		{
 			if (string.IsNullOrWhiteSpace(commandAsString))
 			{
@@ -116,17 +158,10 @@ namespace Battleships.BattleShipsEngine
 			var parameters = this.Parser.ParseParameters(commandAsString);
 
 			var executionResult = command.Execute(parameters);
-			this.Writer.WriteLine(executionResult);
+			this.view.WriteLine(executionResult);
 
 		}
 
-
-
-
-		private IShip[] QueryHumanPlayerShips()
-		{
-			// TODO: Validate ships against battlefield and for overlapping!
-			throw new NotImplementedException();
-		}
-	}
+       
+    }
 }

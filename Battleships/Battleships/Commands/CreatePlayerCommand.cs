@@ -17,28 +17,23 @@ namespace Battleships.Commands
             this.factory = factory;
             this.engine = engine;
         }
+
         public string Execute(IList<string> parameters)
         {
             string name;
-            IList<IShip> ships;
 
             try
             {
-                name = parameters[0].ToString();
-                ships = new List<IShip>();
-
-
-
+                name = parameters[0];
             }
             catch
             {
-
                 throw new ArgumentException("Invalid parameters");
             }
-            var AircraftCarrier = this.factory.CreatePlayer(name, ships);
+
+            var player = this.factory.CreatePlayer(name);
+            this.engine.AddPlayer(player);
             return $"Welcome Player {name}";
-
-
         }
     }
 }

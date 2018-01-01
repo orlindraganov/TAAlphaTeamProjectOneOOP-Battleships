@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.Models.Contracts;
+using Battleships.View.Contracts;
 
 namespace Battleships.BattleShipsEngine.Contracts
 {
-	public interface IEngine
-	{
-		void Start();
+    public interface IEngine
+    {
+        void Start();
 
-		IReader Reader { get; set; }
+        IParser Parser { get; set; }
 
-		IWriter Writer { get; set; }
+        IList<IShip> Ships { get; }
 
-		IParser Parser { get; set; }
+        void AddPlayer(IPlayer player);
 
-		IList<IShip> Ships { get; }
+        void AddShip(IShip ship);
 
-		void AddShip(IShip ship);
+        void BeginPlay();
 
-		void FireAt(int row, int column);
+        string FireAt(int row, int column);
 
-        event Action OnStart;
+        event Action Started;
 
-        event Action OnStop;
-
-        
-	}
+        event Action Stopped;
+    }
 }

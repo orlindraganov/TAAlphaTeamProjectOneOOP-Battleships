@@ -83,30 +83,8 @@ namespace Battleships.View
 
         private Direction GetShipDirection(IShip ship)
         {
-            Direction direction;
-
-            if (ship.Elements[0].Position.Row == ship.Elements[1].Position.Row && ship.Elements[0].Position.Col < ship.Elements[1].Position.Col)
-            {
-                direction = Direction.Right;
-            }
-            else if (ship.Elements[0].Position.Row == ship.Elements[1].Position.Row && ship.Elements[0].Position.Col > ship.Elements[1].Position.Col)
-            {
-                direction = Direction.Left;
-            }
-            else if (ship.Elements[0].Position.Row < ship.Elements[1].Position.Row && ship.Elements[0].Position.Col == ship.Elements[1].Position.Col)
-            {
-                direction = Direction.Down;
-            }
-            else if (ship.Elements[0].Position.Row > ship.Elements[1].Position.Row && ship.Elements[0].Position.Col == ship.Elements[1].Position.Col)
-            {
-                direction = Direction.Up;
-            }
-            else
-            {
-                throw new ArgumentException("Invalid ship");
-            }
-
-            return direction;
+            return ship.Direction;
         }
     }
 }
+

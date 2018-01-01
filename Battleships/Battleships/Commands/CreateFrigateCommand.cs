@@ -30,7 +30,7 @@ namespace Battleships.Commands
             try
             {
                 row = int.Parse(parameters[0]);
-                col = int.Parse(parameters[1]);
+                col = parameters[1][0] - 'A';
                 direction = (Direction)Enum.Parse(typeof(Direction), parameters[2]);
                 pos.Row = row;
                 pos.Col = col;
@@ -39,12 +39,11 @@ namespace Battleships.Commands
             }
             catch
             {
-
                 throw new ArgumentException("Invalid parameters");
             }
-            var Frigate = this.factory.CreateAircraftCarrier(pos, direction);
-            this.engine.Ships.Add(Frigate);
 
+            var frigate = this.factory.CreateFrigate(pos, direction);
+            this.engine.AddShip(frigate);
             return $"Frigate with position {pos} and direction {direction} was created ";
         }
     }

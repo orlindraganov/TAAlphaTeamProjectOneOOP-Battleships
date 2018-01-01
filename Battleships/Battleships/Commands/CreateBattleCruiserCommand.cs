@@ -9,47 +9,47 @@ using System.Collections.Generic;
 
 namespace Battleships.Commands
 {
-    public class CreateBattleCruiserCommand:ICommand
+    public class CreateBattleCruiserCommand : ICommand
     {
- 
-            private readonly IBattleShipFactory factory;
-            private readonly IEngine engine;
 
-            public CreateBattleCruiserCommand(IBattleShipFactory factory, IEngine engine)
+        private readonly IBattleShipFactory factory;
+        private readonly IEngine engine;
+
+        public CreateBattleCruiserCommand(IBattleShipFactory factory, IEngine engine)
+        {
+            this.factory = factory;
+            this.engine = engine;
+        }
+        public string Execute(IList<string> parameters)
+        {
+            int row;
+            int col;
+            Direction direction;
+            IPosition pos = new Position();
+
+
+            try
             {
-                this.factory = factory;
-                this.engine = engine;
+                row = int.Parse(parameters[0]);
+                col = parameters[1][0] - 'A';
+                direction = (Direction)Enum.Parse(typeof(Direction), parameters[2]);
+                pos.Row = row;
+                pos.Col = col;
+
+
             }
-            public string Execute(IList<string> parameters)
+            catch
             {
-                int row;
-                int col;
-                Direction direction;
-                IPosition pos = new Position();
-
-
-                try
-                {
-                    row = int.Parse(parameters[0]);
-                    col = int.Parse(parameters[1]);
-                    direction = (Direction)Enum.Parse(typeof(Direction), parameters[2]);
-                    pos.Row = row;
-                    pos.Col = col;
-
-
-                }
-                catch 
-                {
 
                 throw new ArgumentException("Invalid parameters");
-                }
-                var BattleCruiser = this.factory.CreateAircraftCarrier(pos, direction);
-            this.engine.Ships.Add(BattleCruiser);
+            }
+            var battleCruiser = this.factory.CreateBattleCruiser(pos, direction);
+            this.engine.AddShip(battleCruiser);
 
             return $"BattleCruiser with position {pos} and direction {direction} was created ";
-            }
+        }
 
-        
+
     }
 
 }

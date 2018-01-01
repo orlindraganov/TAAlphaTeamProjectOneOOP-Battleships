@@ -13,5 +13,7 @@ namespace Battleships.View.Contracts
         void Update();
 
         void Update(IPosition position);
+
+        void SelectParticipants(IPlayer firstPlayer, IPlayer secondPlayer);
     }
 }

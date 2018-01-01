@@ -10,6 +10,7 @@ namespace Battleships.Models
 {
     public abstract class Ship : IShip
     {
+       
         protected Ship(IPosition origin, Direction direction, int count)
         {
             if (count <= 0)
@@ -52,11 +53,15 @@ namespace Battleships.Models
             }
 
             this.Health = count;
+            this.Direction = direction;
+
         }
 
         public bool IsAlive => this.Health > 0;
 
         public int Health { get; set; }
+
+        public Direction Direction { get; set; }
 
         private void GetHit()
         {
