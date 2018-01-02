@@ -1,16 +1,23 @@
-﻿namespace Battleships.Models.Contracts
+﻿using System.Collections.Generic;
+
+namespace Battleships.Models.Contracts
 {
-    /// <summary>
-    /// Player will hold the ships
-    /// </summary>
-    public interface IPlayer : IParticipant
-    {
-        bool IsAlive { get; set; }
+	public interface IPlayer
+	{
+	    IList<IShip> Ships { get; }
 
-        int Health { get; }
+        IWater Water { get; }
 
-        string Name { get; }
+        IBattlefield Battlefield { get; }
 
-        void Fire();
-    }
+        bool IsAlive { get; }
+
+		int Health { get; }
+
+		string Name { get; }
+
+		void Fire();
+
+		void AddShip(IShip ship);
+	}
 }

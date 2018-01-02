@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
+using Battleships.Models.Contracts;
+using Battleships.View.Contracts;
 
 namespace Battleships.BattleShipsEngine.Contracts
 {
@@ -10,9 +10,20 @@ namespace Battleships.BattleShipsEngine.Contracts
     {
         void Start();
 
-        void Reset();
+        IParser Parser { get; set; }
+
+        IList<IShip> Ships { get; }
+
+        void AddPlayer(IPlayer player);
+
+        void AddShip(IShip ship);
+
+        void BeginPlay();
+
+        string FireAt(int row, int column);
+
+        event Action Started;
+
+        event Action Stopped;
     }
 }
-
-
-

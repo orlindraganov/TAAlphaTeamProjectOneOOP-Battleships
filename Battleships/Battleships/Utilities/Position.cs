@@ -1,21 +1,33 @@
-﻿using Battleships.Utilities.Contracts;
+﻿using System.Text;
+using Battleships.Utilities.Contracts;
 
 namespace Battleships.Utilities
 {
     public struct Position : IPosition
     {
-        public Position(int x, int y)
+        public Position(IPosition position)
         {
-            this.X = x;
-            this.Y = y;
+            this.Row = position.Row;
+            this.Col = position.Col;
         }
 
-        public int X { get; set; }
-        public int Y { get; set; }
-<<<<<<< HEAD
-=======
+        public Position(int row, int col)
+        {
+            this.Row = row;
+            this.Col = col;
+        }
 
-      
->>>>>>> 0fc0c61f4577d5a143887c1649b7baf129f091e6
+        public int Row { get; set; }
+        public int Col { get; set; }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            {
+                sb.Append($"row:{this.Row} col:{(char)(this.Col + 'A')}");
+            }
+            return sb.ToString().Trim();
+        }
     }
 }

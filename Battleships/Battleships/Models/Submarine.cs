@@ -1,19 +1,15 @@
-﻿using Battleships.Models.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Battleships.Enums;
+﻿using Battleships.Enums;
+using Battleships.Models.Contracts;
+using Battleships.Utilities.Contracts;
 
 namespace Battleships.Models
 {
-    class Submarine : Ship, IShip, IGameObject
-    {
-        public Submarine(ShipType shiptype, IList<IGameObjectElement> elements) : base(shiptype, elements)
-        {
-            this.ShipType = ShipType.Submarine;
+	class Submarine : Ship, IShip, IGameObject
+	{
+		private const int COUNT = 2;
 
-        }
-    }
+		public Submarine(IPosition origin, Direction direction) : base(origin, direction, COUNT)
+		{
+		}
+	}
 }

@@ -4,8 +4,8 @@ namespace Battleships.Models.Contracts
 {
     public interface IShip : IGameObject
     {
-        bool IsAlive { get; set; }
+        bool IsAlive { get; }
         int Health { get; set; }
-        ShipType ShipType { get; set; }
+        Direction Direction { get; set; }
     }
 }

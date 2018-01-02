@@ -1,0 +1,12 @@
+CreatePlayer ppppp
+CreateAircraftCarrier 1 A Right
+CreateDestroyer 2 B Right
+CreateBattleCruiser 3 B Down
+CreateFrigate 6 J Left
+CreateSubmarine 9 F Up
+CreatePlayer COMPUTER
+CreateAircraftCarrier 1 A Right
+CreateDestroyer 2 B Right
+CreateBattleCruiser 3 B Down
+CreateFrigate 6 J Left
+CreateSubmarine 9 F Up
