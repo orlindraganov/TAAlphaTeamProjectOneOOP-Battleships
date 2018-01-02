@@ -51,6 +51,7 @@ namespace Battleships.View
 
         public override void Update()
         {
+            this.SetConsole(ConsoleSettings.Text);
             Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
         }
 
