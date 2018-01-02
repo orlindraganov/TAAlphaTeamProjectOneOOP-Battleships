@@ -20,8 +20,7 @@ namespace Battleships.Commands
 
         public string Execute(IList<string> parameters)
         {
-            return this.engine.FireAt(int.Parse(parameters[0]), parameters[1][0] - 'A');
-             
+            return this.engine.FireAt(int.Parse(parameters[0]) - 1, parameters[1][0] - 'A');
         }
     }
 }
