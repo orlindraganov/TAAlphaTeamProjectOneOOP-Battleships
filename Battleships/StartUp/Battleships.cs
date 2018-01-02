@@ -12,10 +12,6 @@ namespace StartUp
 {
     internal class StartUp
     {
-        public IPlayer FirstPlayer => throw new NotImplementedException();
-
-        public IPlayer SecondPlayer => throw new NotImplementedException();
-
         private static void Main()
         {
             //BattleShipsEngine.Instance.Start();
@@ -70,8 +66,6 @@ namespace StartUp
             //p2.Battlefield[pos].GetHit();
             //v.Update();
 
-           
-
             var engine = Engine.Instance;
             var v = new ConsoleView();
             engine.Started += () => v.WriteLine("Engine strted");
@@ -81,23 +75,5 @@ namespace StartUp
 
             engine.Start();
         }
-
-
-
-        public void SelectParticipants(IPlayer firstPlayer, IPlayer secondPlayer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(IPosition position)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }
