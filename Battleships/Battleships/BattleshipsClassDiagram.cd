@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Battleships.BattleShipsEngine.Engine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAAAAACIAAAAAEAAQAAAAAQMAACCCRQiABAAgEAA=</HashCode>
+      <FileName>BattleshipsEngine\Engine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.BattleshipsEngine.CommandParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Providers\CommandParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.BattleshipsEngine.Providers.ConsoleReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Providers\ConsoleReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.BattleshipsEngine.Providers.ConsoleWriter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Providers\ConsoleWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.BeginPlayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\BeginPlayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.CreateAircraftCarrierCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\CreateAircraftCarrierCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.CreateBattleCruiserCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\CreateBattleCruiserCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.CreateDestroyerCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\CreateDestroyerCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.CreateFrigateCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\CreateFrigateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.CreatePlayerCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\CreatePlayerCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.CreateSubmarineCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\CreateSubmarineCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Commands.FireAtCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Commands\FireAtCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Factory.BattleShipFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAABAAAAAAAAAAACAAIABAAQCAAAAAAAAA=</HashCode>
+      <FileName>Factory\BattleShipFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Models.AircraftCarrier" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AircraftCarrier.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.Models.Battlecruiser" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Battlecruiser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.Models.Battlefield" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAEAAAAHAAAgAACAAAAAAAAAAAAAAAAAAAAAAYAAA=</HashCode>
+      <FileName>Models\Battlefield.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Models.Destroyer" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Destroyer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.Models.Frigate" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Frigate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.Models.GameObjectElement" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAgAAAAEAAAAAAAAAAAAQACAAACAAA=</HashCode>
+      <FileName>Models\GameObjectElement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Models.Player" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAQAAAAEAAUAAUABBAkAYAAIAAAAgECAAg=</HashCode>
+      <FileName>Models\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Models.Ship" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAAAAAAACAQAAAAAAAAAQAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\Ship.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.Models.Submarine" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Submarine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.Models.Water" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Water.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.Utilities.AlreadyFiredThereException" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\AlreadyFiredThereException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Battleships.View.BattlefieldSegment" Collapsed="true">
+    <Position X="8.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJQAAAAQAAIgCBAAAAAUAAAgAAAAABAhAQAAQQAAEAA=</HashCode>
+      <FileName>View\BattlefieldSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.View.ConsoleView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQRIAQAAhAAAAAQIQAAICEAAAAAAAAAAAACBAgECgQM=</HashCode>
+      <FileName>View\ConsoleView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Battleships.View.EnemyBattlefieldSegment" Collapsed="true">
+    <Position X="9.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>View\EnemyBattlefieldSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.View.GameInfoSegment" Collapsed="true">
+    <Position X="12" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQJAQAQoABAACAAAAAECAggAAACCAAAAAAAAAAAAQA=</HashCode>
+      <FileName>View\GameInfoSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.View.InOutSegment" Collapsed="true">
+    <Position X="14.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AATAAEAAAAAAAAAIAAEEAAAgAAAAQAIAAAAAAAAAQgA=</HashCode>
+      <FileName>View\InOutSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.View.PlayerBattlefieldSegment" Collapsed="true">
+    <Position X="7.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>View\PlayerBattlefieldSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.View.ViewSegment" Collapsed="true">
+    <Position X="10.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAgABIAAAAQAQAAECEAgAAAAQAAAAEAAAAAAIAA=</HashCode>
+      <FileName>View\ViewSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleships.View.Common.ConsoleFontTooLargeException" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Common\ConsoleFontTooLargeException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Battleships.View.Common.Constants" Collapsed="true">
+    <Position X="23.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMgAQABICKA0QBhAgAAwFAgACkBIEBCFBQAoIgAAAAg=</HashCode>
+      <FileName>View\Common\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Battleships.View.Common.StringExtensions" Collapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Common\StringExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Battleships.Utilities.Position" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Position.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Interface Name="Battleships.BattleshipsEngine.Contracts.IComputerPlayer" Collapsed="true">
+    <Position X="22" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Contracts\IComputerPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.BattleShipsEngine.Contracts.IEngine" Collapsed="true">
+    <Position X="23.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACIAAAAAEAAQAAAAAAIAAAACAAgAAAAgAAA=</HashCode>
+      <FileName>BattleshipsEngine\Contracts\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.BattleShipsEngine.ICommand" Collapsed="true">
+    <Position X="20.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.BattleshipsEngine.Providers.ContractsOfProviders.IParser" Collapsed="true">
+    <Position X="16.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Providers\ContractsOfProviders\IParser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.BattleshipsEngine.Providers.ContractsOfProviders.IReader" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Providers\ContractsOfProviders\IReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.BattleshipsEngine.Providers.ContractsOfProviders.IWriter" Collapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BattleshipsEngine\Providers\ContractsOfProviders\IWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Factory.IBattleShipFactory" Collapsed="true">
+    <Position X="18.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAABAAAAAAAAAAACAAIABAAACAAAAAAAAA=</HashCode>
+      <FileName>Factory\IBattleShipFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IBattlefield" Collapsed="true">
+    <Position X="16.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\Contracts\IBattlefield.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IGameObject" Collapsed="true">
+    <Position X="3.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IGameObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IGameObjectElement" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAAQACAAACAAA=</HashCode>
+      <FileName>Models\Contracts\IGameObjectElement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IPlayer" Collapsed="true">
+    <Position X="18.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAAAAAAEAAUAAQAAAAkAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IShip" Collapsed="true">
+    <Position X="2.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IShip.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IShipElement" Collapsed="true">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IShipElement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Models.Contracts.IWater" Collapsed="true">
+    <Position X="4.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IWater.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.Utilities.Contracts.IPosition" Collapsed="true">
+    <Position X="20.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Contracts\IPosition.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.View.Contracts.IBattlefieldSegment" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Contracts\IBattlefieldSegment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.View.Contracts.IGameInfoSegment" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Contracts\IGameInfoSegment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.View.Contracts.IInOutSegment" Collapsed="true">
+    <Position X="4.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Contracts\IInOutSegment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.View.Contracts.IView" Collapsed="true">
+    <Position X="4.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>View\Contracts\IView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleships.View.Contracts.IViewSegment" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAABAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Contracts\IViewSegment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Battleships.Enums.Direction" Collapsed="true">
+    <Position X="18.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Enums\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Battleships.Enums.GameObjectElementType" Collapsed="true">
+    <Position X="20.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\GameObjectElementType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Battleships.Enums.ShipType" Collapsed="true">
+    <Position X="22" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgCAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAAIA=</HashCode>
+      <FileName>Enums\ShipType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Battleships.View.Enums.ConsoleSettings" Collapsed="true">
+    <Position X="16.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAgAAAAAAAoAAAAAQAAAAAACAAAAAA=</HashCode>
+      <FileName>View\Enums\ConsoleSettings.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Battleships.View.Enums.ViewType" Collapsed="true">
+    <Position X="23.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAQEAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>View\Enums\ViewType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
