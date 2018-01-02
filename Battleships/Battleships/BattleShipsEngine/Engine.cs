@@ -67,7 +67,7 @@ namespace Battleships.BattleShipsEngine
 		{
             this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
             this.currentPlayer.Battlefield.Map[row, column].IsHit = true;
-            return $"You had a shot at position {row} {column}";
+            return $"You had a shot at position {row + 1} {(char)(column + 'A')}";
 		}
 
         public void BeginPlay()
