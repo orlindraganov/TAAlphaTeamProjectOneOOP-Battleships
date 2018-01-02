@@ -66,7 +66,7 @@ namespace Battleships.BattleShipsEngine
 		public string FireAt(int row, int column)
 		{
             this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
-            this.currentPlayer.Battlefield.Map[row, column].IsHit = true;
+            this.currentPlayer.Battlefield.Map[row, column].GetHit();
             return $"You had a shot at position {row + 1} {(char)(column + 'A')}";
 		}
 
