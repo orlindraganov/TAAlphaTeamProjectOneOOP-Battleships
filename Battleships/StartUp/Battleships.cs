@@ -2,13 +2,20 @@
 using Battleships.BattleShipsEngine;
 using Battleships.Enums;
 using Battleships.Models;
+using Battleships.Models.Contracts;
 using Battleships.Utilities;
+using Battleships.Utilities.Contracts;
 using Battleships.View;
+using Battleships.View.Contracts;
 
 namespace StartUp
 {
     internal class StartUp
     {
+        public IPlayer FirstPlayer => throw new NotImplementedException();
+
+        public IPlayer SecondPlayer => throw new NotImplementedException();
+
         private static void Main()
         {
             //BattleShipsEngine.Instance.Start();
@@ -66,13 +73,31 @@ namespace StartUp
            
 
             var engine = Engine.Instance;
-
-            engine.Started += () => Console.WriteLine("Engine strted");
+            var v = new ConsoleView();
+            engine.Started += () => v.WriteLine("Engine strted");
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.SetCursorPosition(0, Console.BufferHeight - 1);
 
             engine.Start();
         }
+
+
+
+        public void SelectParticipants(IPlayer firstPlayer, IPlayer secondPlayer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(IPosition position)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
