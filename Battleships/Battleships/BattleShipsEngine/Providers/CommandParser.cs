@@ -5,54 +5,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using static Battleships.BattleshipsEngine.CommandParser;
 
 namespace Battleships.BattleshipsEngine
 {
-   //S Reflection tursi klas s dadeno ime koito nasledqva ICommand
-   //i imeto mu zavurshva na Command
-   //sled koeto mu pravi instanciq i mu podava factory i engine 
-   //i vrushta komanda kum engine-na kudeto se izvikva execute s podadenite ot konzolata parametri
-    public class CommandParser:IParser
+
+        public class CommandParser : ICommandParser, ICommandParser
     {
-        // Magic, do not touch!
-        public ICommand ParseCommand(string fullCommand)
-        {
-            var commandName = fullCommand.Split(' ')[0];
-            var commandTypeInfo = this.FindCommand(commandName);
-            var command = Activator.CreateInstance(commandTypeInfo, BattleShipFactory.Instance,Engine.Instance) as ICommand;
+            private readonly ICommandFactory cmdFactory;
 
-            return command;
-        }
-
-        // Magic, do not touch!
-        public IList<string> ParseParameters(string fullCommand)
-        {
-            var commandParts = fullCommand.Split(' ').ToList();
-            commandParts.RemoveAt(0);
-
-            if (commandParts.Count() == 0)
+            public CommandParser(ICommandFactory cmdFactory)
             {
-                return new List<string>();
+                this.cmdFactory = cmdFactory ?? throw new ArgumentNullException();
             }
 
-            return commandParts;
-        }
+            protected ICommandFactory CmdFactory => cmdFactory;
 
-        // Very magic, do not even think about touching!!!
-        private TypeInfo FindCommand(string commandName)
-        {
-            Assembly currentAssembly = this.GetType().GetTypeInfo().Assembly;
-            var commandTypeInfo = currentAssembly.DefinedTypes
-                .Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
-                .Where(type => type.Name.ToLower() == (commandName.ToLower() + "command"))
-                .SingleOrDefault();
-
-            if (commandTypeInfo == null)
+            public ICommand ParseCommand(string commandLine)
             {
-                throw new ArgumentException("The passed command is not found!");
-            }
+                var lineParameters = commandLine.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            return commandTypeInfo;
+                var commandName = lineParameters[0];
+
+                var command = this.CmdFactory.Create(commandName);
+
+                // command do something
+
+                return command;
+            }
         }
     }
-}

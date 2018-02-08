@@ -23,6 +23,9 @@ namespace Battleships.BattleShipsEngine
         private IPlayer humanPlayer;
         private IPlayer computerPlayer;
         private IPlayer currentPlayer;
+        private IParser parser;
+        private List<IShip> ships;
+        private IBattleShipFactory factory;
 
         private Engine()
 		{

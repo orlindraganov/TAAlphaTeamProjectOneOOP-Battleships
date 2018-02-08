@@ -7,6 +7,9 @@ using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 using Battleships.View;
 using Battleships.View.Contracts;
+using Autofac;
+using Battleships.BattleShipsEngine.Contracts;
+using System.Reflection;
 
 namespace StartUp
 {
@@ -65,9 +68,11 @@ namespace StartUp
             //p1.Battlefield[pos].GetHit();
             //p2.Battlefield[pos].GetHit();
             //v.Update();
-
-            var engine = Engine.Instance;
-            var v = new ConsoleView();
+            var builder = new ContainerBuilder();
+            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
+           var container =  builder.Build();
+            var engine = container.Resolve<IEngine>();
+            var v = container.Resolve<IView>();
             engine.Started += () => v.WriteLine("Engine strted");
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
