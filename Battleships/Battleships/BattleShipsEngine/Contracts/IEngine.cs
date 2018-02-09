@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.Models.Contracts;
 using Battleships.View.Contracts;
+using Battleships.BattleshipsEngine;
+using Battleships.BattleshipsEngine.Providers;
 
 namespace Battleships.BattleShipsEngine.Contracts
 {
@@ -10,7 +12,9 @@ namespace Battleships.BattleShipsEngine.Contracts
     {
         void Start();
 
-        IParser Parser { get; set; }
+        ICommandParser Parser { get; set; }
+        ICommandProcessor Processor { get; set; }
+
 
         IList<IShip> Ships { get; }
 

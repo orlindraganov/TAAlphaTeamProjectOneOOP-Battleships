@@ -11,11 +11,10 @@ using Battleships.View;
 
 namespace Battleships.BattleShipsEngine
 {
-	public sealed class Engine : IEngine
-	{
-		private static IEngine instanceHolder;
-		private const string TerminationCommand = "exit";
-		private const string NullProvidersExceptionMessage = "cannot be null.";
+    public sealed class Engine : IEngine
+    {
+        private const string TerminationCommand = "exit";
+        private const string NullProvidersExceptionMessage = "cannot be null.";
 
         public event Action Started;
         public event Action Stopped;
@@ -23,24 +22,39 @@ namespace Battleships.BattleShipsEngine
         private IPlayer humanPlayer;
         private IPlayer computerPlayer;
         private IPlayer currentPlayer;
-        private IParser parser;
-        private List<IShip> ships;
+        private IList<IShip> ships;
         private IBattleShipFactory factory;
+        private ICommandParser parser;
+        private ICommandProcessor processor;
 
-        private Engine()
-		{
-			this.Parser = new CommandParser();
-			this.Ships = new List<IShip>();
-			this.BattleShipFactory = Factory.BattleShipFactory.Instance;
+        public Engine(
+            ICommandParser parser,
+        ICommandProcessor processor,
+            IPlayer humanPlayer,
+        IPlayer computerPlayer,
+        IPlayer currentPlayer,
+        IList<IShip> ships,
+        IBattleShipFactory factory
+
+            )
+        {
+            this.Parser = parser;
+            this.processor = processor;
+            this.ships = new List<IShip>();
+            this.factory = factory;
+            this.humanPlayer = humanPlayer;
+            this.computerPlayer = computerPlayer;
+            this.currentPlayer = currentPlayer;
         }
 
 
 
-        public IParser Parser { get; set; }
+        public ICommandParser Parser { get { return this.parser; } set { this.parser = value; } }
+        public ICommandProcessor Processor { get { return this.processor; } set { this.processor = value ; } }
 
-		public IBattleShipFactory BattleShipFactory { get; set; }
+        public IBattleShipFactory BattleShipFactory { get { return this.factory; } set { this.factory = value; } }
 
-		public IList<IShip> Ships { get; private set; }
+        public IList<IShip> Ships { get { return this.ships; } private set { this.ships = value; } }
 
         private IView view = new ConsoleView();
 
@@ -56,22 +70,22 @@ namespace Battleships.BattleShipsEngine
             {
                 this.computerPlayer = player;
             }
-           
+
             this.currentPlayer = player;
         }
-       
 
-		public void AddShip(IShip ship)
-		{
+
+        public void AddShip(IShip ship)
+        {
             this.currentPlayer.AddShip(ship);
-		}
+        }
 
-		public string FireAt(int row, int column)
-		{
+        public string FireAt(int row, int column)
+        {
             this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
             this.currentPlayer.Battlefield.Map[row, column].GetHit();
             return $"You had a shot at position {row + 1} {(char)(column + 'A')}";
-		}
+        }
 
         public void BeginPlay()
         {
@@ -79,21 +93,10 @@ namespace Battleships.BattleShipsEngine
             this.currentPlayer = this.humanPlayer;
         }
 
-        public static IEngine Instance
-		{
-			get
-			{
-				if (instanceHolder == null)
-				{
-					instanceHolder = new Engine();
-				}
 
-				return instanceHolder;
-			}
-		}
 
-		public void Start()
-		{
+        public void Start()
+        {
             //this.humanPlayer = this.BattleShipFactory.CreatePlayer("Human", null);
             //// Human player enters the fleet.
             //var humanShips = this.QueryHumanPlayerShips();
@@ -108,31 +111,30 @@ namespace Battleships.BattleShipsEngine
             //this.currentPlayer = this.humanPlayer;
 
             this.OnStarted();
+            string commandAsString = null;
+            while ((commandAsString = this.view.ReadLine())!=TerminationCommand)
+            {
+                try
+                {
+                    var command = this.Parser.ParseCommand(commandAsString);
 
-			while (true)
-			{
-				try
-				{
-					var commandAsString = this.view.ReadLine();
+                    if (command != null)
+                    {
 
-					if (commandAsString.ToLower() == TerminationCommand)
-					{
-						break;
-					}
-
-					this.ProcessCommand(commandAsString);
-                    //this.currentPlayer = this.currentPlayer == this.humanPlayer ? this.computerPlayer : this.humanPlayer;
+                        this.Processor.ProcessSingleCommand(command, commandAsString);
+                    }
+                   
                     this.view.Update();
-				}
-				catch (Exception ex)
-				{
-					this.view.WriteLine(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    this.view.WriteLine(ex.Message);
 
-				}
-			}
+                }
+            }
 
             this.OnStopped();
-		}
+        }
 
         private void OnStarted()
         {
@@ -150,21 +152,7 @@ namespace Battleships.BattleShipsEngine
             }
         }
 
-        private void ProcessCommand(string commandAsString)
-		{
-			if (string.IsNullOrWhiteSpace(commandAsString))
-			{
-				throw new ArgumentNullException(nameof(commandAsString), "Command cannot be null or empty.");
-			}
 
-			var command = this.Parser.ParseCommand(commandAsString);
-			var parameters = this.Parser.ParseParameters(commandAsString);
 
-			var executionResult = command.Execute(parameters);
-			this.view.WriteLine(executionResult);
-
-		}
-
-       
     }
 }

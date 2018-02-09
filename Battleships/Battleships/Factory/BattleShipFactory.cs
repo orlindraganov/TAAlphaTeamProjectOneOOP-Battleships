@@ -8,18 +8,11 @@ namespace Battleships.Factory
 {
 	public class BattleShipFactory : IBattleShipFactory
 	{
-		private static IBattleShipFactory instanceHolder = new BattleShipFactory();
 		public BattleShipFactory()
 		{
 
 		}
-		public static IBattleShipFactory Instance
-		{
-			get
-			{
-				return instanceHolder;
-			}
-		}
+
 
 		public IBattlefield CreateBattleField(IGameObjectElement[,] map)
 		{

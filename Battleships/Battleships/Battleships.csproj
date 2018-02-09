@@ -54,11 +54,13 @@
     <Compile Include="BattleshipsEngine\Providers\CommandParser.cs" />
     <Compile Include="BattleshipsEngine\Contracts\IComputerPlayer.cs" />
     <Compile Include="BattleshipsEngine\Contracts\IEngine.cs" />
+    <Compile Include="BattleshipsEngine\Providers\CommandProcessor.cs" />
     <Compile Include="BattleshipsEngine\Providers\ConsoleReader.cs" />
     <Compile Include="BattleshipsEngine\Providers\ConsoleWriter.cs" />
-    <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IParser.cs" />
     <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IReader.cs" />
     <Compile Include="BattleshipsEngine\Providers\ContractsOfProviders\IWriter.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ICommandParser.cs" />
+    <Compile Include="BattleshipsEngine\Providers\ICommandProcessor.cs" />
     <Compile Include="Commands\BeginPlayCommand.cs" />
     <Compile Include="Commands\CreateAircraftCarrierCommand.cs" />
     <Compile Include="Commands\CreateBattleCruiserCommand.cs" />
@@ -72,7 +74,9 @@
     <Compile Include="Enums\GameObjectElementType.cs" />
     <Compile Include="Enums\ShipType.cs" />
     <Compile Include="Factory\BattleShipFactory.cs" />
+    <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="Factory\IBattleShipFactory.cs" />
+    <Compile Include="Factory\ICommandFactory.cs" />
     <Compile Include="Models\AircraftCarrier.cs" />
     <Compile Include="Models\Battlecruiser.cs" />
     <Compile Include="Models\Battlefield.cs" />

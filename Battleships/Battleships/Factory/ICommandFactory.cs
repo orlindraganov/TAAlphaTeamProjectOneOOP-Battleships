@@ -2,7 +2,7 @@
 
 namespace Battleships.Factory
 {
-    public interface ICommandFactory1
+    public interface ICommandFactory
     {
         ICommand Create(string cmdName);
     }

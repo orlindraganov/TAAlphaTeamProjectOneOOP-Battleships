@@ -14,6 +14,7 @@ using Battleships.BattleShipsEngine.Contracts;
 using Battleships.BattleshipsEngine.Providers;
 using Battleships.View;
 using Battleships.View.Contracts;
+using Battleships.Commands;
 
 namespace StartUp
 {
@@ -21,14 +22,34 @@ namespace StartUp
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<CommandParser>().As<IParser>();
+            builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
+            builder.RegisterType<CommandProcessor>().As<ICommandProcessor>().SingleInstance();
+            builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
             builder.RegisterType<Ship>().As<IShip>();
+            builder.RegisterType<Player>().As<IPlayer>();
             builder.RegisterType<BattleShipFactory>().As<IBattleShipFactory>();
-            builder.RegisterType<ConsoleReader>().As<IReader>();
-            builder.RegisterType<ConsoleWriter>().As<IWriter>();
-            builder.RegisterType<ConsoleView>().As<IView>();
+            builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
+            builder.RegisterType<ConsoleWriter>().As<IWriter>().SingleInstance();
+            builder.RegisterType<ConsoleView>().As<IView>().SingleInstance();
+            builder.RegisterType<Battlefield>().As<IBattlefield>();
+            builder.RegisterType<GameObjectElement>().As<IGameObjectElement>();
+            builder.RegisterType<Water>().As<IWater>();
 
-            builder.RegisterType<Engine>().As<IEngine>();
+
+
+
+
+            builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
+            builder.RegisterType<BeginPlayCommand>().Named<ICommand>("Start");
+            builder.RegisterType<CreateAircraftCarrierCommand>().Named<ICommand>("Create AircraftCarrier");
+            builder.RegisterType<CreateBattleCruiserCommand>().Named<ICommand>("Create BattleCruiser");
+            builder.RegisterType<CreateDestroyerCommand>().Named<ICommand>("Create Destroyer");
+            builder.RegisterType<CreateFrigateCommand>().Named<ICommand>("Create Frigate");
+            builder.RegisterType<CreatePlayerCommand>().Named<ICommand>("Create Player");
+            builder.RegisterType<CreateSubmarineCommand>().Named<ICommand>("Create SubMarine");
+            builder.RegisterType<FireAtCommand>().Named<ICommand>("Fire At");
+
+
 
 
 

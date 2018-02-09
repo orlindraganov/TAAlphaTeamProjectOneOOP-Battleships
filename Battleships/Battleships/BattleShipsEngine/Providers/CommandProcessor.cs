@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Battleships.BattleShipsEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Battleships.BattleshipsEngine.Providers
 {
-    class CommandProcessor : ICommandProcessor
+   public class CommandProcessor : ICommandProcessor
     {
+        public ICollection<ICommand> Commands { get;  set; }
+
         public CommandProcessor()
         {
             this.Commands = new List<ICommand>();

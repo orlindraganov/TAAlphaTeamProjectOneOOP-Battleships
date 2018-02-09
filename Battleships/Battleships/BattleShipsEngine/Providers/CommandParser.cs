@@ -10,7 +10,7 @@ using static Battleships.BattleshipsEngine.CommandParser;
 namespace Battleships.BattleshipsEngine
 {
 
-        public class CommandParser : ICommandParser, ICommandParser
+        public class CommandParser : ICommandParser
     {
             private readonly ICommandFactory cmdFactory;
 

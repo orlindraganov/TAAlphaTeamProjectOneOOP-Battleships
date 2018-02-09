@@ -18,7 +18,10 @@ namespace Battleships.Models
         private IWater water;
         private IBattlefield battlefield;
 
-        public Player(string name)
+        public Player(string name
+
+            
+            )
         {
             this.Name = name;
             this.Ships = new List<IShip>();
