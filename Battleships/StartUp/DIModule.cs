@@ -30,7 +30,7 @@ namespace StartUp
                 .Where(t => t.IsSubclassOf(typeof(Ship)))
                 .As<Ship>();
 
-            builder.RegisterType<Player>().As<IPlayer>();
+            builder.Register(c => new Player("name")).As<IPlayer>();
             builder.RegisterType<BattleShipFactory>().As<IBattleShipFactory>();
             builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
             builder.RegisterType<ConsoleWriter>().As<IWriter>().SingleInstance();
