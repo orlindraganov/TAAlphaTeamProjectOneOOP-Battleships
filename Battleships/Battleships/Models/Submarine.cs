@@ -4,7 +4,7 @@ using Battleships.Utilities.Contracts;
 
 namespace Battleships.Models
 {
-	class Submarine : Ship, IShip, IGameObject
+	public class Submarine : Ship, IShip, IGameObject
 	{
 		private const int COUNT = 2;
 

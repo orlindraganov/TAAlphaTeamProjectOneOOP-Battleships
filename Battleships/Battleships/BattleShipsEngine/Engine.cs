@@ -28,9 +28,9 @@ namespace Battleships.BattleShipsEngine
         private ICommandProcessor processor;
 
         public Engine(
-            ICommandParser parser,
+        ICommandParser parser,
         ICommandProcessor processor,
-            IPlayer humanPlayer,
+        IPlayer humanPlayer,
         IPlayer computerPlayer,
         IPlayer currentPlayer,
         IList<IShip> ships,
@@ -50,7 +50,7 @@ namespace Battleships.BattleShipsEngine
 
 
         public ICommandParser Parser { get { return this.parser; } set { this.parser = value; } }
-        public ICommandProcessor Processor { get { return this.processor; } set { this.processor = value ; } }
+        public ICommandProcessor Processor { get { return this.processor; } set { this.processor = value; } }
 
         public IBattleShipFactory BattleShipFactory { get { return this.factory; } set { this.factory = value; } }
 
@@ -112,7 +112,7 @@ namespace Battleships.BattleShipsEngine
 
             this.OnStarted();
             string commandAsString = null;
-            while ((commandAsString = this.view.ReadLine())!=TerminationCommand)
+            while ((commandAsString = this.view.ReadLine()) != TerminationCommand)
             {
                 try
                 {
@@ -123,7 +123,7 @@ namespace Battleships.BattleShipsEngine
 
                         this.Processor.ProcessSingleCommand(command, commandAsString);
                     }
-                   
+
                     this.view.Update();
                 }
                 catch (Exception ex)

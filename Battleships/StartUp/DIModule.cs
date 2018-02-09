@@ -18,14 +18,18 @@ using Battleships.Commands;
 
 namespace StartUp
 {
-   public class DIModule: Autofac.Module
+    public class DIModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
             builder.RegisterType<CommandProcessor>().As<ICommandProcessor>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
-            builder.RegisterType<Ship>().As<IShip>();
+
+            builder.RegisterAssemblyTypes(typeof(Ship).Assembly)
+                .Where(t => t.IsSubclassOf(typeof(Ship)))
+                .As<Ship>();
+
             builder.RegisterType<Player>().As<IPlayer>();
             builder.RegisterType<BattleShipFactory>().As<IBattleShipFactory>();
             builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
@@ -54,5 +58,5 @@ namespace StartUp
 
 
         }
-    } 
+    }
 }

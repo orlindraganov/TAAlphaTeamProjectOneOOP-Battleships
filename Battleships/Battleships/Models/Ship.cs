@@ -10,7 +10,7 @@ namespace Battleships.Models
 {
     public abstract class Ship : IShip
     {
-       
+        
         protected Ship(IPosition origin, Direction direction, int count)
         {
             if (count <= 0)

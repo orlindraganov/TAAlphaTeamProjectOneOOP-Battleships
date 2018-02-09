@@ -17,20 +17,33 @@ namespace Battleships.Models
         private IList<IShip> ships;
         private IWater water;
         private IBattlefield battlefield;
+        private IGameObjectElement[,] map= new IGameObjectElement[10, 10];
 
+        public Player()
+        {
+            name = "Gosho";
+        }
         public Player(string name
+            //IGameObjectElement[,] map ,
+            //IBattlefield battlefield,
+            //IList<IShip> ships ,
+            //IWater water
 
-            
+
             )
         {
+            
             this.Name = name;
-            this.Ships = new List<IShip>();
+            this.ships = new List<IShip>();
+            this.map = map;
+            this.water = water;
+
             SetHealth();
             this.IsAlive = true;
 
-            var map = new IGameObjectElement[10, 10];
 
-            this.Battlefield = new Battlefield(map);
+
+     
             this.Water = new Water();
             for (int i = 0; i < map.GetLength(0); i++)
             {
@@ -76,7 +89,7 @@ namespace Battleships.Models
             {
                 return this.battlefield;
             }
-            private set
+             set
             {
                 Guard.WhenArgument(value, "Battlefield").IsNull().Throw();
                 this.battlefield = value;

@@ -24,7 +24,7 @@ namespace Battleships.Commands
 
             try
             {
-                name = parameters[0];
+                name = parameters[1];
             }
             catch
             {
