@@ -123,7 +123,7 @@ namespace Battleships.BattleShipsEngine
 
                         this.Processor.ProcessSingleCommand(command, commandAsString);
                     }
-
+                    
                     this.view.Update();
                 }
                 catch (Exception ex)

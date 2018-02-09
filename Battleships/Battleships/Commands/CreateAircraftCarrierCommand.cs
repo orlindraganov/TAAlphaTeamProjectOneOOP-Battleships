@@ -42,6 +42,7 @@ namespace Battleships.Commands
 
             var aircraftCarrier = this.factory.CreateAircraftCarrier(pos,direction);
             this.engine.AddShip(aircraftCarrier);
+            
             return  $"AircraftCarrier with position {pos} and direction {direction} was created ";
         }
     }
