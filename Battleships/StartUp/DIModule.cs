@@ -45,13 +45,13 @@ namespace StartUp
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
             builder.RegisterType<BeginPlayCommand>().Named<ICommand>("Start");
-            builder.RegisterType<CreateAircraftCarrierCommand>().Named<ICommand>("Create AircraftCarrier");
-            builder.RegisterType<CreateBattleCruiserCommand>().Named<ICommand>("Create BattleCruiser");
-            builder.RegisterType<CreateDestroyerCommand>().Named<ICommand>("Create Destroyer");
-            builder.RegisterType<CreateFrigateCommand>().Named<ICommand>("Create Frigate");
-            builder.RegisterType<CreatePlayerCommand>().Named<ICommand>("Create Player");
-            builder.RegisterType<CreateSubmarineCommand>().Named<ICommand>("Create SubMarine");
-            builder.RegisterType<FireAtCommand>().Named<ICommand>("Fire At");
+            builder.RegisterType<CreateAircraftCarrierCommand>().Named<ICommand>("CreateAircraftCarrier");
+            builder.RegisterType<CreateBattleCruiserCommand>().Named<ICommand>("CreateBattleCruiser");
+            builder.RegisterType<CreateDestroyerCommand>().Named<ICommand>("CreateDestroyer");
+            builder.RegisterType<CreateFrigateCommand>().Named<ICommand>("CreateFrigate");
+            builder.RegisterType<CreatePlayerCommand>().Named<ICommand>("CreatePlayer");
+            builder.RegisterType<CreateSubmarineCommand>().Named<ICommand>("CreateSubMarine");
+            builder.RegisterType<FireAtCommand>().Named<ICommand>("FireAt");
 
 
 
