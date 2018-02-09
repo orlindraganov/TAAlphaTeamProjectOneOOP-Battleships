@@ -8,7 +8,7 @@ namespace Battleships.Factory
 	public interface IBattleShipFactory
 	{
 
-		IPlayer CreatePlayer(string name);
+		IPlayer CreatePlayer(string name,IBattleShipFactory factory);
 		IShip CreateAircraftCarrier(IPosition origin, Direction direction);
 		IShip CreateBattleCruiser(IPosition origin, Direction direction);
 		IShip CreateDestroyer(IPosition origin, Direction direction);

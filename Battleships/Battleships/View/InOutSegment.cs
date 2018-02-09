@@ -64,7 +64,7 @@ namespace Battleships.View
             {
                 var c = Console.ReadKey(true).KeyChar;
 
-                if (c == '\r')
+               if (c == '\r')
                     break;
                 if (c == '\b')
                 {

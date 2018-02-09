@@ -31,7 +31,7 @@ namespace Battleships.Commands
                 throw new ArgumentException("Invalid parameters");
             }
 
-            var player = this.factory.CreatePlayer(name);
+            var player = this.factory.CreatePlayer(name,factory);
             this.engine.AddPlayer(player);
             return $"Welcome Player {name}";
         }

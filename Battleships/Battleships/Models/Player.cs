@@ -6,6 +6,7 @@ using Battleships.Enums;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 using Bytes2you.Validation;
+using Battleships.Factory;
 
 namespace Battleships.Models
 {
@@ -17,8 +18,8 @@ namespace Battleships.Models
         private IList<IShip> ships;
         private IWater water;
         private IBattlefield battlefield;
-        
-        public Player(string name)
+
+        public Player(string name, IBattleShipFactory factory)
         {
             this.Name = name;
             this.Ships = new List<IShip>();
@@ -27,7 +28,7 @@ namespace Battleships.Models
 
             var map = new IGameObjectElement[10, 10];
 
-            this.Battlefield = new Battlefield(map);
+            this.Battlefield = factory.CreateBattleField(map);
             this.Water = new Water();
             for (int i = 0; i < map.GetLength(0); i++)
             {
