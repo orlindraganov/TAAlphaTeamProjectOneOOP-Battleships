@@ -40,6 +40,9 @@ namespace StartUp
             builder.RegisterType<Battlefield>().As<IBattlefield>();
             builder.RegisterType<GameObjectElement>().As<IGameObjectElement>();
             builder.RegisterType<Water>().As<IWater>();
+            builder.RegisterType<ViewFactory>().As<IViewFactory>();
+            builder.RegisterType<ConsoleView>().As<IView>();
+        
 
 
 

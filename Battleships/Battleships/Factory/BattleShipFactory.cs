@@ -4,6 +4,8 @@ using Battleships.Models;
 using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
 using Battleships.Utilities;
+using Battleships.View.Contracts;
+using Battleships.View;
 
 namespace Battleships.Factory
 {
@@ -46,19 +48,23 @@ namespace Battleships.Factory
         {
             return new Submarine(origin, direction);
         }
-        public IPosition CreatePosition(int row , int col)
+        public IPosition CreatePosition(int row, int col)
         {
             return new Position(row, col);
         }
 
         public IGameObjectElement CreateGameObjectElement(IPosition pos, GameObjectElementType type)
         {
-            return new GameObjectElement(pos,type);
+            return new GameObjectElement(pos, type);
         }
 
         public IWater CreateWater()
         {
             return new Water();
+        }
+        public IView CreateConsoleView(IViewFactory factory)
+        {
+            return new ConsoleView(factory);
         }
     }
 }

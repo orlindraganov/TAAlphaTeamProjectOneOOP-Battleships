@@ -4,5 +4,7 @@ namespace Battleships.View.Contracts
 {
     public interface IInOutSegment : IViewSegment, IReader, IWriter
     {
+                  void ClearLastReadMessage();
+
     }
 }

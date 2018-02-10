@@ -26,6 +26,9 @@ namespace Battleships.BattleShipsEngine
         private IBattleShipFactory factory;
         private ICommandParser parser;
         private ICommandProcessor processor;
+        private IView view;
+        private IViewFactory factoryForView;
+
 
         public Engine(
         ICommandParser parser,
@@ -34,7 +37,8 @@ namespace Battleships.BattleShipsEngine
         IPlayer computerPlayer,
         IPlayer currentPlayer,
         IList<IShip> ships,
-        IBattleShipFactory factory
+        IBattleShipFactory factory,
+        IViewFactory factoryForView
 
             )
         {
@@ -45,6 +49,8 @@ namespace Battleships.BattleShipsEngine
             this.humanPlayer = humanPlayer;
             this.computerPlayer = computerPlayer;
             this.currentPlayer = currentPlayer;
+            this.factoryForView = factoryForView;
+            this.view = factory.CreateConsoleView(factoryForView);
         }
 
 
@@ -52,11 +58,10 @@ namespace Battleships.BattleShipsEngine
         public ICommandParser Parser { get { return this.parser; } set { this.parser = value; } }
         public ICommandProcessor Processor { get { return this.processor; } set { this.processor = value; } }
 
-        public IBattleShipFactory BattleShipFactory { get { return this.factory; } set { this.factory = value; } }
+        public IBattleShipFactory BattleShipFactory1 { get { return this.factory; } set { this.factory = value; } }
 
         public IList<IShip> Ships { get { return this.ships; } private set { this.ships = value; } }
-
-        private IView view = new ConsoleView();
+      public IView View { get {return this.view; } set { this.view = value; } }
 
 
 

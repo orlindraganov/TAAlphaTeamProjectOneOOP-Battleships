@@ -97,7 +97,7 @@ namespace Battleships.View
             Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
         }
 
-        private void ClearLastReadMessage()
+        public void ClearLastReadMessage()
         {
             this.SetConsole(ConsoleSettings.Text);
             Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);

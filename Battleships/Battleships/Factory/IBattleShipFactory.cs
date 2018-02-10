@@ -2,6 +2,8 @@
 using Battleships.Enums;
 using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
+using Battleships.View.Contracts;
+using Battleships.View;
 
 namespace Battleships.Factory
 {
@@ -18,6 +20,7 @@ namespace Battleships.Factory
         IPosition CreatePosition(int row, int col);
         IGameObjectElement CreateGameObjectElement(IPosition pos , GameObjectElementType type);
         IWater CreateWater();
+        IView CreateConsoleView(IViewFactory factory);
 		//IView CreateView(); no - po-skoro engine shte startira singleton na view-to. brgds orlin
 	}
 }

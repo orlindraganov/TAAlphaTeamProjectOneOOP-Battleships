@@ -27,15 +27,17 @@ namespace Battleships.View
         private readonly int height;
 
         private readonly IPosition startingPosition;
+        private IViewFactory factory;
 
-        public ConsoleView()
+        public ConsoleView(IViewFactory factory)
         {
+            this.factory = factory;
             this.width = Constants.ViewDefaultWidth;
             this.height = Constants.ViewDefaultHeight;
             Console.SetWindowSize(Constants.ConsoleDefaultWidth, Constants.ConsoleDefaultHeight);
             Console.SetBufferSize(Constants.ConsoleDefaultWidth, Constants.ConsoleDefaultHeight);
             
-            this.startingPosition = new Position(Constants.ViewDefaultStartingRow, Constants.ViewDefaultStartingCol);
+            this.startingPosition = factory.CreatePosition(Constants.ViewDefaultStartingRow, Constants.ViewDefaultStartingCol);
 
             var nextSegmentStartingPosition = new Position(this.StartingPosition);
 
@@ -52,7 +54,7 @@ namespace Battleships.View
             this.inOutSegment = new InOutSegment(nextSegmentStartingPosition.Row, Constants.InOutSegmentDefaultHeight, nextSegmentStartingPosition.Col, Constants.InOutSegmentDefaultWidth);
         }
 
-        public ConsoleView(IPlayer firstPlayer, IPlayer secondPlayer) : this()
+        public ConsoleView(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             this.FirstPlayer = firstPlayer;
             this.SecondPlayer = secondPlayer;
@@ -61,6 +63,20 @@ namespace Battleships.View
             this.PlayerBattlefieldSegment.SelectPlayer(firstPlayer);
             this.EnemyBattlefieldSegment.SelectPlayer(secondPlayer);
         }
+
+        private int Width => this.width;
+
+        private int Height => this.height;
+
+        private IGameInfoSegment GameInfoSegment => this.gameInfoSegment;
+
+        private IBattlefieldSegment PlayerBattlefieldSegment => this.playerBattlefieldSegment;
+
+        private IBattlefieldSegment EnemyBattlefieldSegment => this.enemyBattlefieldSegment;
+
+        private IInOutSegment InOutSegment => this.inOutSegment;
+
+        private IPosition StartingPosition => this.startingPosition;
 
         public IPlayer FirstPlayer
         {
@@ -90,19 +106,6 @@ namespace Battleships.View
             }
         }
 
-        private int Width => this.width;
-
-        private int Height => this.height;
-
-        private IGameInfoSegment GameInfoSegment => this.gameInfoSegment;
-
-        private IBattlefieldSegment PlayerBattlefieldSegment => this.playerBattlefieldSegment;
-
-        private IBattlefieldSegment EnemyBattlefieldSegment => this.enemyBattlefieldSegment;
-
-        private IInOutSegment InOutSegment => this.inOutSegment;
-
-        private IPosition StartingPosition => this.startingPosition;
 
         public string ReadLine()
         {
@@ -135,6 +138,7 @@ namespace Battleships.View
             this.GameInfoSegment.Update();
             this.PlayerBattlefieldSegment.Update(position);
             this.EnemyBattlefieldSegment.Update(position);
+            this.InOutSegment.ClearLastReadMessage();
             this.InOutSegment.Update();
         }
 
