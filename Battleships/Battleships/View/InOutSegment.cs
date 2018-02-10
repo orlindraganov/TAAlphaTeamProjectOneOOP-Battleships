@@ -81,8 +81,8 @@ namespace Battleships.View
             }
 
             this.LastReadMessageLength = message.Length;
-            Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
             this.ClearLastReadMessage();
+            Console.SetCursorPosition(ReadStartingPosition.Col, ReadStartingPosition.Row);
             return message;
         }
 

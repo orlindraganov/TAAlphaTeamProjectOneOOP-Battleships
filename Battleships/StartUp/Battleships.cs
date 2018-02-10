@@ -74,14 +74,14 @@ namespace StartUp
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-            var container = builder.Build();
-            var engine = container.Resolve<IEngine>();
-            var v = container.Resolve<IView>();
-            engine.Started += () => v.WriteLine("Engine strted");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.SetCursorPosition(0, Console.BufferHeight - 1);
 
+            var container = builder.Build();
+
+            var engine = container.Resolve<IEngine>();
+
+            var v = container.Resolve<IView>();
+
+            engine.Started += () => v.WriteLine("Engine strted");
             engine.Start();
         }
     }

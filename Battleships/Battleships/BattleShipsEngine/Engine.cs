@@ -59,7 +59,7 @@ namespace Battleships.BattleShipsEngine
         public IBattleShipFactory BattleShipFactory1 { get { return this.factory; } set { this.factory = value; } }
 
         public IList<IShip> Ships { get { return this.ships; } private set { this.ships = value; } }
-      public IView View { get {return this.view; } set { this.view = value; } }
+        public IView View { get { return this.view; } set { this.view = value; } }
 
 
 
@@ -115,19 +115,22 @@ namespace Battleships.BattleShipsEngine
             //this.currentPlayer = this.humanPlayer;
 
             this.OnStarted();
+
             string commandAsString = null;
+
             while ((commandAsString = this.view.ReadLine()) != TerminationCommand)
             {
                 try
                 {
                     var command = this.Parser.ParseCommand(commandAsString);
+                    string commandResult;
 
                     if (command != null)
                     {
-
-                        this.Processor.ProcessSingleCommand(command, commandAsString);
+                       commandResult = this.Processor.ProcessSingleCommand(command, commandAsString);
+                       this.view.WriteLine(commandResult);
                     }
-                    
+
                     this.view.Update();
                 }
                 catch (Exception ex)

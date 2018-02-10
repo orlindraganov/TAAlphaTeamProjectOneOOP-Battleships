@@ -59,8 +59,9 @@ namespace StartUp
                     (pi, ctx) => ctx.ResolveKeyed<IBattlefieldSegment>("player")))
                 .WithParameter(
                 new ResolvedParameter(
-                    (pi,ctx) => pi.Name == "enemyBattlefieldSegment",
-                    (pi,ctx) => ctx.ResolveKeyed<IBattlefieldSegment>("enemy")));
+                    (pi, ctx) => pi.Name == "enemyBattlefieldSegment",
+                    (pi, ctx) => ctx.ResolveKeyed<IBattlefieldSegment>("enemy")))
+                .SingleInstance();
 
             builder.RegisterType<GameInfoSegment>().As<IGameInfoSegment>()
                 .WithParameter("startingRow", ViewSettings.GameInfoStartingRow)
