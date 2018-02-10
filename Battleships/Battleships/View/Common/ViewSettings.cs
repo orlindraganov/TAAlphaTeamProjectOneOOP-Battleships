@@ -1,20 +1,10 @@
 ﻿using System;
-using Battleships.Utilities;
 
 namespace Battleships.View.Common
 {
     public static class ViewSettings
     {
         public const string GameName = "INVEST IMPEX INTL BATTLESHIPS";
-
-        public const int ConsoleDefaultHeight = 43;
-        public const int ConsoleDefaultWidth = 62;
-
-        public const int ViewDefaultHeight = 41;
-        public const int ViewDefaultWidth = 60;
-
-        public const int ViewDefaultStartingRow = 1;
-        public const int ViewDefaultStartingCol = 1;
 
         public const ConsoleColor ConsoleDefaultBackgroundColor = ConsoleColor.Black;
         public const ConsoleColor ConsoleDefaultForegroundColor = ConsoleColor.White;
@@ -47,6 +37,18 @@ namespace Battleships.View.Common
         public const char VerticalShipMiddle = '|';
         public const char VerticalShipLowerEnd = 'v';
 
+        public const int ConsoleDefaultHeight = 43;
+        public const int ConsoleDefaultWidth = 62;
+
+        public const int ConsoleViewDefaultHeight = 41;
+        public const int ConsoleViewDefaultWidth = 60;
+
+        public const int ConsoleViewDefaultStartingRow = 1;
+        public const int ConsoleViewDefaultStartingCol = 1;
+
+        public const int ConsoleViewMinHeight = 29;
+        public const int ConsoleViewMinWidth = 44;
+
         public const int GameInfoSegmentMinHeight = 3;
         public const int GameInfoSegmentMinWidth = 30;
         public const int GameInfoSegmentDefaultHeight = 5;
@@ -65,16 +67,16 @@ namespace Battleships.View.Common
         public const string InOutSegmentInputPrompt = "Input:";
         public const string InOutSegmentOutputPrompt = "Output:";
 
-        public static int GameInfoStartingRow => ViewDefaultStartingRow;
-        public static int GameInfoStartingCol => ViewDefaultStartingCol;
+        public static int GameInfoStartingRow => ConsoleViewDefaultStartingRow;
+        public static int GameInfoStartingCol => ConsoleViewDefaultStartingCol;
 
         public static int PlayerBattlefieldStartingRow => GameInfoStartingRow + GameInfoSegmentDefaultHeight;
-        public static int PlayerBattlefieldStartingCol => ViewDefaultStartingCol;
+        public static int PlayerBattlefieldStartingCol => ConsoleViewDefaultStartingCol;
 
         public static int EnemyBattlefieldStartingRow => GameInfoStartingRow + GameInfoSegmentDefaultHeight;
-        public static int EnemyBattlefieldStartingCol => ViewDefaultStartingCol + BattlefieldSegmentDefaultWidth;
+        public static int EnemyBattlefieldStartingCol => ConsoleViewDefaultStartingCol + BattlefieldSegmentDefaultWidth;
 
         public static int InOutSegmentStartingRow => PlayerBattlefieldStartingRow + BattlefieldSegmentDefaultHeight;
-        public static int InOutSegmentStartingCol => ViewDefaultStartingCol;
+        public static int InOutSegmentStartingCol => ConsoleViewDefaultStartingCol;
     }
 }

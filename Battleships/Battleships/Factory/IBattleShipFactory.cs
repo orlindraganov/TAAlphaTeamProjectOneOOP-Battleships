@@ -20,7 +20,7 @@ namespace Battleships.Factory
         IPosition CreatePosition(int row, int col);
         IGameObjectElement CreateGameObjectElement(IPosition pos , GameObjectElementType type);
         IWater CreateWater();
-        IView CreateConsoleView(IViewFactory factory);
+ //       IView CreateConsoleView(IViewFactory factory);
 		//IView CreateView(); no - po-skoro engine shte startira singleton na view-to. brgds orlin
 	}
 }

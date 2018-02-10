@@ -254,11 +254,11 @@
       <FileName>View\Common\ConsoleFontTooLargeException.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Battleships.View.Common.Constants" Collapsed="true">
+  <Class Name="Battleships.View.Common.ViewSettings" Collapsed="true">
     <Position X="23.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AMgAQABICKA0QBhAgAAwFAgACkBIEBCFBQAoIgAAAAg=</HashCode>
-      <FileName>View\Common\Constants.cs</FileName>
+      <FileName>View\Common\ViewSettings.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Battleships.View.Common.StringExtensions" Collapsed="true">

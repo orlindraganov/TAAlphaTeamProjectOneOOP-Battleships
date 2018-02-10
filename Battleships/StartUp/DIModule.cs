@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Core;
 using Battleships.BattleshipsEngine;
 using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.Models.Contracts;
@@ -15,6 +16,7 @@ using Battleships.BattleshipsEngine.Providers;
 using Battleships.View;
 using Battleships.View.Contracts;
 using Battleships.Commands;
+using Battleships.View.Common;
 
 namespace StartUp
 {
@@ -32,21 +34,13 @@ namespace StartUp
 
             //builder.Register(c => new Player("name")).As<IPlayer>();
             builder.RegisterType<BattleShipFactory>().As<IBattleShipFactory>();
-            builder.RegisterType<Player>().As<IPlayer>().WithParameter(new TypedParameter(typeof(string),"name"));
+            builder.RegisterType<Player>().As<IPlayer>().WithParameter(new TypedParameter(typeof(string), "name"));
 
             builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
             builder.RegisterType<ConsoleWriter>().As<IWriter>().SingleInstance();
-            builder.RegisterType<ConsoleView>().As<IView>();
             builder.RegisterType<Battlefield>().As<IBattlefield>();
             builder.RegisterType<GameObjectElement>().As<IGameObjectElement>();
             builder.RegisterType<Water>().As<IWater>();
-            builder.RegisterType<ViewFactory>().As<IViewFactory>();
-            builder.RegisterType<ConsoleView>().As<IView>();
-        
-
-
-
-
 
             builder.RegisterType<Engine>().As<IEngine>().SingleInstance();
             builder.RegisterType<BeginPlayCommand>().Named<ICommand>("Start");
@@ -58,7 +52,43 @@ namespace StartUp
             builder.RegisterType<CreateSubmarineCommand>().Named<ICommand>("CreateSubMarine");
             builder.RegisterType<FireAtCommand>().Named<ICommand>("FireAt");
 
+            builder.RegisterType<ConsoleView>().As<IView>()
+                .WithParameter(
+                new ResolvedParameter(
+                    (pi, ctx) => pi.Name == "playerBattlefieldSegment",
+                    (pi, ctx) => ctx.ResolveKeyed<IBattlefieldSegment>("player")))
+                .WithParameter(
+                new ResolvedParameter(
+                    (pi,ctx) => pi.Name == "enemyBattlefieldSegment",
+                    (pi,ctx) => ctx.ResolveKeyed<IBattlefieldSegment>("enemy")));
 
+            builder.RegisterType<GameInfoSegment>().As<IGameInfoSegment>()
+                .WithParameter("startingRow", ViewSettings.GameInfoStartingRow)
+                .WithParameter("height", ViewSettings.GameInfoSegmentDefaultHeight)
+                .WithParameter("startingCol", ViewSettings.GameInfoStartingCol)
+                .WithParameter("width", ViewSettings.GameInfoSegmentDefaultWidth)
+                .SingleInstance();
+
+            builder.RegisterType<PlayerBattlefieldSegment>().Keyed<IBattlefieldSegment>("player")
+                .WithParameter("startingRow", ViewSettings.PlayerBattlefieldStartingRow)
+                .WithParameter("height", ViewSettings.BattlefieldSegmentDefaultHeight)
+                .WithParameter("startingCol", ViewSettings.PlayerBattlefieldStartingCol)
+                .WithParameter("width", ViewSettings.BattlefieldSegmentDefaultWidth)
+                .SingleInstance();
+
+            builder.RegisterType<EnemyBattlefieldSegment>().Keyed<IBattlefieldSegment>("enemy")
+                .WithParameter("startingRow", ViewSettings.EnemyBattlefieldStartingRow)
+                .WithParameter("height", ViewSettings.BattlefieldSegmentDefaultHeight)
+                .WithParameter("startingCol", ViewSettings.EnemyBattlefieldStartingCol)
+                .WithParameter("width", ViewSettings.BattlefieldSegmentDefaultWidth)
+                .SingleInstance();
+
+            builder.RegisterType<InOutSegment>().As<IInOutSegment>()
+                .WithParameter("startingRow", ViewSettings.InOutSegmentStartingRow)
+                .WithParameter("height", ViewSettings.InOutSegmentDefaultHeight)
+                .WithParameter("startingCol", ViewSettings.InOutSegmentStartingCol)
+                .WithParameter("width", ViewSettings.InOutSegmentDefaultWidth)
+                .SingleInstance();
 
 
 

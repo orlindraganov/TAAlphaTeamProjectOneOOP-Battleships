@@ -62,9 +62,9 @@ namespace Battleships.Factory
         {
             return new Water();
         }
-        public IView CreateConsoleView(IViewFactory factory)
-        {
-            return new ConsoleView(factory);
-        }
+        //public IView CreateConsoleView(IViewFactory factory)
+        //{
+        //    return new ConsoleView(factory);
+        //}
     }
 }

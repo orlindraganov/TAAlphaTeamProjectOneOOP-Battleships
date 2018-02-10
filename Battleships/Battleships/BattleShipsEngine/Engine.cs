@@ -50,7 +50,7 @@ namespace Battleships.BattleShipsEngine
             this.computerPlayer = computerPlayer;
             this.currentPlayer = currentPlayer;
             this.factoryForView = factoryForView;
-            this.view = factory.CreateConsoleView(factoryForView);
+            //this.view = factory.CreateConsoleView(factoryForView);
         }
 
 

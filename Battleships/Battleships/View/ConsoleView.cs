@@ -1,5 +1,6 @@
 ﻿using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
+using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Bytes2you.Validation;
 
@@ -19,13 +20,7 @@ namespace Battleships.View
 
         private readonly IInOutSegment inOutSegment;
 
-        private readonly int width;
-
-        private readonly int height;
-
-        private readonly IPosition startingPosition;
-
-        public ConsoleView(IGameInfoSegment gameInfoSegment, IBattlefieldSegment playerBattlefieldSegment, IBattlefieldSegment enemyBattlefieldSegment, IInOutSegment inOutSegment, int width, int height)
+        public ConsoleView(IGameInfoSegment gameInfoSegment, IBattlefieldSegment playerBattlefieldSegment, IBattlefieldSegment enemyBattlefieldSegment, IInOutSegment inOutSegment)
         {
             Guard.WhenArgument(gameInfoSegment, "Game Info Segment").IsNull().Throw();
             this.gameInfoSegment = gameInfoSegment;
@@ -38,6 +33,7 @@ namespace Battleships.View
 
             Guard.WhenArgument(inOutSegment, "In Out Segment").IsNull().Throw();
             this.inOutSegment = inOutSegment;
+
         }
 
         public IPlayer FirstPlayer
@@ -70,10 +66,6 @@ namespace Battleships.View
             }
         }
 
-        private int Width => this.width;
-
-        private int Height => this.height;
-
         private IGameInfoSegment GameInfoSegment => this.gameInfoSegment;
 
         private IBattlefieldSegment PlayerBattlefieldSegment => this.playerBattlefieldSegment;
@@ -81,8 +73,6 @@ namespace Battleships.View
         private IBattlefieldSegment EnemyBattlefieldSegment => this.enemyBattlefieldSegment;
 
         private IInOutSegment InOutSegment => this.inOutSegment;
-
-        private IPosition StartingPosition => this.startingPosition;
 
         public string ReadLine()
         {

@@ -52,7 +52,7 @@ namespace Battleships.View
             get
             {
                 return this.secondPlayer;
-                }
+            }
             set
             {
                 Guard.WhenArgument(this.secondPlayer, "Second player").IsNotNull().Throw();
