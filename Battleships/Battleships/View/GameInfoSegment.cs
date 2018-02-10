@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Battleships.Models.Contracts;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
@@ -12,6 +10,9 @@ namespace Battleships.View
     public class GameInfoSegment : ViewSegment, IViewSegment, IGameInfoSegment
     {
         private string gameInfo;
+
+        private IPlayer firstPlayer;
+        private IPlayer secondPlayer;
 
         public GameInfoSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
@@ -32,15 +33,39 @@ namespace Battleships.View
             }
         }
 
+        public IPlayer FirstPlayer
+        {
+            get
+            {
+                return this.firstPlayer;
+            }
+            set
+            {
+                Guard.WhenArgument(this.firstPlayer, "First player").IsNotNull().Throw();
+                Guard.WhenArgument(value, "First player").IsNull().Throw();
+                this.firstPlayer = value;
+            }
+        }
+
+        public IPlayer SecondPlayer
+        {
+            get
+            {
+                return this.secondPlayer;
+                }
+            set
+            {
+                Guard.WhenArgument(this.secondPlayer, "Second player").IsNotNull().Throw();
+                Guard.WhenArgument(value, "Second player").IsNull().Throw();
+                this.secondPlayer = value;
+            }
+        }
+
         private int PrintedInfoRow { get; set; }
 
         private int PrintedInfoCol { get; set; }
 
         private int PrintedInfoLength { get; set; }
-
-        private IPlayer SecondPlayer { get; set; }
-
-        private IPlayer FirstPlayer { get; set; }
 
         protected override int GetMinimumHeight()
         {
@@ -67,15 +92,6 @@ namespace Battleships.View
             this.ClearInfo();
             this.CalculateResult();
             this.WriteInfo();
-        }
-
-        public void SelectParticipants(IPlayer firstPlayer, IPlayer secondPlayer)
-        {
-            Guard.WhenArgument(firstPlayer, "First Player").IsNull().Throw();
-            this.FirstPlayer = firstPlayer;
-
-            Guard.WhenArgument(secondPlayer, "Second Player").IsNull().Throw();
-            this.SecondPlayer = secondPlayer;
         }
 
         private void WriteInfo()

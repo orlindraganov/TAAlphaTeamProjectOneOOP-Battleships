@@ -1,5 +1,4 @@
 ﻿using System;
-using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.Utilities;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
@@ -7,7 +6,7 @@ using Battleships.View.Enums;
 
 namespace Battleships.View
 {
-    public class InOutSegment : ViewSegment, IViewSegment, IInOutSegment, IReader, IWriter
+    public class InOutSegment : ViewSegment, IViewSegment, IInOutSegment, IInput, IOutput
     {
         public InOutSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {

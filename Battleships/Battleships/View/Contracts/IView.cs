@@ -1,19 +1,16 @@
-﻿using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
-using Battleships.Models.Contracts;
+﻿using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
 
 namespace Battleships.View.Contracts
 {
-    public interface IView : IReader, IWriter
+    public interface IView : IInput, IOutput
     {
-        IPlayer FirstPlayer { get; }
+        IPlayer FirstPlayer { get; set; }
 
-        IPlayer SecondPlayer { get; }
-        
+        IPlayer SecondPlayer { get; set; }
+
         void Update();
 
         void Update(IPosition position);
-
-        void SelectParticipants(IPlayer firstPlayer, IPlayer secondPlayer);
     }
 }

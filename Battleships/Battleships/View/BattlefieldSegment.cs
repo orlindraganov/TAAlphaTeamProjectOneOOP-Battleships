@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using Battleships.Enums;
-using Battleships.Models;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
@@ -24,7 +20,7 @@ namespace Battleships.View
             IsBattlefieldDrawn = false;
         }
 
-        private IPlayer Player
+        public IPlayer Player
         {
             get
             {
@@ -32,6 +28,7 @@ namespace Battleships.View
             }
             set
             {
+                Guard.WhenArgument(this.player, "Player").IsNotNull().Throw();
                 Guard.WhenArgument(value, "Player").IsNull().Throw();
                 this.player = value;
             }
@@ -92,6 +89,11 @@ namespace Battleships.View
 
         public override void Update()
         {
+            if (this.Player == null)
+            {
+                return;
+            }
+
             if (!IsBattlefieldDrawn)
             {
                 this.DrawBattleField();
@@ -103,6 +105,11 @@ namespace Battleships.View
 
         public void Update(IPosition position)
         {
+            if (this.Player == null)
+            {
+                return;
+            }
+
             DrawElement(position);
         }
 
@@ -286,12 +293,6 @@ namespace Battleships.View
             col += this.BattlefieldStartingPosition.Col + 1;
 
             return new Position(row, col);
-        }
-
-        public void SelectPlayer(IPlayer player)
-        {
-            Guard.WhenArgument(player, "Player").IsNull().Throw();
-            this.Player = player;
         }
     }
 }
