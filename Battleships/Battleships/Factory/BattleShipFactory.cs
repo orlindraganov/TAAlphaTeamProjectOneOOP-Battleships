@@ -26,8 +26,7 @@ namespace Battleships.Factory
         {
             return new Player(name, factory);
         }
-
-
+        
         public IShip CreateAircraftCarrier(IPosition origin, Direction direction)
         {
             return new AircraftCarrier(origin, direction);

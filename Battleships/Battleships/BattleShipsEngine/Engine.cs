@@ -22,7 +22,6 @@ namespace Battleships.BattleShipsEngine
         private IPlayer humanPlayer;
         private IPlayer computerPlayer;
         private IPlayer currentPlayer;
-        private IList<IShip> ships;
         private IBattleShipFactory factory;
         private ICommandParser parser;
         private ICommandProcessor processor;
@@ -35,7 +34,6 @@ namespace Battleships.BattleShipsEngine
         IPlayer humanPlayer,
         IPlayer computerPlayer,
         IPlayer currentPlayer,
-        IList<IShip> ships,
         IBattleShipFactory factory,
         IView view
 
@@ -43,7 +41,6 @@ namespace Battleships.BattleShipsEngine
         {
             this.Parser = parser;
             this.processor = processor;
-            this.ships = new List<IShip>();
             this.factory = factory;
             this.humanPlayer = humanPlayer;
             this.computerPlayer = computerPlayer;
@@ -58,7 +55,6 @@ namespace Battleships.BattleShipsEngine
 
         public IBattleShipFactory BattleShipFactory1 { get { return this.factory; } set { this.factory = value; } }
 
-        public IList<IShip> Ships { get { return this.ships; } private set { this.ships = value; } }
         public IView View { get { return this.view; } set { this.view = value; } }
 
 
@@ -123,12 +119,11 @@ namespace Battleships.BattleShipsEngine
                 try
                 {
                     var command = this.Parser.ParseCommand(commandAsString);
-                    string commandResult;
 
                     if (command != null)
                     {
-                       commandResult = this.Processor.ProcessSingleCommand(command, commandAsString);
-                       this.view.WriteLine(commandResult);
+                        var commandResult = this.Processor.ProcessSingleCommand(command, commandAsString);
+                        this.view.WriteLine(commandResult);
                     }
 
                     this.view.Update();
@@ -136,7 +131,6 @@ namespace Battleships.BattleShipsEngine
                 catch (Exception ex)
                 {
                     this.view.WriteLine(ex.Message);
-
                 }
             }
 

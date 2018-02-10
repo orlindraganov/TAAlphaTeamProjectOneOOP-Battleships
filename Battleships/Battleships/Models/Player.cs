@@ -39,7 +39,6 @@ namespace Battleships.Models
                     this.AddWaterElement(el);
                 }
             }
-
         }
 
         public IList<IShip> Ships

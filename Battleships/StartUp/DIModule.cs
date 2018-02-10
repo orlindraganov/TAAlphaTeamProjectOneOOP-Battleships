@@ -32,7 +32,6 @@ namespace StartUp
                 .Where(t => t.IsSubclassOf(typeof(Ship)))
                 .As<Ship>();
 
-            //builder.Register(c => new Player("name")).As<IPlayer>();
             builder.RegisterType<BattleShipFactory>().As<IBattleShipFactory>();
             builder.RegisterType<Player>().As<IPlayer>().WithParameter(new TypedParameter(typeof(string), "name"));
 
@@ -49,8 +48,9 @@ namespace StartUp
             builder.RegisterType<CreateDestroyerCommand>().Named<ICommand>("CreateDestroyer");
             builder.RegisterType<CreateFrigateCommand>().Named<ICommand>("CreateFrigate");
             builder.RegisterType<CreatePlayerCommand>().Named<ICommand>("CreatePlayer");
-            builder.RegisterType<CreateSubmarineCommand>().Named<ICommand>("CreateSubMarine");
+            builder.RegisterType<CreateSubmarineCommand>().Named<ICommand>("CreateSubmarine");
             builder.RegisterType<FireAtCommand>().Named<ICommand>("FireAt");
+
 
             builder.RegisterType<ConsoleView>().As<IView>()
                 .WithParameter(

@@ -31,7 +31,7 @@ namespace Battleships.Commands
             {
                 row = int.Parse(parameters[1]);
                 col = parameters[2][0] - 'A';
-                direction = (Direction)Enum.Parse(typeof(Direction), parameters[2]);
+                direction = (Direction)Enum.Parse(typeof(Direction), parameters[3]);
                 pos.Row = row;
                 pos.Col = col;
 
