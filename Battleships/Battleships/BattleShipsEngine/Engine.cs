@@ -27,7 +27,6 @@ namespace Battleships.BattleShipsEngine
         private ICommandParser parser;
         private ICommandProcessor processor;
         private IView view;
-        private IViewFactory factoryForView;
 
 
         public Engine(
@@ -38,7 +37,7 @@ namespace Battleships.BattleShipsEngine
         IPlayer currentPlayer,
         IList<IShip> ships,
         IBattleShipFactory factory,
-        IViewFactory factoryForView
+        IView view
 
             )
         {
@@ -49,8 +48,7 @@ namespace Battleships.BattleShipsEngine
             this.humanPlayer = humanPlayer;
             this.computerPlayer = computerPlayer;
             this.currentPlayer = currentPlayer;
-            this.factoryForView = factoryForView;
-            //this.view = factory.CreateConsoleView(factoryForView);
+            this.view = view;
         }
 
 

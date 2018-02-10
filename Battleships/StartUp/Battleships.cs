@@ -10,6 +10,7 @@ using Battleships.View.Contracts;
 using Autofac;
 using Battleships.BattleShipsEngine.Contracts;
 using System.Reflection;
+using Battleships.View.Common;
 
 namespace StartUp
 {
@@ -68,9 +69,12 @@ namespace StartUp
             //p1.Battlefield[pos].GetHit();
             //p2.Battlefield[pos].GetHit();
             //v.Update();
+            Console.SetWindowSize(ViewSettings.ConsoleDefaultWidth, ViewSettings.ConsoleDefaultHeight);
+            Console.SetBufferSize(ViewSettings.ConsoleDefaultWidth, ViewSettings.ConsoleDefaultHeight);
+
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-           var container =  builder.Build();
+            var container = builder.Build();
             var engine = container.Resolve<IEngine>();
             var v = container.Resolve<IView>();
             engine.Started += () => v.WriteLine("Engine strted");
