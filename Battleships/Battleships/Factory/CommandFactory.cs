@@ -10,7 +10,7 @@ namespace Battleships.Factory
 {
         public class CommandFactory : ICommandFactory
     {
-            private readonly IComponentContext container;
+            protected readonly IComponentContext container;
 
             public CommandFactory(IComponentContext container)
             {
