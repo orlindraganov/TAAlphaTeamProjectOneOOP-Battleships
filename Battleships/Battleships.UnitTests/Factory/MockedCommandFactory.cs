@@ -8,7 +8,7 @@ using Battleships.Factory;
 
 namespace Battleships.UnitTests.Factory
 {
-    class MockedCommandFactory : CommandFactory
+    public class MockedCommandFactory : CommandFactory
     {
         public MockedCommandFactory(global::Autofac.IComponentContext container) : base(container)
         {
