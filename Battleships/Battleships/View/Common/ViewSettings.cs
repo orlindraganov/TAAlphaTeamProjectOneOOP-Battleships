@@ -3,7 +3,7 @@ using Battleships.Utilities;
 
 namespace Battleships.View.Common
 {
-    public static class Constants
+    public static class ViewSettings
     {
         public const string GameName = "INVEST IMPEX INTL BATTLESHIPS";
 
@@ -64,5 +64,17 @@ namespace Battleships.View.Common
 
         public const string InOutSegmentInputPrompt = "Input:";
         public const string InOutSegmentOutputPrompt = "Output:";
+
+        public static int GameInfoStartingRow => ViewDefaultStartingRow;
+        public static int GameInfoStartingCol => ViewDefaultStartingCol;
+
+        public static int PlayerBattlefieldStartingRow => GameInfoStartingRow + GameInfoSegmentDefaultHeight;
+        public static int PlayerBattlefieldStartingCol => ViewDefaultStartingCol;
+
+        public static int EnemyBattlefieldStartingRow => GameInfoStartingRow + GameInfoSegmentDefaultHeight;
+        public static int EnemyBattlefieldStartingCol => ViewDefaultStartingCol + BattlefieldSegmentDefaultWidth;
+
+        public static int InOutSegmentStartingRow => PlayerBattlefieldStartingRow + BattlefieldSegmentDefaultHeight;
+        public static int InOutSegmentStartingCol => ViewDefaultStartingCol;
     }
 }

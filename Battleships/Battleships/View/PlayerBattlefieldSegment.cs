@@ -19,32 +19,32 @@ namespace Battleships.View
             char bow;
             char hull;
             char stern;
-            char hit = Constants.HitSymbol;
+            char hit = ViewSettings.HitSymbol;
 
             switch (direction)
             {
                 case Direction.Left:
-                    bow = Constants.HorizontalShipRightEnd;
-                    hull = Constants.HorizontalShipMiddle;
-                    stern = Constants.HorizontalShipLeftEnd;
+                    bow = ViewSettings.HorizontalShipRightEnd;
+                    hull = ViewSettings.HorizontalShipMiddle;
+                    stern = ViewSettings.HorizontalShipLeftEnd;
                     break;
 
                 case Direction.Right:
-                    bow = Constants.HorizontalShipLeftEnd;
-                    hull = Constants.HorizontalShipMiddle;
-                    stern = Constants.HorizontalShipRightEnd;
+                    bow = ViewSettings.HorizontalShipLeftEnd;
+                    hull = ViewSettings.HorizontalShipMiddle;
+                    stern = ViewSettings.HorizontalShipRightEnd;
                     break;
 
                 case Direction.Up:
-                    bow = Constants.VerticalShipLowerEnd;
-                    hull = Constants.VerticalShipMiddle;
-                    stern = Constants.VerticalShipUpperEnd;
+                    bow = ViewSettings.VerticalShipLowerEnd;
+                    hull = ViewSettings.VerticalShipMiddle;
+                    stern = ViewSettings.VerticalShipUpperEnd;
                     break;
 
                 case Direction.Down:
-                    bow = Constants.VerticalShipUpperEnd;
-                    hull = Constants.VerticalShipMiddle;
-                    stern = Constants.VerticalShipLowerEnd;
+                    bow = ViewSettings.VerticalShipUpperEnd;
+                    hull = ViewSettings.VerticalShipMiddle;
+                    stern = ViewSettings.VerticalShipLowerEnd;
                     break;
 
                 default:

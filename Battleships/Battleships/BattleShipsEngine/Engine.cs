@@ -94,7 +94,8 @@ namespace Battleships.BattleShipsEngine
 
         public void BeginPlay()
         {
-            this.view.SelectParticipants(this.humanPlayer, this.computerPlayer);
+            this.view.FirstPlayer = this.humanPlayer;
+            this.view.SecondPlayer = this.computerPlayer;
             this.currentPlayer = this.humanPlayer;
         }
 

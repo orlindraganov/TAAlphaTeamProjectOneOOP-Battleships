@@ -5,7 +5,7 @@ namespace Battleships.View.Contracts
 {
     public interface IBattlefieldSegment : IViewSegment
     {
-        void SelectPlayer(IPlayer player);
+        IPlayer Player { get; set; }
 
         void Update(IPosition position);
     }

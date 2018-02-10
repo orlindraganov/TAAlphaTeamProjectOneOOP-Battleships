@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using Battleships.Enums;
-using Battleships.Models;
 using Battleships.Models.Contracts;
 using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
@@ -24,7 +20,7 @@ namespace Battleships.View
             IsBattlefieldDrawn = false;
         }
 
-        private IPlayer Player
+        public IPlayer Player
         {
             get
             {
@@ -32,6 +28,7 @@ namespace Battleships.View
             }
             set
             {
+                Guard.WhenArgument(this.player, "Player").IsNotNull().Throw();
                 Guard.WhenArgument(value, "Player").IsNull().Throw();
                 this.player = value;
             }
@@ -41,7 +38,7 @@ namespace Battleships.View
         {
             get
             {
-                return Constants.BattlefieldHorizontalBorder;
+                return ViewSettings.BattlefieldHorizontalBorder;
             }
         }
 
@@ -49,7 +46,7 @@ namespace Battleships.View
         {
             get
             {
-                return Constants.BattlefieldVerticalBorder;
+                return ViewSettings.BattlefieldVerticalBorder;
             }
         }
 
@@ -57,7 +54,7 @@ namespace Battleships.View
         {
             get
             {
-                return Constants.BattlefieldCrossBorder;
+                return ViewSettings.BattlefieldCrossBorder;
             }
         }
 
@@ -82,16 +79,21 @@ namespace Battleships.View
 
         protected override int GetMinimumHeight()
         {
-            return Constants.BattlefieldSegmentMinHeight;
+            return ViewSettings.BattlefieldSegmentMinHeight;
         }
 
         protected override int GetMinimumWidth()
         {
-            return Constants.BattlefieldSegmentMinWidth;
+            return ViewSettings.BattlefieldSegmentMinWidth;
         }
 
         public override void Update()
         {
+            if (this.Player == null)
+            {
+                return;
+            }
+
             if (!IsBattlefieldDrawn)
             {
                 this.DrawBattleField();
@@ -103,6 +105,11 @@ namespace Battleships.View
 
         public void Update(IPosition position)
         {
+            if (this.Player == null)
+            {
+                return;
+            }
+
             DrawElement(position);
         }
 
@@ -116,7 +123,7 @@ namespace Battleships.View
                 case GameObjectElementType.Ship:
                     if (element.IsHit)
                     {
-                        symbol = Constants.HitSymbol;
+                        symbol = ViewSettings.HitSymbol;
                         this.SetConsole(ConsoleSettings.ShipHit);
                     }
                     else
@@ -128,12 +135,12 @@ namespace Battleships.View
                 case GameObjectElementType.Water:
                     if (element.IsHit)
                     {
-                        symbol = Constants.HitSymbol;
+                        symbol = ViewSettings.HitSymbol;
                         this.SetConsole(ConsoleSettings.WaterHit);
                     }
                     else
                     {
-                        symbol = Constants.WaterNotHitSymbol;
+                        symbol = ViewSettings.WaterNotHitSymbol;
                         this.SetConsole(ConsoleSettings.WaterNotHit);
                     }
                     break;
@@ -248,8 +255,8 @@ namespace Battleships.View
 
         private void DrawWater(IWater water)
         {
-            var notHit = Constants.WaterNotHitSymbol;
-            var hit = Constants.HitSymbol;
+            var notHit = ViewSettings.WaterNotHitSymbol;
+            var hit = ViewSettings.HitSymbol;
 
             foreach (var element in water.Elements)
             {
@@ -286,12 +293,6 @@ namespace Battleships.View
             col += this.BattlefieldStartingPosition.Col + 1;
 
             return new Position(row, col);
-        }
-
-        public void SelectPlayer(IPlayer player)
-        {
-            Guard.WhenArgument(player, "Player").IsNull().Throw();
-            this.Player = player;
         }
     }
 }

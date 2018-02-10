@@ -1,5 +1,4 @@
 ﻿using System;
-using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.Utilities;
 using Battleships.View.Common;
 using Battleships.View.Contracts;
@@ -7,7 +6,7 @@ using Battleships.View.Enums;
 
 namespace Battleships.View
 {
-    public class InOutSegment : ViewSegment, IViewSegment, IInOutSegment, IReader, IWriter
+    public class InOutSegment : ViewSegment, IViewSegment, IInOutSegment, IInput, IOutput
     {
         public InOutSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
@@ -27,9 +26,9 @@ namespace Battleships.View
             this.WriteStartingPosition = new Position(outPropmtRow, promptsCol + offset);
         }
 
-        private string InputPrompt => Constants.InOutSegmentInputPrompt;
+        private string InputPrompt => ViewSettings.InOutSegmentInputPrompt;
 
-        private string OutputPrompt => Constants.InOutSegmentOutputPrompt;
+        private string OutputPrompt => ViewSettings.InOutSegmentOutputPrompt;
 
         private Position ReadStartingPosition { get; set; }
 
@@ -41,12 +40,12 @@ namespace Battleships.View
 
         protected override int GetMinimumHeight()
         {
-            return Constants.InOutSegmentMinHeight;
+            return ViewSettings.InOutSegmentMinHeight;
         }
 
         protected override int GetMinimumWidth()
         {
-            return Constants.InOutSegmentMinWidth;
+            return ViewSettings.InOutSegmentMinWidth;
         }
 
         public override void Update()

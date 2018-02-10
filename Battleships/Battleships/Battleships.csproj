@@ -121,6 +121,8 @@
     <Compile Include="View\Contracts\IGameInfoSegment.cs" />
     <Compile Include="View\Contracts\IInOutSegment.cs" />
     <Compile Include="View\Contracts\IBattlefieldSegment.cs" />
+    <Compile Include="View\Contracts\IInput.cs" />
+    <Compile Include="View\Contracts\IOutput.cs" />
     <Compile Include="View\Contracts\IView.cs" />
     <Compile Include="View\EnemyBattlefieldSegment.cs" />
     <Compile Include="View\Enums\ConsoleSettings.cs" />
