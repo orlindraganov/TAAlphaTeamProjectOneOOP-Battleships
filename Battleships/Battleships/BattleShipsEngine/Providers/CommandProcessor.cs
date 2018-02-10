@@ -16,13 +16,13 @@ namespace Battleships.BattleshipsEngine.Providers
         {
             this.Commands = new List<ICommand>();
         }
-        public void ProcessSingleCommand(ICommand command, string commandParameters)
+        public string ProcessSingleCommand(ICommand command, string commandParameters)
         {
             var lineParameters = commandParameters.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             var result = command.Execute(lineParameters);
             var normalizedOutput = this.NormalizeOutput(result);
-            Console.WriteLine(normalizedOutput);
+            return normalizedOutput;
         }
         private string NormalizeOutput(string commandOutput)
         {

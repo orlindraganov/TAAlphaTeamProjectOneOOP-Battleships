@@ -15,9 +15,6 @@ namespace Battleships.BattleShipsEngine.Contracts
         ICommandParser Parser { get; set; }
         ICommandProcessor Processor { get; set; }
 
-
-        IList<IShip> Ships { get; }
-
         void AddPlayer(IPlayer player);
 
         void AddShip(IShip ship);

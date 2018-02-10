@@ -22,12 +22,10 @@ namespace Battleships.BattleShipsEngine
         private IPlayer humanPlayer;
         private IPlayer computerPlayer;
         private IPlayer currentPlayer;
-        private IList<IShip> ships;
         private IBattleShipFactory factory;
         private ICommandParser parser;
         private ICommandProcessor processor;
         private IView view;
-        private IViewFactory factoryForView;
 
 
         public Engine(
@@ -36,21 +34,18 @@ namespace Battleships.BattleShipsEngine
         IPlayer humanPlayer,
         IPlayer computerPlayer,
         IPlayer currentPlayer,
-        IList<IShip> ships,
         IBattleShipFactory factory,
-        IViewFactory factoryForView
+        IView view
 
             )
         {
             this.Parser = parser;
             this.processor = processor;
-            this.ships = new List<IShip>();
             this.factory = factory;
             this.humanPlayer = humanPlayer;
             this.computerPlayer = computerPlayer;
             this.currentPlayer = currentPlayer;
-            this.factoryForView = factoryForView;
-            //this.view = factory.CreateConsoleView(factoryForView);
+            this.view = view;
         }
 
 
@@ -60,8 +55,7 @@ namespace Battleships.BattleShipsEngine
 
         public IBattleShipFactory BattleShipFactory1 { get { return this.factory; } set { this.factory = value; } }
 
-        public IList<IShip> Ships { get { return this.ships; } private set { this.ships = value; } }
-      public IView View { get {return this.view; } set { this.view = value; } }
+        public IView View { get { return this.view; } set { this.view = value; } }
 
 
 
@@ -117,7 +111,9 @@ namespace Battleships.BattleShipsEngine
             //this.currentPlayer = this.humanPlayer;
 
             this.OnStarted();
+
             string commandAsString = null;
+
             while ((commandAsString = this.view.ReadLine()) != TerminationCommand)
             {
                 try
@@ -126,16 +122,15 @@ namespace Battleships.BattleShipsEngine
 
                     if (command != null)
                     {
-
-                        this.Processor.ProcessSingleCommand(command, commandAsString);
+                        var commandResult = this.Processor.ProcessSingleCommand(command, commandAsString);
+                        this.view.WriteLine(commandResult);
                     }
-                    
+
                     this.view.Update();
                 }
                 catch (Exception ex)
                 {
                     this.view.WriteLine(ex.Message);
-
                 }
             }
 

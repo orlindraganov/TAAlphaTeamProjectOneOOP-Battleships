@@ -8,6 +8,6 @@ namespace Battleships.BattleshipsEngine.Providers
     {
          ICollection<ICommand> Commands { get;  set; }
 
-        void ProcessSingleCommand(ICommand command, string commandParameters);
+        string ProcessSingleCommand(ICommand command, string commandParameters);
     }
 }
