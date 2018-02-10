@@ -25,12 +25,13 @@ namespace Battleships.UnitTests.BattleshipsFactoryTests
         [TestMethod]
         public void InvokeCreateMethod()
         {
-            //Arrange & Act
+            //Arrange
             var stubContainer = new Mock<IComponentContext>();
             var mockedCommandFactory = new Mock<ICommandFactory>();
             mockedCommandFactory.Setup(x => x.Create(It.IsAny<string>())).Returns(value: It.IsAny<ICommand>());
+            //Act
+            mockedCommandFactory.Object.Create("Test");
             //Assert
-            //mockedCommandFactory.Create(cmName).Verify(x => x.Create(It.IsAny<string>()), Times.Once);
             mockedCommandFactory.Verify(x => x.Create(It.IsAny<string>()), Times.Once);
         }
     }
