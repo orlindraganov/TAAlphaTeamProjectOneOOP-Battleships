@@ -21,10 +21,10 @@ namespace Battleships.View
             this.Width = width;
 
             this.SetConsole(ConsoleSettings.Text);
-            this.DrawHorizontalLine(startingRow, startingCol, width, Constants.SegmentBorder);
-            this.DrawVerticalLine(startingCol, startingRow, height, Constants.SegmentBorder);
-            this.DrawVerticalLine(startingCol + width - 1, startingRow, height, Constants.SegmentBorder);
-            this.DrawHorizontalLine(startingRow + height - 1, startingCol, width, Constants.SegmentBorder);
+            this.DrawHorizontalLine(startingRow, startingCol, width, ViewSettings.SegmentBorder);
+            this.DrawVerticalLine(startingCol, startingRow, height, ViewSettings.SegmentBorder);
+            this.DrawVerticalLine(startingCol + width - 1, startingRow, height, ViewSettings.SegmentBorder);
+            this.DrawHorizontalLine(startingRow + height - 1, startingCol, width, ViewSettings.SegmentBorder);
         }
 
         public int StartingRow
@@ -94,33 +94,33 @@ namespace Battleships.View
             switch (settings)
             {
                 case ConsoleSettings.Text:
-                    Console.BackgroundColor = Constants.ConsoleDefaultBackgroundColor;
-                    Console.ForegroundColor = Constants.ConsoleDefaultForegroundColor;
+                    Console.BackgroundColor = ViewSettings.ConsoleDefaultBackgroundColor;
+                    Console.ForegroundColor = ViewSettings.ConsoleDefaultForegroundColor;
                     return;
 
                 case ConsoleSettings.WaterNotHit:
-                    Console.BackgroundColor = Constants.NotHitBackgroundColor;
-                    Console.ForegroundColor = Constants.WaterNotHitForegroundColor;
+                    Console.BackgroundColor = ViewSettings.NotHitBackgroundColor;
+                    Console.ForegroundColor = ViewSettings.WaterNotHitForegroundColor;
                     return;
 
                 case ConsoleSettings.WaterHit:
-                    Console.BackgroundColor = Constants.HitBackgroundColor;
-                    Console.ForegroundColor = Constants.WaterHitForegroundColor;
+                    Console.BackgroundColor = ViewSettings.HitBackgroundColor;
+                    Console.ForegroundColor = ViewSettings.WaterHitForegroundColor;
                     return;
 
                 case ConsoleSettings.ShipNotHit:
-                    Console.BackgroundColor = Constants.NotHitBackgroundColor;
-                    Console.ForegroundColor = Constants.ShipNotHitForegroundColor;
+                    Console.BackgroundColor = ViewSettings.NotHitBackgroundColor;
+                    Console.ForegroundColor = ViewSettings.ShipNotHitForegroundColor;
                     return;
 
                 case ConsoleSettings.ShipHit:
-                    Console.BackgroundColor = Constants.HitBackgroundColor;
-                    Console.ForegroundColor = Constants.ShipHitForegroundColor;
+                    Console.BackgroundColor = ViewSettings.HitBackgroundColor;
+                    Console.ForegroundColor = ViewSettings.ShipHitForegroundColor;
                     return;
 
                 case ConsoleSettings.EmptyMatrix:
-                    Console.BackgroundColor = Constants.ConsoleDefaultBorderBackgroundColor;
-                    Console.ForegroundColor = Constants.ConsoleDefaultBorderColor;
+                    Console.BackgroundColor = ViewSettings.ConsoleDefaultBorderBackgroundColor;
+                    Console.ForegroundColor = ViewSettings.ConsoleDefaultBorderColor;
                     return;
             }
         }

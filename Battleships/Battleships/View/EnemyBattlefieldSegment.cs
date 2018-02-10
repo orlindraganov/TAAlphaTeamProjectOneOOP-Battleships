@@ -15,8 +15,8 @@ namespace Battleships.View
         protected override void DrawShip(IShip ship)
         {
 
-            char hit = Constants.HitSymbol;
-            char notHit = Constants.WaterNotHitSymbol;
+            char hit = ViewSettings.HitSymbol;
+            char notHit = ViewSettings.WaterNotHitSymbol;
             char symbol;
 
             foreach (var element in ship.Elements)

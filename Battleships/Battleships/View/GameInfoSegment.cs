@@ -69,12 +69,12 @@ namespace Battleships.View
 
         protected override int GetMinimumHeight()
         {
-            return Constants.GameInfoSegmentMinHeight;
+            return ViewSettings.GameInfoSegmentMinHeight;
         }
 
         protected override int GetMinimumWidth()
         {
-            return Constants.GameInfoSegmentMinWidth;
+            return ViewSettings.GameInfoSegmentMinWidth;
         }
 
         public int CalculateGameInfoRow()
@@ -113,7 +113,7 @@ namespace Battleships.View
         {
             if (this.FirstPlayer == null || this.SecondPlayer == null)
             {
-                this.GameInfo = Constants.GameName;
+                this.GameInfo = ViewSettings.GameName;
             }
             else
             {
