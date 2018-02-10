@@ -19,7 +19,7 @@ namespace Battleships.BattleshipsEngine
                 this.cmdFactory = cmdFactory ?? throw new ArgumentNullException();
             }
 
-            protected ICommandFactory CmdFactory => cmdFactory;
+            public ICommandFactory CmdFactory => cmdFactory;
 
             public ICommand ParseCommand(string commandLine)
             {

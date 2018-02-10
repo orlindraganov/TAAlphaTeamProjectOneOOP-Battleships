@@ -65,13 +65,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandParserTests\ComandParserTesting.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Battleships\Battleships.csproj">
+      <Project>{76496afe-bbfc-4363-9c34-cb45eaa65c00}</Project>
+      <Name>Battleships</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StartUp\StartUp.csproj">
+      <Project>{d985021f-b7ff-4c5c-b63a-554fe74a9691}</Project>
+      <Name>StartUp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
