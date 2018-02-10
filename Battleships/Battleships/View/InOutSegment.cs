@@ -26,9 +26,9 @@ namespace Battleships.View
             this.WriteStartingPosition = new Position(outPropmtRow, promptsCol + offset);
         }
 
-        private string InputPrompt => Constants.InOutSegmentInputPrompt;
+        private string InputPrompt => ViewSettings.InOutSegmentInputPrompt;
 
-        private string OutputPrompt => Constants.InOutSegmentOutputPrompt;
+        private string OutputPrompt => ViewSettings.InOutSegmentOutputPrompt;
 
         private Position ReadStartingPosition { get; set; }
 
@@ -40,12 +40,12 @@ namespace Battleships.View
 
         protected override int GetMinimumHeight()
         {
-            return Constants.InOutSegmentMinHeight;
+            return ViewSettings.InOutSegmentMinHeight;
         }
 
         protected override int GetMinimumWidth()
         {
-            return Constants.InOutSegmentMinWidth;
+            return ViewSettings.InOutSegmentMinWidth;
         }
 
         public override void Update()

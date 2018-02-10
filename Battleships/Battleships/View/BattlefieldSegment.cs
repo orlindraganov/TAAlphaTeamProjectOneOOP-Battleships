@@ -38,7 +38,7 @@ namespace Battleships.View
         {
             get
             {
-                return Constants.BattlefieldHorizontalBorder;
+                return ViewSettings.BattlefieldHorizontalBorder;
             }
         }
 
@@ -46,7 +46,7 @@ namespace Battleships.View
         {
             get
             {
-                return Constants.BattlefieldVerticalBorder;
+                return ViewSettings.BattlefieldVerticalBorder;
             }
         }
 
@@ -54,7 +54,7 @@ namespace Battleships.View
         {
             get
             {
-                return Constants.BattlefieldCrossBorder;
+                return ViewSettings.BattlefieldCrossBorder;
             }
         }
 
@@ -79,12 +79,12 @@ namespace Battleships.View
 
         protected override int GetMinimumHeight()
         {
-            return Constants.BattlefieldSegmentMinHeight;
+            return ViewSettings.BattlefieldSegmentMinHeight;
         }
 
         protected override int GetMinimumWidth()
         {
-            return Constants.BattlefieldSegmentMinWidth;
+            return ViewSettings.BattlefieldSegmentMinWidth;
         }
 
         public override void Update()
@@ -123,7 +123,7 @@ namespace Battleships.View
                 case GameObjectElementType.Ship:
                     if (element.IsHit)
                     {
-                        symbol = Constants.HitSymbol;
+                        symbol = ViewSettings.HitSymbol;
                         this.SetConsole(ConsoleSettings.ShipHit);
                     }
                     else
@@ -135,12 +135,12 @@ namespace Battleships.View
                 case GameObjectElementType.Water:
                     if (element.IsHit)
                     {
-                        symbol = Constants.HitSymbol;
+                        symbol = ViewSettings.HitSymbol;
                         this.SetConsole(ConsoleSettings.WaterHit);
                     }
                     else
                     {
-                        symbol = Constants.WaterNotHitSymbol;
+                        symbol = ViewSettings.WaterNotHitSymbol;
                         this.SetConsole(ConsoleSettings.WaterNotHit);
                     }
                     break;
@@ -255,8 +255,8 @@ namespace Battleships.View
 
         private void DrawWater(IWater water)
         {
-            var notHit = Constants.WaterNotHitSymbol;
-            var hit = Constants.HitSymbol;
+            var notHit = ViewSettings.WaterNotHitSymbol;
+            var hit = ViewSettings.HitSymbol;
 
             foreach (var element in water.Elements)
             {
