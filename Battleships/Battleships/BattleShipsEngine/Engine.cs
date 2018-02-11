@@ -36,8 +36,7 @@ namespace Battleships.BattleShipsEngine
         IPlayer currentPlayer,
         IBattleShipFactory factory,
         IView view
-
-            )
+        )
         {
             this.Parser = parser;
             this.processor = processor;
