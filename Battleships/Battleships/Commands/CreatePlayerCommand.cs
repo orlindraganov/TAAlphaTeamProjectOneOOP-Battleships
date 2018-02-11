@@ -9,8 +9,8 @@ namespace Battleships.Commands
 {
     public class CreatePlayerCommand : ICommand
     {
-        private readonly IBattleShipFactory factory;
-        private readonly IEngine engine;
+        protected readonly IBattleShipFactory factory;
+        protected readonly IEngine engine;
 
         public CreatePlayerCommand(IBattleShipFactory factory, IEngine engine)
         {

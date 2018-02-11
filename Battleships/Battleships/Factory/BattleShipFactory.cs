@@ -6,6 +6,7 @@ using Battleships.Utilities.Contracts;
 using Battleships.Utilities;
 using Battleships.View.Contracts;
 using Battleships.View;
+using System;
 
 namespace Battleships.Factory
 {
@@ -54,6 +55,10 @@ namespace Battleships.Factory
 
         public IGameObjectElement CreateGameObjectElement(IPosition pos, GameObjectElementType type)
         {
+            if (pos == null)
+            {
+                throw new NullReferenceException();
+            }
             return new GameObjectElement(pos, type);
         }
 
