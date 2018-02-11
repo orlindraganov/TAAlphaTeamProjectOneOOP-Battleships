@@ -92,6 +92,7 @@
     <Compile Include="Commands\FakeCreateAircraftCarrierCommand.cs" />
     <Compile Include="Commands\CreateAircraftCarrierCommandShould.cs" />
     <Compile Include="Commands\CreateBattleCruiserCommandShould.cs" />
+    <Compile Include="EngineTests\EngineShould.cs" />
     <Compile Include="Factory\CommandFactoryShould.cs" />
     <Compile Include="Factory\MockedCommandFactory.cs" />
     <Compile Include="Factory\BattleShipsFactoryShould.cs" />
