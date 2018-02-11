@@ -98,6 +98,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CommandProcessorShould.cs" />
     <Compile Include="View\ConsoleViewTests.cs" />
+    <Compile Include="View\GameInfoSegmentTests.cs" />
+    <Compile Include="View\ViewSegmentTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

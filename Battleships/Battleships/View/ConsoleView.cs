@@ -46,6 +46,7 @@ namespace Battleships.View
             {
                 Guard.WhenArgument(this.FirstPlayer, "Human player").IsNotNull().Throw();
                 Guard.WhenArgument(value, "Human player").IsNull().Throw();
+                this.GameInfoSegment.FirstPlayer = value;
                 this.PlayerBattlefieldSegment.Player = value;
                 this.firstPlayer = value;
             }
@@ -61,6 +62,7 @@ namespace Battleships.View
             {
                 Guard.WhenArgument(this.SecondPlayer, "Computer player").IsNotNull().Throw();
                 Guard.WhenArgument(value, "Computer player").IsNull().Throw();
+                this.GameInfoSegment.SecondPlayer = value;
                 this.EnemyBattlefieldSegment.Player = value;
                 this.secondPlayer = value;
             }

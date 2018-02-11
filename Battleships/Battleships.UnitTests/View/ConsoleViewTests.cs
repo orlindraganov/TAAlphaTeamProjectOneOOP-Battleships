@@ -119,6 +119,26 @@ namespace Battleships.UnitTests.View
         }
 
         [TestMethod]
+        public void UpdateShouldInvokeInOutUpdate()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+
+            var inOutSegmentMockContext = new Mock<IInOutSegment>();
+            var inOutSegmentMock = inOutSegmentMockContext.Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub,
+                inOutSegmentMock);
+
+            //Act
+            view.Update();
+
+            //Assert
+            inOutSegmentMockContext.Verify(x => x.Update(), Times.Exactly(1));
+        }
+
+        [TestMethod]
         public void ReadLineShouldReturnInOutReadLine()
         {
             //Arrange
@@ -208,14 +228,160 @@ namespace Battleships.UnitTests.View
             var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub,
                 inOutSegmentStub);
 
-            var factory= new BattleShipFactory();
-
             var playerStub = new Mock<IPlayer>().Object;
 
             view.FirstPlayer = playerStub;
 
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => view.FirstPlayer = playerStub);
+        }
+
+        [TestMethod]
+        public void FirstPlayerSetterShouldCallPlayerBattlerfieldSegmentPlayerSetterWithCorrectParameter()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+
+            var playerBattlefieldSegmentMockContext = new Mock<IBattlefieldSegment>();
+            var playerBattlefieldSegmentMock = playerBattlefieldSegmentMockContext.Object;
+
+            var enemyBattlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, playerBattlefieldSegmentMock, enemyBattlefieldSegmentStub,
+                inOutSegmentStub);
+
+            var playerStub = new Mock<IPlayer>().Object;
+
+            //Act
+            view.FirstPlayer = playerStub;
+
+            //Assert
+            playerBattlefieldSegmentMockContext.VerifySet(x => x.Player = playerStub);
+        }
+
+        [TestMethod]
+        public void FirstPlayerSetterShouldCallGameInfoSegmentFirstPlayerSetterWithCorrectParameter()
+        {
+            //Arrange
+            var gameInfoSegmentMockContext = new Mock<IGameInfoSegment>();
+            var gameInfoSegmentMock = gameInfoSegmentMockContext.Object;
+
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentMock, battlefieldSegmentStub, battlefieldSegmentStub,
+                inOutSegmentStub);
+
+            var playerStub = new Mock<IPlayer>().Object;
+
+            //Act
+            view.FirstPlayer = playerStub;
+
+            //Assert
+            gameInfoSegmentMockContext.VerifySet(x => x.FirstPlayer = playerStub);
+        }
+
+        [TestMethod]
+        public void SecondPlayerSetShouldSetCorrectParameter()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub,
+                inOutSegmentStub);
+
+            var playerStub = new Mock<IPlayer>().Object;
+
+            //Act
+            view.SecondPlayer = playerStub;
+
+            //Assert
+            Assert.AreSame(playerStub, view.SecondPlayer);
+        }
+
+        [TestMethod]
+        public void SecondPlayerSetterShouldThrowArgumentNullExceptionWhenNullPassed()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub,
+                inOutSegmentStub);
+
+            IPlayer player = null;
+
+            //Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => view.SecondPlayer = player);
+        }
+
+        [TestMethod]
+        public void SecondPlayerSetterShouldThrowArgumentExceptionWhenAlreadySet()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub,
+                inOutSegmentStub);
+
+            var playerStub = new Mock<IPlayer>().Object;
+
+            view.SecondPlayer = playerStub;
+
+            //Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => view.SecondPlayer = playerStub);
+        }
+
+        [TestMethod]
+        public void SecondPlayerSetterShouldCallEnemyBattlerfieldSegmentPlayerSetterWithCorrectParameter()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+
+            var enemyBattlefieldSegmentMockContext = new Mock<IBattlefieldSegment>();
+            var enemyBattlefieldSegmentMock = enemyBattlefieldSegmentMockContext.Object;
+
+            var playerBattlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, playerBattlefieldSegmentStub, enemyBattlefieldSegmentMock,
+                inOutSegmentStub);
+
+            var playerStub = new Mock<IPlayer>().Object;
+
+            //Act
+            view.SecondPlayer = playerStub;
+
+            //Assert
+            enemyBattlefieldSegmentMockContext.VerifySet(x => x.Player = playerStub);
+        }
+
+        [TestMethod]
+        public void SecondPlayerSetterShouldCallGameInfoSegmentSecondPlayerSetterWithCorrectParameter()
+        {
+            //Arrange
+            var gameInfoSegmentMockContext = new Mock<IGameInfoSegment>();
+            var gameInfoSegmentMock = gameInfoSegmentMockContext.Object;
+
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentMock, battlefieldSegmentStub, battlefieldSegmentStub,
+                inOutSegmentStub);
+
+            var playerStub = new Mock<IPlayer>().Object;
+
+            //Act
+            view.SecondPlayer = playerStub;
+
+            //Assert
+            gameInfoSegmentMockContext.VerifySet(x => x.SecondPlayer = playerStub);
         }
     }
 }
