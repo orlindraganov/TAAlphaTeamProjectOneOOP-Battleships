@@ -11,9 +11,8 @@ namespace Battleships.Commands
 {
     public class CreateBattleCruiserCommand : ICommand
     {
-
-        private readonly IBattleShipFactory factory;
-        private readonly IEngine engine;
+        protected readonly IBattleShipFactory factory;
+        protected readonly IEngine engine;
 
         public CreateBattleCruiserCommand(IBattleShipFactory factory, IEngine engine)
         {

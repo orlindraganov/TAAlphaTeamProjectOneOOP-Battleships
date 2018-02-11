@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartUp", "StartUp\StartUp.csproj", "{D985021F-B7FF-4C5C-B63A-554FE74A9691}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleships", "Battleships\Battleships.csproj", "{76496AFE-BBFC-4363-9C34-CB45EAA65C00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlympicGamesUnitTests", "OlympicGamesUnitTests\OlympicGamesUnitTests.csproj", "{F3000760-3890-4824-BF22-FC835ABE2035}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleships.UnitTests", "Battleships.UnitTests\Battleships.UnitTests.csproj", "{CA9603DF-8E32-4B12-A241-4A062B28C44A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{76496AFE-BBFC-4363-9C34-CB45EAA65C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76496AFE-BBFC-4363-9C34-CB45EAA65C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76496AFE-BBFC-4363-9C34-CB45EAA65C00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3000760-3890-4824-BF22-FC835ABE2035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3000760-3890-4824-BF22-FC835ABE2035}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3000760-3890-4824-BF22-FC835ABE2035}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3000760-3890-4824-BF22-FC835ABE2035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9603DF-8E32-4B12-A241-4A062B28C44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9603DF-8E32-4B12-A241-4A062B28C44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9603DF-8E32-4B12-A241-4A062B28C44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9603DF-8E32-4B12-A241-4A062B28C44A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
