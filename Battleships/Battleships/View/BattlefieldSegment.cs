@@ -17,7 +17,7 @@ namespace Battleships.View
 
         protected BattlefieldSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
-            IsBattlefieldDrawn = false;
+            this.IsBattlefieldDrawn = false;
         }
 
         public IPlayer Player

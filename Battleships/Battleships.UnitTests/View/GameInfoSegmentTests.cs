@@ -115,5 +115,29 @@ namespace Battleships.UnitTests.View
             //Assert
             Assert.AreSame(playerStub, segment.SecondPlayer);
         }
+
+        [TestMethod]
+        public void CalculateGameInfoRowShouldCalculateCorrectly()
+        {
+            //Arrange
+            var segment = new GameInfoSegment(0, 5, 0, 40);
+            var expected = 2;
+
+            //Act & Assert
+            Assert.AreEqual(expected, segment.CalculateGameInfoRow());
+        }
+
+        [TestMethod]
+        public void CalculateGameInfoColShouldCalculateCorrectly()
+        {
+            //Arrange
+            var segment = new GameInfoSegment(0, 5, 0, 40);
+            var gameInfo = "1234";
+            var expected = 18;
+            segment.GameInfo = gameInfo;
+
+            //Act & Assert
+            Assert.AreEqual(expected, segment.CalculateGameInfoCol());
+        }
     }
 }
