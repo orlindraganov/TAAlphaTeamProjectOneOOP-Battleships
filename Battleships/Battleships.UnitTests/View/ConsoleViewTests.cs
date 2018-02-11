@@ -1,9 +1,7 @@
 ﻿using System;
 using Battleships.Factory;
-using Battleships.Models;
 using Battleships.Models.Contracts;
 using Battleships.View;
-using Battleships.View.Common;
 using Battleships.View.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -13,13 +11,6 @@ namespace Battleships.UnitTests.View
     [TestClass]
     public class ConsoleViewTests
     {
-        //[ClassInitialize]
-        //public static void Initialize(TestContext context)
-        //{
-        //    Console.SetWindowSize(ViewSettings.ConsoleDefaultWidth, ViewSettings.ConsoleDefaultHeight);
-        //    Console.SetBufferSize(ViewSettings.ConsoleDefaultWidth, ViewSettings.ConsoleDefaultHeight);
-        //}
-
         [TestMethod]
         public void ConstructorShouldThrowArgumentNullExceptionWhenGameInfoSegmentIsNull()
         {
@@ -179,8 +170,6 @@ namespace Battleships.UnitTests.View
 
             var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub,
                 inOutSegmentStub);
-
-            var factoryStub = new Mock<IBattleShipFactory>().Object;
 
             var playerStub = new Mock<IPlayer>().Object;
 
