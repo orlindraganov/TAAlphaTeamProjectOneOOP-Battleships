@@ -31,20 +31,13 @@ namespace Battleships.BattleShipsEngine
         public Engine(
         ICommandParser parser,
         ICommandProcessor processor,
-        IPlayer humanPlayer,
-        IPlayer computerPlayer,
-        IPlayer currentPlayer,
         IBattleShipFactory factory,
         IView view
-
-            )
+        )
         {
             this.Parser = parser;
             this.processor = processor;
             this.factory = factory;
-            this.humanPlayer = humanPlayer;
-            this.computerPlayer = computerPlayer;
-            this.currentPlayer = currentPlayer;
             this.view = view;
         }
 
