@@ -1,6 +1,7 @@
 ﻿using System;
 using Battleships.Factory;
 using Battleships.Models.Contracts;
+using Battleships.Utilities;
 using Battleships.View;
 using Battleships.View.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -136,6 +137,171 @@ namespace Battleships.UnitTests.View
 
             //Assert
             inOutSegmentMockContext.Verify(x => x.Update(), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void UpdateWithPositionShouldInvokeGameInfoUpdate()
+        {
+            //Arrange
+            var gameInfoSegmentMockContext = new Mock<IGameInfoSegment>();
+            var gameInfoSegmentMock = gameInfoSegmentMockContext.Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentMock, battlefieldSegmentStub, battlefieldSegmentStub, inOutSegmentStub);
+
+            var position = new Position(3, 3);
+            //Act
+            view.Update(position);
+
+            //Assert
+            gameInfoSegmentMockContext.Verify(x => x.Update(), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void UpdateWithPositionShouldInvokePlayerBattlefieldUpdate()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+
+            var playerBattlefieldMockContext = new Mock<IBattlefieldSegment>();
+            var playerBattlefieldMock = playerBattlefieldMockContext.Object;
+
+            var enemyBattlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, playerBattlefieldMock, enemyBattlefieldSegmentStub, inOutSegmentStub);
+
+            var position = new Position(3, 3);
+
+            //Act
+            view.Update(position);
+
+            //Assert
+            playerBattlefieldMockContext.Verify(x => x.Update(position), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void UpdateWithPositionShouldInvokeEnemyBattlefieldUpdate()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var playerBattlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+
+            var enemyBattlefieldMockContext = new Mock<IBattlefieldSegment>();
+            var enemyBattlefieldMock = enemyBattlefieldMockContext.Object;
+
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, playerBattlefieldSegmentStub, enemyBattlefieldMock, inOutSegmentStub);
+
+            var position = new Position(3, 3);
+
+            //Act
+            view.Update(position);
+
+            //Assert
+            enemyBattlefieldMockContext.Verify(x => x.Update(position), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void UpdateWithPositionShouldInvokeInOutUpdate()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+
+            var inOutSegmentMockContext = new Mock<IInOutSegment>();
+            var inOutSegmentMock = inOutSegmentMockContext.Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub, inOutSegmentMock);
+
+            var position = new Position(3, 3);
+
+            //Act
+            view.Update(position);
+
+            //Assert
+            inOutSegmentMockContext.Verify(x => x.Update(), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void DrawBordersShouldInvokeGameInfoDrawBorders()
+        {
+            //Arrange
+            var gameInfoSegmentMockContext = new Mock<IGameInfoSegment>();
+            var gameInfoSegmentMock = gameInfoSegmentMockContext.Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentMock, battlefieldSegmentStub, battlefieldSegmentStub, inOutSegmentStub);
+
+            //Act
+            view.DrawBorders();
+
+            //Assert
+            gameInfoSegmentMockContext.Verify(x => x.DrawBorders(), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void DrawBordersShouldInvokePlayerBattlefieldDrawBorders()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+
+            var playerBattlefieldMockContext = new Mock<IBattlefieldSegment>();
+            var playerBattlefieldMock = playerBattlefieldMockContext.Object;
+
+            var enemyBattlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, playerBattlefieldMock, enemyBattlefieldSegmentStub, inOutSegmentStub);
+
+            //Act
+            view.DrawBorders();
+
+            //Assert
+            playerBattlefieldMockContext.Verify(x => x.DrawBorders(), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void DrawBordersShouldInvokeEnemyBattlefieldDrawBorders()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var playerBattlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+
+            var enemyBattlefieldMockContext = new Mock<IBattlefieldSegment>();
+            var enemyBattlefieldMock = enemyBattlefieldMockContext.Object;
+
+            var inOutSegmentStub = new Mock<IInOutSegment>().Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, playerBattlefieldSegmentStub, enemyBattlefieldMock, inOutSegmentStub);
+
+            //Act
+            view.DrawBorders();
+
+            //Assert
+            enemyBattlefieldMockContext.Verify(x => x.DrawBorders(), Times.Exactly(1));
+        }
+
+        [TestMethod]
+        public void DrawBordersShouldInvokeInOutDrawBorders()
+        {
+            //Arrange
+            var gameInfoSegmentStub = new Mock<IGameInfoSegment>().Object;
+            var battlefieldSegmentStub = new Mock<IBattlefieldSegment>().Object;
+
+            var inOutSegmentMockContext = new Mock<IInOutSegment>();
+            var inOutSegmentMock = inOutSegmentMockContext.Object;
+
+            var view = new ConsoleView(gameInfoSegmentStub, battlefieldSegmentStub, battlefieldSegmentStub, inOutSegmentMock);
+
+            //Act
+            view.DrawBorders();
+
+            //Assert
+            inOutSegmentMockContext.Verify(x => x.DrawBorders(), Times.Exactly(1));
         }
 
         [TestMethod]

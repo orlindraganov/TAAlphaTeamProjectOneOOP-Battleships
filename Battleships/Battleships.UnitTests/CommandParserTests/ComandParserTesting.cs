@@ -14,13 +14,13 @@ namespace Battleships.UnitTests.CommandParserTests
         {
             Assert.Throws<ArgumentNullException>(() => new CommandParser(null));
         }
-        [Test]
-        public void SetsTheRightFactoryToProperty()
-        {
-            var factory = new Mock<ICommandFactory>();
-            var parser = new Mock<ICommandParser>();
+        //[Test]
+        //public void SetsTheRightFactoryToProperty()
+        //{
+        //    var factory = new Mock<ICommandFactory>();
+        //    var parser = new Mock<ICommandParser>();
             
-            Assert.AreSame(factory.Object,parser.Object.CmdFactory);
-        }
+        //    Assert.AreSame(factory.Object,parser.Object.CmdFactory);
+        //}
     }
 }
