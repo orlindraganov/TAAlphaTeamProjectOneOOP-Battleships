@@ -4,6 +4,7 @@ using Battleships.Commands;
 using Battleships.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Battleships.BattleShipsEngine;
 
 namespace Battleships.UnitTests.Commands
 {
@@ -20,6 +21,14 @@ namespace Battleships.UnitTests.Commands
             //Act & Assert
             Assert.AreSame(fakeEngine.Object, mockFactory.Engine);
 
+        }
+        [TestMethod]
+        public void IsImplementingICommand()
+        {
+            var fakeFactory = new Mock<IBattleShipFactory>();
+            var fakeEngine = new Mock<IEngine>();
+            var mockFactory = new FakeBeginPlayCommand(fakeFactory.Object, fakeEngine.Object);
+            Assert.IsInstanceOfType(mockFactory, typeof(ICommand));
         }
     }
 }
