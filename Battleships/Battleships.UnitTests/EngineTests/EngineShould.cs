@@ -20,13 +20,14 @@ namespace Battleships.UnitTests.EngineTests
         [TestMethod]
         public void StartsAtleastOnce()
         {
-     
+
             var engineMOck = new Mock<IEngine>();
             engineMOck.Setup(x => x.Start()).Verifiable();
             engineMOck.Object.Start();
 
-            engineMOck.Verify(x=>x.Start(),Times.AtLeastOnce);
+            engineMOck.Verify(x => x.Start(), Times.AtLeastOnce);
 
         }
+ 
     }
 }

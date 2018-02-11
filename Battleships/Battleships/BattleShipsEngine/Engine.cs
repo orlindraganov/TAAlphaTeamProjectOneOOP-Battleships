@@ -109,6 +109,8 @@ namespace Battleships.BattleShipsEngine
 
             while ((commandAsString = this.view.ReadLine()) != TerminationCommand)
             {
+              
+            
                 try
                 {
                     var command = this.Parser.ParseCommand(commandAsString);

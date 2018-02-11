@@ -5,6 +5,7 @@ using Battleships.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Battleships.BattleShipsEngine;
+using System.Collections.Generic;
 
 namespace Battleships.UnitTests.Commands
 {
@@ -31,5 +32,6 @@ namespace Battleships.UnitTests.Commands
             Assert.IsInstanceOfType(mockFactory, typeof(ICommand));
 
         }
+    
     }
 }

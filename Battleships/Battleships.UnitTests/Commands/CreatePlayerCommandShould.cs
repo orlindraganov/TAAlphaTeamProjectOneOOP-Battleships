@@ -43,5 +43,7 @@ namespace Battleships.UnitTests.Commands
             Assert.IsInstanceOfType(mockFactory, typeof(ICommand));
 
         }
+
+      
     }
 }
