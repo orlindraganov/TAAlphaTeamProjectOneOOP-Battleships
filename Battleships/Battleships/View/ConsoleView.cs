@@ -23,9 +23,6 @@ namespace Battleships.View
 
         public ConsoleView(IGameInfoSegment gameInfoSegment, IBattlefieldSegment playerBattlefieldSegment, IBattlefieldSegment enemyBattlefieldSegment, IInOutSegment inOutSegment)
         {
-            Console.SetBufferSize(ViewSettings.ConsoleDefaultWidth, ViewSettings.ConsoleDefaultHeight);
-            Console.SetWindowSize(ViewSettings.ConsoleDefaultWidth, ViewSettings.ConsoleDefaultHeight);
-
             Guard.WhenArgument(gameInfoSegment, "Game Info Segment").IsNull().Throw();
             this.gameInfoSegment = gameInfoSegment;
 
