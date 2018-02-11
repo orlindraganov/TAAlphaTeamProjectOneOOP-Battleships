@@ -76,11 +76,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandParserTests\ComandParserTesting.cs" />
+    <Compile Include="Commands\BeginPlayCommandShould.cs" />
+    <Compile Include="Commands\CreateFireAtCommandShould.cs" />
     <Compile Include="Commands\CreatePlayerCommandShould.cs" />
     <Compile Include="Commands\CreateSubmarineCommandShould.cs" />
     <Compile Include="Commands\CreateFrigateCommandShould.cs" />
     <Compile Include="Commands\CreateDestroyerCommandShould.cs" />
+    <Compile Include="Commands\FakeBeginPlayCommand.cs" />
     <Compile Include="Commands\FakeCreatePlayerCommand.cs" />
+    <Compile Include="Commands\FakeCreateFireAtCommand.cs" />
     <Compile Include="Commands\FakeCreateSubmarineCommand.cs" />
     <Compile Include="Commands\FakeCreateFrigateCommand.cs" />
     <Compile Include="Commands\FakeCreateDestroyerCommand.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Factory\MockedCommandFactory.cs" />
     <Compile Include="Factory\BattleShipsFactoryShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CommandProcessorShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -11,7 +11,7 @@ namespace Battleships.Commands
 {
     public class FireAtCommand : ICommand
     {
-        private readonly IEngine engine;
+        protected readonly IEngine engine;
 
         public FireAtCommand(IBattleShipFactory factory, IEngine engine)
         {

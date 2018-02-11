@@ -16,6 +16,7 @@ namespace Battleships.BattleshipsEngine.Providers
         {
             this.Commands = new List<ICommand>();
         }
+
         public string ProcessSingleCommand(ICommand command, string commandParameters)
         {
             var lineParameters = commandParameters.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -24,6 +25,7 @@ namespace Battleships.BattleshipsEngine.Providers
             var normalizedOutput = this.NormalizeOutput(result);
             return normalizedOutput;
         }
+
         private string NormalizeOutput(string commandOutput)
         {
             var list = commandOutput.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList().Where(x => !string.IsNullOrWhiteSpace(x));

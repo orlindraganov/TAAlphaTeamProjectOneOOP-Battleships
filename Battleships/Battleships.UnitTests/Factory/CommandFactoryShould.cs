@@ -36,22 +36,5 @@ namespace Battleships.UnitTests.BattleshipsFactoryTests
             mockedCommandFactory.Verify(x => x.Create(It.IsAny<string>()), Times.Once);
         }
 
-        //[TestMethod]
-        //public void InvokeCreateMethodInOriginalFacory()
-        //{
-        //    //Arrange
-        //    var stubContainer = new Mock<IComponentContext>();
-        //    var mockICommand = new Mock<ICommand>();
-        //    stubContainer.Setup(x => x.ResolveNamed<ICommand>(It.IsAny<string>())).Returns(mockICommand.Object);
-
-        //    var commandFactory = new CommandFactory(stubContainer.Object);
-        //    var command = commandFactory.Create("Start");
-             
-         
-        //    //Act & Assert
-        //    //Assert.IsInstanceOfType(command, typeof(ICommand));
-        //    stubContainer.Verify(x => x.ResolveNamed<ICommand>("Start"), Times.Once);
-          
-        //}
     }
 }

@@ -11,7 +11,7 @@ namespace Battleships.Commands
 {
     public class BeginPlayCommand : ICommand
     {
-        private readonly IEngine engine;
+        protected readonly IEngine engine;
 
         public BeginPlayCommand(IBattleShipFactory factory, IEngine engine)
         {
