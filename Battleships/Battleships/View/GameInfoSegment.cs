@@ -16,7 +16,6 @@ namespace Battleships.View
 
         public GameInfoSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
-            this.Update();
         }
 
         public string GameInfo

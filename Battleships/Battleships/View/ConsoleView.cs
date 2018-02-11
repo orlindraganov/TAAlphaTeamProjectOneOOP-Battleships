@@ -86,6 +86,14 @@ namespace Battleships.View
             this.InOutSegment.WriteLine(message);
         }
 
+        public void DrawBorders()
+        {
+            this.GameInfoSegment.DrawBorders();
+            this.PlayerBattlefieldSegment.DrawBorders();
+            this.EnemyBattlefieldSegment.DrawBorders();
+            this.InOutSegment.DrawBorders();
+        }
+
         public void Update()
         {
             this.GameInfoSegment.Update();
