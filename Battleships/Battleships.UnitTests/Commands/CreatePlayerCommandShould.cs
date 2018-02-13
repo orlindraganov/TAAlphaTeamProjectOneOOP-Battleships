@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Battleships.BattleShipsEngine;
 using Battleships.Commands;
+using Battleships.Models.Contracts;
 
 namespace Battleships.UnitTests.Commands
 {
@@ -83,23 +84,6 @@ namespace Battleships.UnitTests.Commands
             var cmd = new CreatePlayerCommand(factoryStub, engineStub);
 
             Assert.ThrowsException<ArgumentNullException>(() => cmd.Execute(null));
-        }
-
-        [TestMethod]
-        public void ExecuteShouldInvokeFactoryCreateBattleField()
-        {
-            var factoryMockContext = new Mock<IBattleShipFactory>();
-            var factoryMock = factoryMockContext.Object;
-
-            var engineStub = new Mock<IEngine>().Object;
-
-            var cmd = new CreatePlayerCommand(factoryMock, engineStub);
-
-            var parameters = new List<string>() { "Pesho" };
-
-            cmd.Execute(parameters);
-
-            factoryMockContext.Verify(x => x.CreateBattleField());
         }
     }
 }

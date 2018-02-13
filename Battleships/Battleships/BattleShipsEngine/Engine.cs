@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Battleships.BattleShipsEngine.Contracts;
-using Battleships.BattleshipsEngine.Providers.ContractsOfProviders;
 using Battleships.BattleshipsEngine.Providers;
 using Battleships.BattleshipsEngine;
 using Battleships.Factory;
 using Battleships.Models.Contracts;
 using Battleships.View.Contracts;
-using Battleships.View;
+using Bytes2you.Validation;
 
 namespace Battleships.BattleShipsEngine
 {
@@ -35,9 +33,16 @@ namespace Battleships.BattleShipsEngine
         IView view
         )
         {
-            this.Parser = parser;
+            Guard.WhenArgument(parser, "Parser").IsNull().Throw();
+            this.parser = parser;
+
+            Guard.WhenArgument(processor, "Processor").IsNull().Throw();
             this.processor = processor;
+
+            Guard.WhenArgument(factory, "Factory").IsNull().Throw();
             this.factory = factory;
+
+            Guard.WhenArgument(view, "View").IsNull().Throw();
             this.view = view;
         }
 

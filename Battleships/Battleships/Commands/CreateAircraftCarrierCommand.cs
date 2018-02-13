@@ -6,6 +6,7 @@ using Battleships.Utilities.Contracts;
 using System;
 using System.Collections.Generic;
 using Battleships.Utilities;
+using Bytes2you.Validation;
 
 namespace Battleships.Commands
 {
@@ -16,7 +17,10 @@ namespace Battleships.Commands
 
         public CreateAircraftCarrierCommand(IBattleShipFactory factory, IEngine engine)
         {
+            Guard.WhenArgument(factory, "Factory").IsNull().Throw();
             this.factory = factory;
+
+            Guard.WhenArgument(engine, "Engine").IsNull().Throw();
             this.engine = engine;
         }
 

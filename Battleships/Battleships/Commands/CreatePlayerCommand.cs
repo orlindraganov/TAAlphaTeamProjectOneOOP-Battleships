@@ -38,6 +38,12 @@ namespace Battleships.Commands
 
             var battlefield = this.factory.CreateBattleField();
             var water = this.factory.CreateWater(battlefield.RowsCount, battlefield.ColsCount);
+
+            foreach (var el in water.Elements)
+            {
+                battlefield[el.Position] = el;
+            }
+
             var player = this.factory.CreatePlayer(name, water, battlefield);
             this.engine.AddPlayer(player);
             return $"Welcome Player {name}";
