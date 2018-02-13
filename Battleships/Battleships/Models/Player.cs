@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Battleships.Enums;
-using Battleships.Utilities;
 using Battleships.Utilities.Contracts;
 using Bytes2you.Validation;
-using Battleships.Factory;
 
 namespace Battleships.Models
 {
@@ -15,30 +13,22 @@ namespace Battleships.Models
         private bool isAlive;
         private int health;
         private string name;
-        private IList<IShip> ships;
-        private IWater water;
-        private IBattlefield battlefield;
+        private readonly IList<IShip> ships;
+        private readonly IWater water;
+        private readonly IBattlefield battlefield;
 
-        public Player(string name, IBattleShipFactory factory)
+        public Player(string name, IWater water, IBattlefield battlefield)
         {
             this.Name = name;
-            this.Ships = new List<IShip>();
+            this.ships = new List<IShip>();
             SetHealth();
             this.IsAlive = true;
 
-            var map = new IGameObjectElement[10, 10];
+            Guard.WhenArgument(water, "Water").IsNull().Throw();
+            this.water = water;
 
-            this.Battlefield = factory.CreateBattleField(map);
-            this.Water = factory.CreateWater();
-            for (int i = 0; i < map.GetLength(0); i++)
-            {
-                for (int j = 0; j < map.GetLength(1); j++)
-                {
-                    var pos = factory.CreatePosition(i,j);
-                    var el = factory.CreateGameObjectElement(pos, GameObjectElementType.Water);
-                    this.AddWaterElement(el);
-                }
-            }
+            Guard.WhenArgument(battlefield, "Battlefield").IsNull().Throw();
+            this.battlefield = battlefield;
         }
 
         public IList<IShip> Ships
@@ -46,11 +36,6 @@ namespace Battleships.Models
             get
             {
                 return this.ships;
-            }
-            private set
-            {
-                Guard.WhenArgument(value, "Ships").IsNull().Throw();
-                this.ships = value;
             }
         }
 
@@ -60,11 +45,6 @@ namespace Battleships.Models
             {
                 return this.water;
             }
-            private set
-            {
-                Guard.WhenArgument(value, "Water").IsNull().Throw();
-                this.water = value;
-            }
         }
 
         public IBattlefield Battlefield
@@ -72,11 +52,6 @@ namespace Battleships.Models
             get
             {
                 return this.battlefield;
-            }
-            private set
-            {
-                Guard.WhenArgument(value, "Battlefield").IsNull().Throw();
-                this.battlefield = value;
             }
         }
 

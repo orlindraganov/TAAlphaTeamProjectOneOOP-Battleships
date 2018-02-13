@@ -116,7 +116,6 @@
     <Compile Include="Utilities\Position.cs" />
     <Compile Include="View\BattlefieldSegment.cs" />
     <Compile Include="View\Common\ConsoleFontTooLargeException.cs" />
-    <Compile Include="View\Common\StringExtensions.cs" />
     <Compile Include="View\Common\ViewSettings.cs" />
     <Compile Include="View\Contracts\IGameInfoSegment.cs" />
     <Compile Include="View\Contracts\IInOutSegment.cs" />

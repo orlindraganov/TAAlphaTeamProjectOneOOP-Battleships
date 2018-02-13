@@ -1,7 +1,6 @@
 ﻿using Battleships.BattleShipsEngine;
 using Battleships.BattleShipsEngine.Contracts;
 using Battleships.Factory;
-using Battleships.Models.Contracts;
 using System;
 using System.Collections.Generic;
 
@@ -31,7 +30,9 @@ namespace Battleships.Commands
                 throw new ArgumentException("Invalid parameters");
             }
 
-            var player = this.factory.CreatePlayer(name,factory);
+            var battlefield = this.factory.CreateBattleField();
+            var water = this.factory.CreateWater(battlefield.RowsCount, battlefield.ColsCount);
+            var player = this.factory.CreatePlayer(name, water, battlefield);
             this.engine.AddPlayer(player);
             return $"Welcome Player {name}";
         }

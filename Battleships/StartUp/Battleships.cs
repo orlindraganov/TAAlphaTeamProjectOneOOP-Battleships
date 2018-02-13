@@ -81,6 +81,7 @@ namespace StartUp
 
             var v = container.Resolve<IView>();
 
+            engine.Started += () => v.DrawBorders();
             engine.Started += () => v.WriteLine("Engine strted");
             engine.Start();
         }
