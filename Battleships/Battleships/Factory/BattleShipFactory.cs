@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using Battleships.Enums;
+﻿using Battleships.Enums;
 using Battleships.Models;
 using Battleships.Models.Contracts;
 using Battleships.Utilities.Contracts;
 using Battleships.Utilities;
-using Battleships.View.Contracts;
-using Battleships.View;
 using System;
+using System.Collections.Generic;
 
 namespace Battleships.Factory
 {
@@ -17,17 +15,17 @@ namespace Battleships.Factory
 
         }
 
-
-        public IBattlefield CreateBattleField(IGameObjectElement[,] map)
+        public IBattlefield CreateBattleField()
         {
+            var map = new IGameObjectElement[Battlefield.DefaultHeight, Battlefield.DefaultWidth];
             return new Battlefield(map);
         }
 
-        public IPlayer CreatePlayer(string name, IBattleShipFactory factory)
+        public IPlayer CreatePlayer(string name, IWater water, IBattlefield battlefield)
         {
-            return new Player(name, factory);
+            return new Player(name, water, battlefield);
         }
-        
+
         public IShip CreateAircraftCarrier(IPosition origin, Direction direction)
         {
             return new AircraftCarrier(origin, direction);
@@ -62,9 +60,21 @@ namespace Battleships.Factory
             return new GameObjectElement(pos, type);
         }
 
-        public IWater CreateWater()
+        public IWater CreateWater(int height, int width)
         {
-            return new Water();
+            var elements = new List<IGameObjectElement>();
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    var pos = new Position(i, j);
+                    var el = this.CreateGameObjectElement(pos, GameObjectElementType.Water);
+                    elements.Add(el);
+                }
+            }
+
+            return new Water(elements);
         }
         //public IView CreateConsoleView(IViewFactory factory)
         //{

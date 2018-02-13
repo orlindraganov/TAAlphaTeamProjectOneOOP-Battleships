@@ -8,11 +8,6 @@ namespace Battleships.Models
     {
         private IList<IGameObjectElement> elements;
 
-        public Water()
-        {
-            this.Elements = new List<IGameObjectElement>();
-        }
-
         public Water(IList<IGameObjectElement> elements)
         {
             this.Elements = elements;
