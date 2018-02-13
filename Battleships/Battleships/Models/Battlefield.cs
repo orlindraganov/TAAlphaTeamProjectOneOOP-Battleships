@@ -6,20 +6,10 @@ namespace Battleships.Models
 {
     public class Battlefield : IBattlefield
     {
-        private const int DefaultWidth = 10;
-        private const int DefaultHeight = 10;
+        public const int DefaultWidth = 10;
+        public const int DefaultHeight = 10;
 
         private IGameObjectElement[,] map;
-
-        public Battlefield()
-        {
-            this.Map = new IGameObjectElement[DefaultHeight,DefaultWidth];
-        }
-
-        public Battlefield(int height, int width)
-        {
-            this.Map = new IGameObjectElement[height,width];
-        }
 
         public Battlefield(IGameObjectElement[,] map)
         {

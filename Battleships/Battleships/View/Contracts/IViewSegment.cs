@@ -11,6 +11,9 @@ namespace Battleships.View.Contracts
         int StartingCol { get; }
 
         int Width { get; }
+
+        void DrawBorders();
+
         void Update();
     }
 }

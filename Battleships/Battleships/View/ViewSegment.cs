@@ -19,12 +19,6 @@ namespace Battleships.View
             this.Height = height;
             this.StartingCol = startingCol;
             this.Width = width;
-
-            this.SetConsole(ConsoleSettings.Text);
-            this.DrawHorizontalLine(startingRow, startingCol, width, ViewSettings.SegmentBorder);
-            this.DrawVerticalLine(startingCol, startingRow, height, ViewSettings.SegmentBorder);
-            this.DrawVerticalLine(startingCol + width - 1, startingRow, height, ViewSettings.SegmentBorder);
-            this.DrawHorizontalLine(startingRow + height - 1, startingCol, width, ViewSettings.SegmentBorder);
         }
 
         public int StartingRow
@@ -35,7 +29,7 @@ namespace Battleships.View
             }
             protected set
             {
-                Guard.WhenArgument(value, "Starting row").IsLessThan(0).IsGreaterThanOrEqual(Console.WindowHeight).Throw();
+                Guard.WhenArgument(value, "Starting row").IsLessThan(0).IsGreaterThan(Console.WindowHeight).Throw();
                 this.startingRow = value;
             }
         }
@@ -49,7 +43,7 @@ namespace Battleships.View
 
             set
             {
-                Guard.WhenArgument(value, "Height").IsLessThan(0).IsLessThan(GetMinimumHeight()).Throw();
+                Guard.WhenArgument(value, "Height").IsLessThan(0).IsLessThan(this.GetMinimumHeight()).IsGreaterThan(Console.WindowHeight).Throw();
 
                 var lastRow = startingRow + value - 1;
                 Guard.WhenArgument(lastRow, "Last row").IsGreaterThan(Console.WindowHeight).Throw();
@@ -87,6 +81,15 @@ namespace Battleships.View
 
                 this.width = value;
             }
+        }
+
+        public void DrawBorders()
+        {
+            this.SetConsole(ConsoleSettings.Text);
+            this.DrawHorizontalLine(this.StartingRow, this.StartingCol, this.Width, ViewSettings.SegmentBorder);
+            this.DrawVerticalLine(this.StartingCol, this.StartingRow, this.Height, ViewSettings.SegmentBorder);
+            this.DrawVerticalLine(this.StartingCol + this.Width - 1, this.StartingRow, this.Height, ViewSettings.SegmentBorder);
+            this.DrawHorizontalLine(this.StartingRow + this.Height - 1, this.StartingCol, this.Width, ViewSettings.SegmentBorder);
         }
 
         protected void SetConsole(ConsoleSettings settings)

@@ -16,7 +16,6 @@ namespace Battleships.View
 
         public GameInfoSegment(int startingRow, int height, int startingCol, int width) : base(startingRow, height, startingCol, width)
         {
-            this.Update();
         }
 
         public string GameInfo
@@ -90,7 +89,7 @@ namespace Battleships.View
         public override void Update()
         {
             this.ClearInfo();
-            this.CalculateResult();
+            this.GenerateInfo();
             this.WriteInfo();
         }
 
@@ -109,7 +108,7 @@ namespace Battleships.View
             this.PrintedInfoLength = this.GameInfo.Length;
         }
 
-        private void CalculateResult()
+        private void GenerateInfo()
         {
             if (this.FirstPlayer == null || this.SecondPlayer == null)
             {

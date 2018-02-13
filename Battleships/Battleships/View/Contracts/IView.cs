@@ -9,6 +9,8 @@ namespace Battleships.View.Contracts
 
         IPlayer SecondPlayer { get; set; }
 
+        void DrawBorders();
+
         void Update();
 
         void Update(IPosition position);
