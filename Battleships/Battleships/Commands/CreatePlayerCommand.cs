@@ -3,6 +3,7 @@ using Battleships.BattleShipsEngine.Contracts;
 using Battleships.Factory;
 using System;
 using System.Collections.Generic;
+using Bytes2you.Validation;
 
 namespace Battleships.Commands
 {
@@ -13,12 +14,17 @@ namespace Battleships.Commands
 
         public CreatePlayerCommand(IBattleShipFactory factory, IEngine engine)
         {
+            Guard.WhenArgument(factory, "Factory").IsNull().Throw();
             this.factory = factory;
+
+            Guard.WhenArgument(engine, "Engine").IsNull().Throw();
             this.engine = engine;
         }
 
         public string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters, "Parameters").IsNullOrEmpty().Throw();
+
             string name;
 
             try

@@ -8,15 +8,15 @@ namespace Battleships.UnitTests.Factory
     [TestClass]
     public class BattleShipsFactoryShould
     {
-        [TestMethod]
-        public void ReturnArgumentNullExceptionOnCreateBattleFieldCommandByNull()
-        {
-            //Arrange
-            var factory = new BattleShipFactory();
+        //[TestMethod]
+        //public void ReturnArgumentNullExceptionOnCreateBattleFieldCommandByNull()
+        //{
+        //    //Arrange
+        //    var factory = new BattleShipFactory();
 
-            //Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => factory.CreateBattleField(null));
-        }
+        //    //Act & Assert
+        //    Assert.ThrowsException<ArgumentNullException>(() => factory.CreateBattleField());
+        //}
 
         [TestMethod]
         public void ReturnArgumentNullExceptionOnCreatePlayerCommandByNull()
@@ -25,7 +25,7 @@ namespace Battleships.UnitTests.Factory
             var factory = new BattleShipFactory();
 
             //Act & Assert
-            Assert.ThrowsException<NullReferenceException>(() => factory.CreatePlayer(null, null));
+            Assert.ThrowsException<ArgumentNullException>(() => factory.CreatePlayer(null, null, null));
         }
 
         [TestMethod]
